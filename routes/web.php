@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,6 @@ Route::get('/updateapp', function() {
     exec('composer dump-autoload');
     echo 'composer dump-autoload complete';
 });
+
+// end composer dump-autoload
+// end composer dump-autoload
