@@ -44,6 +44,20 @@ return [
             'provider' => 'users',
         ],
 
+
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+
+
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
@@ -74,6 +88,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

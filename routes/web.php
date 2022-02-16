@@ -1,9 +1,12 @@
 <?php
 
-use Illuminate\Foundation\Application;
+// use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Auth\AdminAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +17,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -28,7 +31,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+ */
 
+Route::namespace('Auth')->prefix('admin')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'getLogin'])->name('adminLogin');
+    Route::post('/login', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost');
+    Route::get('/logout', [AdminAuthController::class, 'logout'])->name('adminLogout');
+    });
 
 
 
@@ -74,3 +83,11 @@ Route::get('/updateapp', function() {
 
 
 
+
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Auth::routes();
+
+// Route::get('/password/reset', [App\Http\Controllers\HomeController::class, 'password_request'])->name('password.request');
