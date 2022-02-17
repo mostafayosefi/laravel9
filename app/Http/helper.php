@@ -12,9 +12,10 @@ use App\Rules\ValidateLink;
 use App\Rules\ValidateRule;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Morilog\Jalali\Jalalian;
 use App\Models\ContentDomain;
 use App\Models\Loginhistorie;
-use \Hekmatinasser\Verta\Verta;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -126,7 +127,11 @@ if(! function_exists('uploadFile') ) {
 if(! function_exists('date_frmat') ) {
     function date_frmat($date)
     {
-        return Verta($date)->format('Y/m/d ساعت H:i a');
+
+
+        $date = Jalalian::forge($date)->format('Y/m/d ساعت H:i a');
+        return $date;
+        // return Verta($date)->format('Y/m/d ساعت H:i a');
 
     }
 

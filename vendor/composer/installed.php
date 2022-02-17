@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'fbb477ec5dd9356754f551d50ab1ccd6267c29fd',
+        'reference' => '45004bbd36ba1840e76d6c287901068dbe6698a5',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -35,6 +35,15 @@
             'install_path' => __DIR__ . '/../bacon/bacon-qr-code',
             'aliases' => array(),
             'reference' => '0069435e2a01a57193b25790f105a5d3168653c1',
+            'dev_requirement' => false,
+        ),
+        'beberlei/assert' => array(
+            'pretty_version' => 'v3.3.2',
+            'version' => '3.3.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../beberlei/assert',
+            'aliases' => array(),
+            'reference' => 'cb70015c04be1baee6f5f5c953703347c0ac1655',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -508,7 +517,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'fbb477ec5dd9356754f551d50ab1ccd6267c29fd',
+            'reference' => '45004bbd36ba1840e76d6c287901068dbe6698a5',
             'dev_requirement' => false,
         ),
         'laravel/passport' => array(
@@ -676,6 +685,15 @@
             'reference' => 'fd4380d6fc37626e2f799f29d91195040137eba9',
             'dev_requirement' => false,
         ),
+        'morilog/jalali' => array(
+            'pretty_version' => 'v3.2.0',
+            'version' => '3.2.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../morilog/jalali',
+            'aliases' => array(),
+            'reference' => '7ea78b84ce3b5546b01217febb2fba4915dac5e5',
+            'dev_requirement' => false,
+        ),
         'mtdowling/cron-expression' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -695,12 +713,12 @@
             ),
         ),
         'nesbot/carbon' => array(
-            'pretty_version' => '2.56.0',
-            'version' => '2.56.0.0',
+            'pretty_version' => '2.57.0',
+            'version' => '2.57.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(),
-            'reference' => '626ec8cbb724cd3c3400c3ed8f730545b744e3f4',
+            'reference' => '4a54375c21eea4811dbd1149fe6b246517554e78',
             'dev_requirement' => false,
         ),
         'nette/schema' => array(
