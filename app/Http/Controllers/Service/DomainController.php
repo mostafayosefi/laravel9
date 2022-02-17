@@ -43,6 +43,18 @@ $var=$xml->reply->unavailable;
 if (empty($var)) {
 
     if (empty($invalid)) {
+
+
+        if($xml->reply->code=='113'){
+            return   $personJSON = response()->json([
+                'result' => '1888' ,
+                'invalid' => $invalid ,
+                'var' => $var ,
+                'dataCountWhile' => $data['CountWhile'],
+                'xml' => $xml->reply,
+                ]);
+        }elseif($xml->reply->code!='113'){
+
     $i=0;
     while($i<$data['CountWhile']){
         if($data['origindomain']==$xml->reply->available->domain[$i]){
@@ -89,7 +101,11 @@ Alert::success('با موفقیت پیدا شد', 'اطلاعات با موفق�
         Alert::error('متاسفانه دامنه شما پیدا نشد  ', ' دامنه وجود ندارد');
         return back()->with([  'webservice_id' => $data['webservice_id'] , 'error' => '1'  , 'domain' => $data['origindomain'] ]);
              }
-    }
+
+
+
+        }
+        }
 
 }else{
     $error='unavailable';
