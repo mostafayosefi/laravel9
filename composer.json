@@ -9,6 +9,7 @@
         "anhskohbo/no-captcha": "^3.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hekmatinasser/verta": "^2.0",
         "inertiajs/inertia-laravel": "^0.5.4",
         "laravel/fortify": "^1.10",
         "laravel/framework": "^8.75",
@@ -16,7 +17,8 @@
         "laravel/passport": "^10.3",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.4"
+        "laravel/ui": "^3.4",
+        "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -31,7 +33,11 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+
+        "files": [
+            "app/Http/helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

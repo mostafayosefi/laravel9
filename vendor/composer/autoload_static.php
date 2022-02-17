@@ -33,11 +33,15 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        '4364d9898253482270d33c3e7d349234' => __DIR__ . '/..' . '/hekmatinasser/notowo/src/helpers.php',
         '98caa11a197f6516a8e48aa4abb5ccc6' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
+        '4ad677cf23be1eeec8c74951804d4cb0' => __DIR__ . '/..' . '/hekmatinasser/verta/src/helpers.php',
+        '3d5a4d29ce3a373ff9fae05310ce663f' => __DIR__ . '/../..' . '/app/Http/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -54,6 +58,10 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+        ),
+        'U' => 
+        array (
+            'UxWeb\\SweetAlert\\' => 17,
         ),
         'T' => 
         array (
@@ -158,6 +166,8 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'H' => 
         array (
             'Http\\Message\\' => 13,
+            'Hekmatinasser\\Verta\\' => 20,
+            'Hekmatinasser\\Notowo\\' => 21,
         ),
         'G' => 
         array (
@@ -232,6 +242,10 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'UxWeb\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -519,6 +533,14 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         array (
             0 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
+        'Hekmatinasser\\Verta\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hekmatinasser/verta/src',
+        ),
+        'Hekmatinasser\\Notowo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hekmatinasser/notowo/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -662,6 +684,20 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'App\\Actions\\Jetstream\\DeleteUser' => __DIR__ . '/../..' . '/app/Actions/Jetstream/DeleteUser.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\CategoryapiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryapiController.php',
+        'App\\Http\\Controllers\\Admin\\ComidController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ComidController.php',
+        'App\\Http\\Controllers\\Admin\\ContentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContentController.php',
+        'App\\Http\\Controllers\\Admin\\ContentDomainController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContentDomainController.php',
+        'App\\Http\\Controllers\\Admin\\DocumentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DocumentController.php',
+        'App\\Http\\Controllers\\Admin\\FaqController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FaqController.php',
+        'App\\Http\\Controllers\\Admin\\FetchController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FetchController.php',
+        'App\\Http\\Controllers\\Admin\\GetwaypaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/GetwaypaymentController.php',
+        'App\\Http\\Controllers\\Admin\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PageController.php',
+        'App\\Http\\Controllers\\Admin\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SettingController.php',
+        'App\\Http\\Controllers\\Admin\\SpotliteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SpotliteController.php',
+        'App\\Http\\Controllers\\Admin\\TextdesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TextdesController.php',
+        'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Auth\\AdminAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminAuthController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -682,6 +718,11 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Resources\\CheckdomainCollection' => __DIR__ . '/../..' . '/app/Http/Resources/CheckdomainCollection.php',
+        'App\\Http\\Resources\\CheckdomainResource' => __DIR__ . '/../..' . '/app/Http/Resources/CheckdomainResource.php',
+        'App\\Http\\Resources\\UserCollection' => __DIR__ . '/../..' . '/app/Http/Resources/UserCollection.php',
+        'App\\Http\\Resources\\WebserviceCollection' => __DIR__ . '/../..' . '/app/Http/Resources/WebserviceCollection.php',
+        'App\\Http\\Resources\\WebserviceResource' => __DIR__ . '/../..' . '/app/Http/Resources/WebserviceResource.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -690,7 +731,15 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\FortifyServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FortifyServiceProvider.php',
         'App\\Providers\\JetstreamServiceProvider' => __DIR__ . '/../..' . '/app/Providers/JetstreamServiceProvider.php',
+        'App\\Providers\\MenuindexProvider' => __DIR__ . '/../..' . '/app/Providers/MenuindexProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Rules\\NameserverRule' => __DIR__ . '/../..' . '/app/Rules/NameserverRule.php',
+        'App\\Rules\\Uniqemail' => __DIR__ . '/../..' . '/app/Rules/Uniqemail.php',
+        'App\\Rules\\ValidateLink' => __DIR__ . '/../..' . '/app/Rules/ValidateLink.php',
+        'App\\Rules\\ValidateRule' => __DIR__ . '/../..' . '/app/Rules/ValidateRule.php',
+        'App\\View\\Components\\Alert' => __DIR__ . '/../..' . '/app/View/Components/Alert.php',
+        'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
+        'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/app/View/Components/GuestLayout.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -1871,6 +1920,23 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Hekmatinasser\\Notowo\\Notowo' => __DIR__ . '/..' . '/hekmatinasser/notowo/src/Notowo.php',
+        'Hekmatinasser\\Notowo\\NotowoServiceProvider' => __DIR__ . '/..' . '/hekmatinasser/notowo/src/NotowoServiceProvider.php',
+        'Hekmatinasser\\Verta\\Facades\\Verta' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Facades/Verta.php',
+        'Hekmatinasser\\Verta\\Laravel\\JalaliValidator' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Laravel/JalaliValidator.php',
+        'Hekmatinasser\\Verta\\Laravel\\VertaServiceProvider' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Laravel/VertaServiceProvider.php',
+        'Hekmatinasser\\Verta\\Traits\\Accessor' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Accessor.php',
+        'Hekmatinasser\\Verta\\Traits\\Boundaries' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Boundaries.php',
+        'Hekmatinasser\\Verta\\Traits\\Comparison' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Comparison.php',
+        'Hekmatinasser\\Verta\\Traits\\Creator' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Creator.php',
+        'Hekmatinasser\\Verta\\Traits\\Date' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Date.php',
+        'Hekmatinasser\\Verta\\Traits\\Difference' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Difference.php',
+        'Hekmatinasser\\Verta\\Traits\\Formatting' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Formatting.php',
+        'Hekmatinasser\\Verta\\Traits\\Modification' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Modification.php',
+        'Hekmatinasser\\Verta\\Traits\\Transformation' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Transformation.php',
+        'Hekmatinasser\\Verta\\Traits\\Translator' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Traits/Translator.php',
+        'Hekmatinasser\\Verta\\Verta' => __DIR__ . '/..' . '/hekmatinasser/verta/src/Verta.php',
+        'Hekmatinasser\\Verta\\VertaInterface' => __DIR__ . '/..' . '/hekmatinasser/verta/src/VertaInterface.php',
         'Http\\Message\\MessageFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/MessageFactory.php',
         'Http\\Message\\RequestFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/RequestFactory.php',
         'Http\\Message\\ResponseFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/ResponseFactory.php',
@@ -6123,6 +6189,12 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'UxWeb\\SweetAlert\\ConvertMessagesIntoSweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/ConvertMessagesIntoSweetAlert.php',
+        'UxWeb\\SweetAlert\\LaravelSessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/LaravelSessionStore.php',
+        'UxWeb\\SweetAlert\\SessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SessionStore.php',
+        'UxWeb\\SweetAlert\\SweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlert.php',
+        'UxWeb\\SweetAlert\\SweetAlertNotifier' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertNotifier.php',
+        'UxWeb\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertServiceProvider.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
