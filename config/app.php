@@ -165,6 +165,7 @@ return [
         Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -180,6 +181,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\MenuindexProvider::class,
 
     ],
 
@@ -238,6 +240,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
     ],
 

@@ -40,8 +40,19 @@ class ComidController extends Controller
     {
 
 if($status=='first'){
-    Comid::create(['title' => $request->title  ,'text' => $request->text ,
-    'icon' => $request->icon , 'btn' => $request->btn  , 'link' => $request->link  , 'status' => $status     ]);
+
+$request->validate([
+    'title' => 'required',
+    'image'  => 'required'
+
+]);
+
+$data = $request->all();
+$data['image']  =  uploadFile($request->file('image'),'images/setting','');
+
+    Comid::create(['title' => $request->title  ,'text' => $request->text
+    ,'image' =>$data['image'] , 'btn' => $request->btn  ,
+    'link' => $request->link  , 'status' => $status     ]);
 
 }
 

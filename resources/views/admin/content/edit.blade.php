@@ -49,15 +49,20 @@
                                         <div class="form-group">
                                             <label for="url">Url</label>
                                             <input type="text" class="form-control" id="url" autocomplete="off"
-                                                placeholder=" Url   " name="url" value="{{ old('url') }}">
+                                                placeholder=" Url   " name="url" value="{{$textwebservice->url}}">
                                         </div>
+
+
+
 
 
                                         <div class="form-group">
-                                            <label for="link">نمونه کد</label>
-                                            <input type="text" class="form-control" id="link" autocomplete="off"
-                                                placeholder=" نمونه کد  " name="link" value="{{$textwebservice->link}}">
+                                            <label for="text"> نمونه کد</label>
+                                            <textarea class="form-control"   autocomplete="off"
+                                                placeholder="نمونه کد" name="link" rows="8" id=""
+                                               dir="ltr"  >{{$textwebservice->link}}</textarea>
                                         </div>
+
 
 
                                           <div class="form-group">

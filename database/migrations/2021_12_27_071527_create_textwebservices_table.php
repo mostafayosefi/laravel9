@@ -18,7 +18,7 @@ class CreateTextwebservicesTable extends Migration
             $table->string('title');
             $table->longText('text');
             $table->string('url')->nullable();
-            $table->string('link');
+            $table->longText('link');
             $table->foreignId('categoryapi_id')->constrained('categoryapis')->cascadeOnDelete();
 
             $table->timestamps();

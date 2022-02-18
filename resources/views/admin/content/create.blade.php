@@ -51,19 +51,27 @@
 
 
 
-                                        <div class="form-group">
+{{--                                         <div class="form-group">
                                             <label for="link">نمونه کد</label>
                                             <input type="text" class="form-control" id="link" autocomplete="off"
                                                 placeholder=" نمونه کد  " name="link" value="{{ old('link') }}">
                                         </div>
+ --}}
+
+                                        <div class="form-group">
+                                            <label for="text"> نمونه کد</label>
+                                            <textarea class="form-control"   autocomplete="off"
+                                                placeholder="نمونه کد" name="link" rows="8" id=""
+                                                dir="ltr"     >{{ old('link') }}</textarea>
+                                        </div>
 
 
-                                          <div class="form-group">
-                                              <label for="text"> متن</label>
-                                              <textarea class="form-control"   autocomplete="off"
-                                                  placeholder="متن" name="text" rows="8" id="tinymceExample"
-                                                   >{{ old('text') }}</textarea>
-                                          </div>
+                                        <div class="form-group">
+                                            <label for="text"> متن</label>
+                                            <textarea class="form-control"   autocomplete="off"
+                                                placeholder="متن" name="text" rows="8" id="tinymceExample"
+                                                 >{{ old('text') }}</textarea>
+                                        </div>
 
 
 

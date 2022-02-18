@@ -30,6 +30,7 @@
                 <tr>
                   <th>ردیف</th>
                   <th> دسته بندی وب سرویس</th>
+                  <th> داکیومنت</th>
                   <th>تاریخ ایجاد</th>
                   <th>ویرایش</th>
                   <th>حذف</th>
@@ -42,6 +43,7 @@
                 <tr>
                     <td>{{ $key + 1 }}</td>
                     <td>{{$admin->name}}</td>
+                    <td>{{$admin->document->documentname}}</td>
                     <td>{{ date_frmat($admin->created_at) }}</td>
                   <td>
 

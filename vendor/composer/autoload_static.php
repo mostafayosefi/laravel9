@@ -42,6 +42,7 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '4ad677cf23be1eeec8c74951804d4cb0' => __DIR__ . '/..' . '/hekmatinasser/verta/src/helpers.php',
         'e4e590a9b5afe940db71ee1662c02677' => __DIR__ . '/..' . '/morilog/jalali/src/helpers.php',
+        '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
         'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
         '3d5a4d29ce3a373ff9fae05310ce663f' => __DIR__ . '/../..' . '/app/Http/helper.php',
     );
@@ -102,6 +103,7 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         ),
         'R' => 
         array (
+            'RealRashid\\SweetAlert\\' => 22,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -366,6 +368,10 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'Symfony\\Bridge\\PsrHttpMessage\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
+        ),
+        'RealRashid\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/realrashid/sweet-alert/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -724,10 +730,21 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Index\\DocumentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Index/DocumentController.php',
+        'App\\Http\\Controllers\\Index\\Indexcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/Index/Indexcontroller.php',
+        'App\\Http\\Controllers\\Index\\LoginUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Index/LoginUserController.php',
+        'App\\Http\\Controllers\\Index\\SitemapXmlController' => __DIR__ . '/../..' . '/app/Http/Controllers/Index/SitemapXmlController.php',
         'App\\Http\\Controllers\\PassportAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/PassportAuthController.php',
         'App\\Http\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostController.php',
         'App\\Http\\Controllers\\Service\\DomainController' => __DIR__ . '/../..' . '/app/Http/Controllers/Service/DomainController.php',
         'App\\Http\\Controllers\\Service\\MyContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Service/MyContactController.php',
+        'App\\Http\\Controllers\\User\\Contactcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Contactcontroller.php',
+        'App\\Http\\Controllers\\User\\FinicalController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/FinicalController.php',
+        'App\\Http\\Controllers\\User\\MyDomainController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/MyDomainController.php',
+        'App\\Http\\Controllers\\User\\NameserverController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/NameserverController.php',
+        'App\\Http\\Controllers\\User\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/OrderController.php',
+        'App\\Http\\Controllers\\User\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ProfileController.php',
+        'App\\Http\\Controllers\\User\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/WalletController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAuthenticated.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -5222,6 +5239,13 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'RealRashid\\SweetAlert\\Console\\PublishCommand' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Console/PublishCommand.php',
+        'RealRashid\\SweetAlert\\Facades\\Alert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Facades/Alert.php',
+        'RealRashid\\SweetAlert\\Storage\\AlertSessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/AlertSessionStore.php',
+        'RealRashid\\SweetAlert\\Storage\\SessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/SessionStore.php',
+        'RealRashid\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/SweetAlertServiceProvider.php',
+        'RealRashid\\SweetAlert\\ToSweetAlert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/ToSweetAlert.php',
+        'RealRashid\\SweetAlert\\Toaster' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Toaster.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',

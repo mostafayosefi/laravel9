@@ -111,6 +111,18 @@
                                             </div>
 
 
+
+ @include('admin.layouts.table.avatarnul', [  'avatarimage' => $comid->image , 'class'=>'' , 'style' => 'height: 160px;width: 160px;'  ])
+
+ <hr>
+                                            <div class="form-group" >
+                                            <label for="exampleInputUsername1"> آپلود آیکن </label>
+                                            <input type="file"     id="exampleInputUsername1" autocomplete="off"  name="image" >
+                                            </div>
+
+
+
+{{--
 <div class="form-group" >
     <label for="link">آیکن</label>
 
@@ -134,7 +146,7 @@
 
          </div>
 
-
+ --}}
 
 
 
@@ -190,12 +202,10 @@
                                             </div>
 
 
- 
 
-                                            @include('admin.layouts.table.avatarnul', [  'avatarimage' => $comid->image , 'class'=>'' , 'style' => 'height: 160px;width: 160px;'  ])
+ @include('admin.layouts.table.avatarnul', [  'avatarimage' => $comid->image , 'class'=>'' , 'style' => 'height: 160px;width: 160px;'  ])
 
-
-                                                                                      <hr>
+ <hr>
                                             <div class="form-group" >
                                             <label for="exampleInputUsername1"> آپلود آیکن </label>
                                             <input type="file"     id="exampleInputUsername1" autocomplete="off"  name="image" >

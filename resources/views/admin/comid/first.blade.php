@@ -83,25 +83,28 @@
                                             </div>
 
 
-<div class="form-group" >
+
+                                            <hr>
+                                            <div class="form-group" >
+                                            <label for="exampleInputUsername1"> آپلود آیکن </label>
+                                            <input type="file"     id="exampleInputUsername1" autocomplete="off"  name="image" >
+                                            </div>
+
+
+{{--
+
+    <div class="form-group" >
     <label for="link">آیکن</label>
         <select  class="js-example-basic-single w-100" id="cat" name="icon"  onchange="fetch_select2(this.value);"  style="font-size: 18px;"      required >
         <option value="">لطفا آیکن مورد نظر را انتخاب نمایید</option>
         @foreach($iconfonts as $font)
-
         <option value="{{$font->font}}">{{$font->font}}</option>
         @endforeach
-
     </select>
-
     </div>
-
      <div  id="catamrc">
-
-
-
-         </div>
-
+     </div>
+ --}}
 
 
 
@@ -164,7 +167,9 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
     <td>{{$admin->title}}</td>
-    <td><i  aria-hidden="true" class="fa {{$admin->icon}}"  style="font-size:58px;color:#665CAC;"></i></td>
+    <td>
+        @include('admin.layouts.table.avatarnul', [  'avatarimage' => $admin->image , 'class'=>'' , 'style' => 'height: 78px;width: 78px;'  ])
+      </td>
      <td>
     <a href="{{ route('admin.manegement.comid_edit', ['status'=>$admin->status ,'id' => $admin->id ]  ) }}">
     <span class="btn btn-primary" >  <i data-feather="edit"></i></span>

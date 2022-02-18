@@ -72,7 +72,7 @@
 
 
 
-@include('sweet::alert')
+@include('sweetalert::alert')
 
 @yield('script')
 
