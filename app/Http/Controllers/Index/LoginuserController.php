@@ -13,6 +13,7 @@ class LoginuserController extends Controller
 {
 
 //  test
+//  test
 
     public function register(){
         if (Auth::guard('user')->user()) {
