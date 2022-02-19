@@ -38,6 +38,16 @@ class DomainApiController extends Controller
 
 
 
+    public function countdomain(Request $request){
+
+            return response()->json([
+                'detials' => 'success' ,
+                'count' => '0'  ], 200);
+
+    }
+
+
+
 
 
 }

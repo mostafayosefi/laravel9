@@ -86,7 +86,7 @@
 @if(auth()->guard('user')->user())
 <li id="sticky-menu-item-289" data-depth="0" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.domain.check')}}"><span>بررسی دامنه </span></a> </li>
 @else
-<li id="sticky-menu-item-289" data-depth="0" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('index.document.index')}}"><span>بررسی دامنه </span></a> </li>
+<li id="sticky-menu-item-289" data-depth="0" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('index.check')}}"><span>بررسی دامنه </span></a> </li>
 @endif
 
 <li id="sticky-menu-item-799" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn submenu-loaded"><a href="#/#"><span>خدمات  و سرویس‌ها</span></a>

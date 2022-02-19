@@ -44,7 +44,7 @@ class IndexController extends Controller
         $comidssec  = Comid::where([ ['status' , 'second'], ])->get();
         $coment  = Comid::where([ ['status' , 'coment'], ])->get();
 
-
+//test
         return view('index.home.index' , compact([ 'spotlites' , 'comidsfirst' , 'comidssec'  , 'coment' ]));
     }
 

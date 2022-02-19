@@ -56,7 +56,7 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
 
 
-            Route::prefix('document')->name('document.')->group(function () {
+            Route::prefix('webservice')->name('document.')->group(function () {
                 Route::get('/{myurl?}', [DocumentController::class, 'index'])->name('index');
             });
 

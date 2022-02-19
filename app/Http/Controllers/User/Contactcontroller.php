@@ -15,7 +15,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Service\MyContactController;
 use Illuminate\Support\Arr;
 
-class Contactcontroller extends Controller
+class ContactController extends Controller
 {
 
 
@@ -122,7 +122,7 @@ class Contactcontroller extends Controller
 
 
 
-        Contact::destroy($request->id); 
+        Contact::destroy($request->id);
         Alert::info('با موفقیت حذف شد', 'اطلاعات با موفقیت حذف شد');
         return redirect()->route('user.contact.index');
 

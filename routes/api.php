@@ -47,5 +47,6 @@ Route::namespace('Api')->name('domain.')->group(function () {
     Route::post('checkdomain', [DomainApiController::class, 'checkdomain']);
     Route::prefix('domain')->middleware('auth:api')->group(function () {
         Route::post('buy', [DomainApiController::class, 'buy']);
+        Route::post('count', [DomainApiController::class, 'countdomain']);
     });
 });
