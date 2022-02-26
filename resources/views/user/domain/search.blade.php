@@ -4,6 +4,10 @@
     'breadcrumb' => [['title' => 'بررسی دامنه ', 'class' => 'active']],
     ])
 
+@slot('style')
+
+@endslot
+
 @if(isShow(['index.check']))   @endif
 
 
@@ -35,15 +39,182 @@
 
 
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-1720180 elementor-button-align-center elementor-widget elementor-widget-form"
-                                        data-id="1720180" data-element_type="widget"
-                                        data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
-                                        data-widget_type="form.default">
+
+
+
+
+
+                                        <div class="elementor-element elementor-element-412944a elementor-widget elementor-widget-rt-pricing-table"
+                                        data-id="412944a" data-element_type="widget"
+                                        data-widget_type="rt-pricing-table.default">
                                         <div class="elementor-widget-container">
-                                            @include('index.layouts.errors')
+
+
+
+
+                                            @if(isShow(['index.check']))
+                                            <form class="domain-form" method="post" action="{{route('index.check.post')}}" >
+                                                @elseif(isShow(['user.domain.check']))
+                                                <form class="domain-form" method="post" action="{{route('user.domain.check.post')}}" >
+
+                                                @endif
+
+
+
+                                                <div class="elementor-form-fields-wrapper elementor-labels-above"  >
+                                                    <div class="form-group d-md-flex">
+
+                                                        <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+                                                @include('index.layouts.errors')
+                                                        </div>
+                                                        </div>
+                                                        </div>
+
+@csrf
+                                                <input type="hidden" name="status" value="52">
+
+
+                                                <div class="elementor-form-fields-wrapper elementor-labels-above"  >
+                                                            <div class="form-group d-md-flex">
+
+                                                                <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+
+                                                        <div
+                                                        class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">
+                                                                <input type="text" class="form-control px-4" name="domain" placeholder="example.com" dir="ltr" required>
+
+
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+
+                                                        <div
+                                                        class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">
+
+
+                                                            <button type="submit"
+                                                            class="search-domain btn btn-primary px-5">
+                                                            جستجو
+                                                        </button>
+
+                                                            </div>
+                                                            </div>
+
+
+                                                        </div>
+
+
+
+
+                                                        <div class="elementor-element elementor-element-e3e1989 elementor-widget elementor-widget-rt-pricing-table" data-id="e3e1989" data-element_type="widget" data-widget_type="rt-pricing-table.default">
+                                                            <div class="elementor-widget-container">
+                                                        <div id="" class="pricing_table compare " data-rt-animation-group="group">
+
+
+
+
+
+
+
+
+                                                            @if($result)
+
+
+                                            <div id="" class="table_wrap highlight " data-rt-animate="animate" data-rt-animation-type="fadeInDown"><ul>
+                                                <li class="caption">
+                                               <div class="title"  style="color: #1be42f">دامنه {{session()->get('domain')}} موجود می باشد!
+                                               <small style="color: #23dcdc">  &nbsp;</small>
+                                               </div>
+                                                </li>
+
+                                                       <li class="price">
+                                                           <div>
+                                                               <span> </span>
+                                                           </div>
+                                                       </li>
+
+
+                                               <li class="start_position">
+
+                                                @include('index.layouts.table_listdomain', [  'checkdomains' => $resultdomain   ])
+
+
+
+
+                                            </li>
+
+
+                                               <li class="buy_position">&nbsp;</li>
+                                               <li class="buy_position">دامنه های مشابه</li>
+
+                                               <li class="start_position"  >
+
+
+                                                @include('index.layouts.table_listdomain', [  'checkdomains' => $checkdomains   ])
+
+
+                                               </li>
+
+                                               </ul>
+                                               </div>
+
+                                            @endif
+
+
+
+
+                                            @include('index.layouts.error_domain')
+
+
+
+
+
+
+
+
+
+
+                                                     </div>
+                                                     </div>
+                                                     </div>
+
+
+
+
+
+
+
+@foreach ($contentdomains->chunk(5) as $chunk)
+<br>
+<div
+class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">
+
+    @foreach ($chunk as  $key => $contentdomain)
+<p class="domain-price text-center"  ><span dir="ltr"><small style="color: red; font_size: 16px; ">.</small><small title="{{$contentdomain->text}}" >{{$contentdomain->name}}</small>${{$contentdomain->price}}</span></p>
+
+@endforeach
+</div>
+@endforeach
+
+
+
+
+                                                </div>
+                                                        </form>
+
+
+
+
+
+
+{{-- --------------------------------- --}}
+
+
+
+
+
+{{--
 
                                             @if(isShow(['index.check']))
                                             <form class="elementor-form" method="post" action="{{route('index.check.post')}}" >
@@ -54,7 +225,7 @@
 @csrf
                                                 <input type="hidden" name="status" value="52">
 
-                                                <div class="elementor-form-fields-wrapper elementor-labels-above">
+                                                <div class="elementor-form-fields-wrapper elementor-labels-above d-md-flex" >
 
 
 
@@ -115,9 +286,31 @@
 
 
                                                 </div>
+
                                             </form>
+
+
+ --}}
+
+
+
+
+{{-- --------------------------------- --}}
+
+                                        </div>
+                                        </div>
+
+
+
+
+
+
+
+
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -177,82 +370,6 @@
 
 
 
-            <div class="elementor-element elementor-element-e3e1989 elementor-widget elementor-widget-rt-pricing-table" data-id="e3e1989" data-element_type="widget" data-widget_type="rt-pricing-table.default">
-                    <div class="elementor-widget-container">
-                <div id="" class="pricing_table compare " data-rt-animation-group="group">
-
-
-
-
-
-
-
-
-                    @if($result)
-
-
-    <div id="" class="table_wrap highlight " data-rt-animate="animate" data-rt-animation-type="fadeInDown"><ul>
-        <li class="caption">
-       <div class="title"  style="color: #1be42f">دامنه {{session()->get('domain')}} موجود می باشد!
-       <small style="color: #23dcdc">  &nbsp;</small>
-       </div>
-        </li>
-
-               <li class="price">
-                   <div>
-                       <span> </span>
-                   </div>
-               </li>
-
-
-       <li class="start_position">
-
-        @include('index.layouts.table_listdomain', [  'checkdomains' => $resultdomain   ])
-
-
-
-
-    </li>
-
-
-       <li class="buy_position">&nbsp;</li>
-       <li class="buy_position">دامنه های مشابه</li>
-
-       <li class="start_position"  >
-
-
-        @include('index.layouts.table_listdomain', [  'checkdomains' => $checkdomains   ])
-
-
-       </li>
-
-       </ul>
-       </div>
-
-    @endif
-
-
-
-
-    @include('index.layouts.error_domain')
-
-
-
-
-
-
-
-
-
-
-             </div>
-             </div>
-             </div>
-
-
-
-
-
 
 
 
@@ -283,8 +400,6 @@
                 class="elementor-section elementor-inner-section elementor-element elementor-element-b01aaa0 elementor-section-boxed elementor-section-height-default elementor-section-height-default default-style"
                 data-id="b01aaa0" data-element_type="section"
                 data-settings="{&quot;rt_color_sets&quot;:&quot;default-style&quot;}">
-
-
 
 
 
@@ -396,6 +511,73 @@
 
 
 
+<style>
+    .padding {
+/* padding: 10rem !important */
+}
+
+body {
+background-color: #f8fafe
+}
+
+.domain-form .form-group {
+
+/* border: 1px solid #9ff0c8; */
+/* padding: 20px */
+}
+
+.domain-form .form-group input {
+height: 70px !important;
+/* border: transparent */
+}
+.domain-form .form-group button {
+    border: 1px solid #9f9f9f;
+                                                            border-radius: 0 10px 10px 0;
+                                                            box-shadow: 0 0 5px #929292 inset;
+height: 70px !important;
+/* border: transparent */
+}
+
+.form-control {
+height: 52px !important;
+background: #fff !important;
+color: #3a4348 !important;
+font-size: 18px;
+border-radius: 0px;
+-webkit-box-shadow: none !important;
+box-shadow: none !important
+}
+
+.px-4 {
+/* padding-left: 1.5rem !important */
+}
+
+.domain-form .form-group .search-domain {
+background: #rgb(57, 211, 238);
+border: 2px solid #rgb(57, 211, 238);
+color: #fff;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+-ms-border-radius: 0;
+border-radius: 0
+}
+
+.domain-price span {
+color: #3a4348;
+margin: 0 10px;
+
+}
+
+.domain-price span small {
+color: #24bdc9;
+font-size: 12px;
+/* margin: 0 3px; */
+
+}
+</style>
+
+
+
 
 
 
@@ -404,6 +586,7 @@
 
 
     @slot('script')
+
     @endslot
 
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\User\SslController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\Index\IndexController;
+use App\Http\Controllers\User\TicketController;
 use App\Http\Controllers\User\WalletController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\FinicalController;
@@ -76,6 +77,10 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
                 Route::get('/', [IndexController::class, 'panel'])->name('index');
             });
 
+            Route::prefix('dashboard')->name('dashboard.')->group(function () {
+                Route::get('/', [IndexController::class, 'dashboard'])->name('index');
+            });
+
 
             //profile
             Route::prefix('profile')->name('profile.')->group(function () {
@@ -96,12 +101,14 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
                 Route::get('/check_domain/{name?}', [MyDomainController::class, 'CheckDomain'])->name('check');
                 Route::post('/check_domain', [MyDomainController::class, 'CheckDomainPost'])->name('check.post');
 
+                Route::get('/custome/check_domain/{name?}', [MyDomainController::class, 'CheckDomain'])->name('check.custome');
+
                 Route::post('/buy', [MyDomainController::class, 'BuyPost'])->name('buy.post');
             });
 
 
             Route::prefix('order')->name('order.')->group(function () {
-                Route::get('/', [OrderController::class, 'index'])->name('index');
+                Route::get('/indexorder', [OrderController::class, 'index'])->name('index');
                 Route::get('/{id}', [OrderController::class, 'show'])->name('show');
                 Route::put('/{id}', [OrderController::class, 'payment'])->name('payment');
                 Route::delete('/{id}', [OrderController::class, 'destroy'])->name('destroy');
@@ -110,11 +117,11 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
             });
 
             Route::prefix('contact')->name('contact.')->group(function () {
-                Route::get('/', [ContactController::class, 'index'])->name('index');
-                Route::get('/create', [ContactController::class, 'create'])->name('create');
-                Route::post('/', [ContactController::class, 'store'])->name('store');
-                Route::get('/{id}', [ContactController::class, 'show'])->name('show');
-                Route::get('/{id}/edit', [ContactController::class, 'edit'])->name('edit');
+                Route::get('/indexcontact', [ContactController::class, 'index'])->name('index');
+                Route::get('/createcontact', [ContactController::class, 'create'])->name('create');
+                Route::post('/contact', [ContactController::class, 'store'])->name('store');
+                Route::get('/{id}/contact', [ContactController::class, 'show'])->name('show');
+                Route::get('/{id}/editcontact', [ContactController::class, 'edit'])->name('edit');
                 Route::put('/{id}', [ContactController::class, 'update'])->name('update');
                 Route::delete('/{id}', [ContactController::class, 'destroy'])->name('destroy');
                 Route::get('/{id}/default', [ContactController::class, 'default'])->name('default');
@@ -125,10 +132,8 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
 
             Route::prefix('ssl')->name('ssl.')->group(function () {
-
-                Route::get('/', [SslController::class, 'index'])->name('index');
-
-
+                Route::get('/indexssl', [SslController::class, 'index'])->name('index');
+                Route::get('/createssl', [SslController::class, 'create'])->name('create');
             });
 
 
@@ -144,6 +149,20 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
 
                       });
+
+            });
+
+
+
+
+
+            Route::prefix('ticket')->name('ticket.')->group(function () {
+                Route::get('/', [TicketController::class, 'index'])->name('index');
+                Route::get('/create', [TicketController::class, 'create'])->name('create');
+                Route::post('/', [TicketController::class, 'store'])->name('store');
+                Route::get('/{id}', [TicketController::class, 'show'])->name('show');
+                Route::put('/{id}', [TicketController::class, 'update'])->name('update');
+                Route::delete('/{id}', [TicketController::class, 'destroy'])->name('destroy');
 
             });
 

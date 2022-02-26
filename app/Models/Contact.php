@@ -24,8 +24,8 @@ class Contact extends Model
 
 
 
-    public function domain(){
-        return $this->hasOne(Mngfinical::class , 'id');
+    public function domains(){
+        return $this->hasMany(Domain::class , 'id');
     }
 
 
@@ -34,7 +34,7 @@ class Contact extends Model
     {
         return $this->belongsTo(User::class );
     }
- 
+
 
 
 

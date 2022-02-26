@@ -15,12 +15,12 @@ class WalletController extends Controller
     public function index(){
         $user_id  = Auth::guard('user')->user()->id;
         $wallets= Wallet::where([ ['user_id',$user_id], ])->get();
-        return view('user.wallet.index' , compact(['wallets' , 'user_id'  ]));
+        return view('custome.wallet.index' , compact(['wallets' , 'user_id'  ]));
     }
 
 
     public function create(){
-        return view('user.wallet.create' );
+        return view('custome.wallet.create' );
     }
 
     public function edit($id){

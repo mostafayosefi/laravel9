@@ -85,42 +85,10 @@
 'src_warp' => 'order.png'  ,  'active_show' => ['user.order.index','user.order.show'] ]  ])
 
 
+@include('index.layouts.warp', [  'warp' => [  'name_warp' => 'تیکت    ',   'route_warp' =>   route('user.ticket.index')  ,
+'src_warp' => 'messages.png'  ,  'active_show' => [''] ]  ])
 
 
-
-                            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-c5ec86c"
-                            data-id="c5ec86c" data-element_type="column">
-                            <div class="elementor-column-wrap elementor-element-populated">
-                                {{-- {{route('index.user.logout')}} --}}
-                                <a href="{{ route('index.user.logout') }}" onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
-                                    <div class="elementor-widget-wrap">
-                                        <div class="elementor-element elementor-element-f464a19 elementor-view-stacked elementor-shape-circle elementor-widget elementor-widget-icon"
-                                            data-id="f464a19" data-element_type="widget"
-                                            data-widget_type="icon.default">
-                                            <div class="elementor-widget-container">
-                                                <div class="elementor-icon-wrapper">
-                                                    <div class="elementor-icon">
-                                                        <img    src="{{ asset('upload/images/icon/logout.png') }}"  />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="elementor-element elementor-element-3dad55e elementor-widget elementor-widget-heading"
-                                            data-id="3dad55e" data-element_type="widget"
-                                            data-widget_type="heading.default">
-                                            <div class="elementor-widget-container">
-                                                <h2 class="elementor-heading-title elementor-size-default">خروج </h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <form id="logout-form" action="{{ route('index.user.logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </div>
 
 
 
@@ -131,6 +99,55 @@
         </div>
 
 
+
+
+
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-row">
+
+
+
+
+                <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-c5ec86c"
+                data-id="c5ec86c" data-element_type="column">
+                <div class="elementor-column-wrap elementor-element-populated">
+                    {{-- {{route('index.user.logout')}} --}}
+                    <a href="{{ route('index.user.logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-f464a19 elementor-view-stacked elementor-shape-circle elementor-widget elementor-widget-icon"
+                                data-id="f464a19" data-element_type="widget"
+                                data-widget_type="icon.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-icon-wrapper">
+                                        <div class="elementor-icon">
+                                            <img    src="{{ asset('upload/images/icon/logout.png') }}"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-3dad55e elementor-widget elementor-widget-heading"
+                                data-id="3dad55e" data-element_type="widget"
+                                data-widget_type="heading.default">
+                                <div class="elementor-widget-container">
+                                    <h2 class="elementor-heading-title elementor-size-default">خروج </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <form id="logout-form" action="{{ route('index.user.logout') }}" method="POST"
+                        class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+            </div>
+            </div>
 
                 </section>
             </div>
@@ -461,6 +478,46 @@ data-elementor-settings="[]">
 
 @include('index.layouts.warp', [  'warp' => [  'name_warp' => 'ثبت Nameserver',   'route_warp' =>   route('user.nameserver.create')  ,
 'src_warp' => 'add_nameserver.png'  ,  'active_show' => ['user.nameserver.create' ] ]  ])
+
+
+
+                </div>
+            </div>
+        </section>
+      </div>
+   </div>
+</div>
+
+
+
+
+@elseif ($name_nav == 'ticket')
+
+
+<div data-elementor-type="wp-page" data-elementor-id="2792" class="elementor elementor-2792"
+data-elementor-settings="[]">
+<div class="elementor-inner">
+    <div class="elementor-section-wrap">
+        <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-2279b4e elementor-section-boxed elementor-section-height-default elementor-section-height-default default-style"
+            data-id="2279b4e" data-element_type="section"
+            data-settings="{&quot;rt_color_sets&quot;:&quot;default-style&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+
+
+
+
+@include('index.layouts.warp', [  'warp' => [  'name_warp' => 'بازگشت',   'route_warp' =>   route('user.panel.index')  ,
+'src_warp' => 'back_panel.png'  ,  'active_show' => [''] ]  ])
+
+
+@include('index.layouts.warp', [  'warp' => [  'name_warp' => 'مدیریت تیکتهای من',   'route_warp' =>   route('user.ticket.index')  ,
+'src_warp' => 'message.png'  ,  'active_show' => ['user.ticket.index', 'user.ticket.show', 'user.ticket.edit'] ]  ])
+
+
+@include('index.layouts.warp', [  'warp' => [  'name_warp' => 'ایجاد تیکت جدید  ',   'route_warp' =>   route('user.ticket.create')  ,
+'src_warp' => 'new-message.png'  ,  'active_show' => ['user.ticket.create' ] ]  ])
 
 
 

@@ -37,14 +37,14 @@ class ContactController extends Controller
         $user_id=Auth::guard('user')->user()->id;
         $contacts= Contact::where('user_id' , $user_id)->get()->all();
         $contact = Contact::where('user_id' , $user_id)->first();
-        return view('user.contact.index' , compact(['contacts' , 'contact'   ]));
+        return view('custome.contact.index' , compact(['contacts' , 'contact'   ]));
     }
 
 
     public function create(){
         $contacts= Contact::where('user_id' , auth()->guard('user')->user()->id)->get()->all();
         $countries= Countrie::all();
-        return view('user.contact.create' , compact(['contacts' , 'countries'   ]));
+        return view('custome.contact.create' , compact(['contacts' , 'countries'   ]));
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class ContactController extends Controller
         $contacts= Contact::where('user_id' , $user_id)->get()->all();
         $contact = Contact::where([ ['user_id' , $user_id] ,   ['id' , $id] ,  ])->first();
         $countries= Countrie::all();
-        return view('user.contact.edit' , compact(['contact' ,'contacts'  ,'countries'  ]));
+        return view('custome.contact.edit' , compact(['contact' ,'contacts'  ,'countries'  ]));
     }
 
 
@@ -77,7 +77,7 @@ class ContactController extends Controller
         $user_id=Auth::guard('user')->user()->id;
         $contacts= Contact::where('user_id' , $user_id)->get()->all();
         $contact = Contact::where([ ['user_id' , $user_id] ,   ['id' , $id] ,  ])->first();
-        return view('user.contact.show' , compact(['contact' ,'contacts'   ]));
+        return view('custome.contact.show' , compact(['contact' ,'contacts'   ]));
 
        }
 

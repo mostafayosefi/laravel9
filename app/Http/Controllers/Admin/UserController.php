@@ -9,6 +9,7 @@ use App\Models\Loginhistorie;
 use Illuminate\Validation\Rule;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -187,4 +188,24 @@ $status=Change_status($id,'users');
 return back();
 
     }
+
+
+
+    public function login($id)
+    {
+
+
+        $result = Auth::guard('user')->loginUsingId($id);
+
+        Alert::success('با موفقیت انجام شد', 'ورود شما باموفقیت انجام شد');
+
+        return redirect()->route('user.panel.index');
+
+
+    }
+
+
+
+
+
 }

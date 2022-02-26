@@ -53,6 +53,10 @@ class IndexController extends Controller
         return view('user.panel.index');
     }
 
+    public function dashboard(){
+        return view('custome.dashboard.index');
+    }
+
     public function page($title  ){
         $mypage=Page::where('title' , $title)->first();
         return view('index.page.mypage' , compact(['mypage']));

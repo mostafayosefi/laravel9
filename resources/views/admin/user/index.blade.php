@@ -51,7 +51,7 @@
 </td>
 
 
-<td><a href="{{ route('admin.user.edit', $admin) }}"><span class="badge badge-primary">&nbsp; ورود <i data-feather="user"></i> </span></a></td>
+<td><a href="{{ route('admin.user.login', $admin) }}" target="_blank" ><span class="badge badge-primary">&nbsp; ورود <i data-feather="user"></i> </span></a></td>
 
                 </tr>
 @endforeach

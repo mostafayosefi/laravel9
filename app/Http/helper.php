@@ -3,10 +3,11 @@
 use App\Models\User;
 use App\Models\Wallet;
 use App\Models\Contact;
+use App\Models\Setting;
+
 use App\Rules\Uniqemail;
 
 use App\Models\Webservice;
-
 use App\Models\Checkdomain;
 use App\Rules\ValidateLink;
 use App\Rules\ValidateRule;
@@ -83,6 +84,10 @@ if(! function_exists('getstatusdefault') ) {
 
     function getstatusdefault($status)
     {
+
+
+
+/*
         if($status == 'active')
         {
             echo '<i class="fas fa-toggle-on"  ></i> Default';
@@ -92,6 +97,24 @@ if(! function_exists('getstatusdefault') ) {
         {
             echo '';
         }
+ */
+
+        if($status == 'active')
+        {
+            echo '<div class="form-check form-check-inline">
+            <label class="form-check-label"><input type="radio"   disabled checked class="form-check-input"> Default </label>
+             </div>  ';
+
+        }
+        elseif($status == 'inactive')
+        {
+            echo '<div class="form-check form-check-inline">
+            <label class="form-check-label"><input type="radio"   disabled   class="form-check-input">   </label>
+             </div> ';
+        }
+
+
+
     }
 
 }
@@ -481,14 +504,18 @@ return $personJSON = response()->json([
         function data_build_query($pathapi,$data)
         {
 
+            $setting=Setting::find(1);
+            $key = $setting->api;
 
-            // 'key' => 'a7a96a32f40c7044242796' ,
+
+            // 'key' => 'a7a96a32f40c7044242796' ,  yosefi
+            // 'key' => 'bbdf45d2c0d8be4cc6f1' ,   ghochani
 
             $base_uri='https://www.namesilo.com/'.$pathapi;
             $base = array(
                 'version' => '1' ,
                 'type' => 'xml' ,
-                'key' => 'bbdf45d2c0d8be4cc6f1' ,
+                'key' => $key ,
             );
 
  $myurl = $base_uri.$data['operator'].'?'.http_build_query($base);

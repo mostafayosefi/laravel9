@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto; 
+use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -77,5 +77,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Wallet::class);
     }
+
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class , 'user_id' );
+    }
+
 
 }

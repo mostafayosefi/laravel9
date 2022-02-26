@@ -17,6 +17,7 @@ use App\Models\Checkdomain;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ContentDomain;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -57,7 +58,15 @@ class MyDomainController extends Controller
             ])->get();
 
 
-        return view('user.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ]));
+
+            if(Route::currentRouteName() == 'user.domain.check.custome'){
+                return view('custome.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ]));
+
+            }else{
+                return view('user.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ]));
+
+            }
+
     }
 
 

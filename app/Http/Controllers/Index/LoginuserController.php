@@ -12,8 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class LoginuserController extends Controller
 {
 
-//  test
-//  test
+//  test fr
 
     public function register(){
         if (Auth::guard('user')->user()) {

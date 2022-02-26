@@ -99,16 +99,33 @@ public function finical(){
 
 
 public function update_finical(Request $request , Setting $setting){
-
-
-
-
 Mngfinical::where('id', 1)
 ->update(['rateusd' => $request->rateusd     ]);
-
     Alert::success('با موفقیت ویرایش شد', 'اطلاعات با موفقیت ویرایش شد');
     return redirect()->back();
 }
+
+
+
+public function api(){
+    $setting=Setting::find(1);
+    return view('admin.setting.api' , compact(['setting'  ]));
+}
+
+
+public function update_api(Request $request , Setting $setting){
+
+    $request->validate([
+        'api' => 'required',
+    ]);
+
+    $setting=Setting::find(1);
+    $setting->update(['api' => $request->api     ]);
+
+        Alert::success('با موفقیت ویرایش شد', 'اطلاعات با موفقیت ویرایش شد');
+        return redirect()->back();
+    }
+
 
 
 

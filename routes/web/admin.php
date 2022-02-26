@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ComidController;
 use App\Http\Controllers\Admin\FetchController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\SearchController;
+use App\Http\Controllers\Admin\WalletController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TextdesController;
@@ -39,7 +43,7 @@ Route::prefix('user')
     Route::put('/{id}/secret', [UserController::class, 'secret'])->name('secret');
     Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
     Route::put('/{id}/status', [UserController::class, 'status'])->name('status');
-    Route::put('/{id}/login', [UserController::class, 'login'])->name('login');
+    Route::get('/{id}/login', [UserController::class, 'login'])->name('login');
 });
 
 
@@ -95,6 +99,10 @@ Route::prefix('setting')
 
     Route::get('/finical', [SettingController::class, 'finical'])->name('finical');
     Route::put('/finical', [SettingController::class, 'update_finical'])->name('update_finical');
+
+    Route::get('/api_token', [SettingController::class, 'api'])->name('api');
+    Route::put('/api_token', [SettingController::class, 'update_api'])->name('update_api');
+
 
     Route::get('/laws', [SettingController::class, 'laws'])->name('laws');
     Route::put('/laws', [SettingController::class, 'update_laws'])->name('update_laws');
@@ -181,6 +189,42 @@ Route::prefix('content')
         Route::delete('/{id}', [ContentDomainController::class, 'destroy'])->name('destroy');
     });
 
+
+
+});
+
+
+
+
+Route::prefix('search')
+->name('search.')->group(function () {
+    Route::get('/', [SearchController::class, 'index'])->name('index');
+});
+
+
+
+Route::prefix('wallet')
+->name('wallet.')->group(function () {
+
+    Route::get('/', [WalletController::class, 'index'])->name('index');
+    Route::get('/create_charge', [WalletController::class, 'create'])->name('create');
+    Route::post('/', [WalletController::class, 'store'])->name('store');
+
+});
+
+
+
+Route::prefix('contact')
+->name('contact.')->group(function () {
+    Route::get('/', [ContactController::class, 'index'])->name('index');
+    Route::get('/{contact}/show_contact', [ContactController::class, 'show'])->name('show');
+
+});
+
+Route::prefix('order')
+->name('order.')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('index');
+    Route::get('/{order}/show_order', [OrderController::class, 'show'])->name('show');
 
 });
 

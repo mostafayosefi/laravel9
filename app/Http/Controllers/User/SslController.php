@@ -9,6 +9,9 @@ class SslController extends Controller
 {
 
     public function index(){
-        return view('user.ssl.index' );
+        return view('custome.ssl.index' );
+    }
+    public function create(){
+        return view('custome.ssl.index' );
     }
 }

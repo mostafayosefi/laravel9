@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function index(){
         $user_id = Auth::guard('user')->user()->id;
         $orders= Domain::where([ ['user_id' , $user_id ] , ])->orderby('id','desc')->get();
-        return view('user.order.index' , compact(['orders'  ]));
+        return view('custome.order.index' , compact(['orders'  ]));
     }
 
 
@@ -23,7 +23,7 @@ class OrderController extends Controller
     public function show($id)
     {
          $order=Domain::find($id);
-        return view('user.order.show' , compact(['order'    ]));    }
+        return view('custome.order.show' , compact(['order'    ]));    }
 
 
 

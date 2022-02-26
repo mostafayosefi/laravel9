@@ -213,6 +213,11 @@
 
 
                             <li class="nav-item">
+                                <a class="nav-link @if (Session::get('err') == '10')  active @endif " id="icon-contact-tab" data-toggle="tab" href="#icon-contact" role="tab" aria-controls="icon-contact" aria-selected="@if (Session::get('err') == '10')   true @else false  @endif"> <i data-feather="user-check"></i>
+                                     اکانت ها </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link @if (Session::get('err') == '9')  active @endif " id="icon-histore-tab" data-toggle="tab" href="#icon-histore" role="tab" aria-controls="icon-histore" aria-selected="@if (Session::get('err') == '1')   true @else false  @endif"> <i data-feather="clock"></i>
                                      تاریخچه ورود</a>
                             </li>
@@ -454,8 +459,8 @@
 
                               </div>
 
-                              <div class="tab-pane pt-3 fade  @if (Session::get('err') == '9') show active @endif" id="icon-histore" role="tabpanel"
-                              aria-labelledby="icon-histore-tab">
+                              <div class="tab-pane pt-3 fade  @if (Session::get('err') == '10') show active @endif" id="icon-contact" role="tabpanel"
+                              aria-labelledby="icon-contact-tab">
 
 
                               <div class="row">
@@ -463,25 +468,25 @@
                                       <div class="card rounded">
 
                                           <div class="card-body">
-                                              <h6 class="card-title">تاریخچه ورود</h6>
+                                              <h6 class="card-title">مشاهده اکانتهای کاربر</h6>
                                               <div class="table-responsive">
 
-                                                @if ($loginhistories)
+                                                @if ($admin->contacts)
 
                                                 <table id="dataTableExample" class="table">
                                                     <thead>
                                                         <tr>
                                                             <th>ردیف</th>
-                                                            <th>آی پی کاربر</th>
-                                                            <th>تاریخ ورود</th>
+                                                            <th>firstname</th>
+                                                            <th>تاریخ ایجاد</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-@foreach ($loginhistories as  $key => $login)
+@foreach ($admin->contacts as  $key => $contact)
 <tr>
     <td>{{ $key + 1 }}</td>
-    <td>{{ $login->ip }}</td>
-    <td>{{   date_frmat($login->created_at) }} </td>
+    <td>{{ $contact->firstname }}</td>
+    <td>{{   date_frmat($contact->created_at) }} </td>
 </tr>
 @endforeach
                                                     </tbody>
@@ -496,11 +501,64 @@
                                           </div>
                                       </div>
                                     </div>
-                              </div>
-
-
+                              </div> 
 
                           </div>
+
+
+
+
+                          <div class="tab-pane pt-3 fade  @if (Session::get('err') == '9') show active @endif" id="icon-histore" role="tabpanel"
+                          aria-labelledby="icon-histore-tab">
+
+
+                          <div class="row">
+                              <div class="col-md-12 grid-margin">
+                                  <div class="card rounded">
+
+                                      <div class="card-body">
+                                          <h6 class="card-title">تاریخچه ورود</h6>
+                                          <div class="table-responsive">
+
+                                            @if ($loginhistories)
+
+                                            <table id="dataTableExample" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ردیف</th>
+                                                        <th>آی پی کاربر</th>
+                                                        <th>تاریخ ورود</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+@foreach ($loginhistories as  $key => $login)
+<tr>
+<td>{{ $key + 1 }}</td>
+<td>{{ $login->ip }}</td>
+<td>{{   date_frmat($login->created_at) }} </td>
+</tr>
+@endforeach
+                                                </tbody>
+                                            </table>
+
+
+                                            @endif
+
+
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                          </div> 
+
+                      </div>
+
+
+
+
+
+
                       </div>
                   </div>
               </div>

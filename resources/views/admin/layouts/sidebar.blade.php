@@ -101,14 +101,16 @@
 
 
           <li class="nav-item  {{ isActive(['admin.setting.logo_management' , 'admin.setting.all_management' ,
-           'admin.setting.txtdes_management' , 'admin.setting.finical', 'admin.setting.laws', 'admin.setting.getway_payment'])}}  ">
+           'admin.setting.txtdes_management' , 'admin.setting.finical', 'admin.setting.laws', 'admin.setting.getway_payment'
+           , 'admin.setting.api'])}}  ">
             <a class="nav-link" data-toggle="collapse" href="#setting" role="button" aria-expanded="false" aria-controls="setting">
               <i class="link-icon" data-feather="list"></i>
               <span class="link-title">تنظیمات سایت </span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse  {{ isShow(['admin.setting.logo_management' , 'admin.setting.all_management'  , 'admin.setting.txtdes_management' ,
-               'admin.setting.finical' , 'admin.setting.laws' , 'admin.setting.getway_payment'])}}   "  id="setting">
+               'admin.setting.finical' , 'admin.setting.laws' , 'admin.setting.getway_payment'
+               , 'admin.setting.api'])}}   "  id="setting">
               <ul class="nav sub-menu">
                 <li class="nav-item">
  <a href="{{ route('admin.setting.logo_management') }}" class="nav-link   {{ isActive(['admin.setting.logo_management']) }}  ">مدیریت لوگو و هدر </a>
@@ -127,6 +129,9 @@
                 </li>
                 <li class="nav-item">
  <a href="{{ route('admin.setting.getway_payment') }}" class="nav-link   {{ isActive(['admin.setting.getway_payment']) }}  ">تنظیمات درگاه پرداخت</a>
+                </li>
+                <li class="nav-item">
+ <a href="{{ route('admin.setting.api') }}" class="nav-link   {{ isActive(['admin.setting.api']) }}  ">تنظیمات Api </a>
                 </li>
 
               </ul>
@@ -230,6 +235,74 @@
  <a href="{{ route('admin.content.webservice.create') }}" class="nav-link   {{ isActive(['admin.content.webservice.create'  ]) }}  ">ثبت محتوا وب سرویس   </a>
                 </li>
 
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item nav-category">مدیریت خدمات دامنه</li>
+
+          <li class="nav-item  {{ isActive(['admin.search.index' , 'admin.search.index'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#search" role="button" aria-expanded="false" aria-controls="search">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت جستجوی کاربران</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.search.index' , 'admin.search.index'])}}   "  id="search">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.search.index') }}" class="nav-link   {{ isActive(['admin.search.index']) }}  ">مشاهده جستجوی دامنه</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item  {{ isActive(['admin.contact.index' , 'admin.contact.show'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت اکانتهای کاربران</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.contact.index' , 'admin.contact.show'])}}   "  id="contact">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.contact.index') }}" class="nav-link   {{ isActive(['admin.contact.index' , 'admin.contact.show']) }}  ">مشاهده اکانتهای های کاربران</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item  {{ isActive(['admin.wallet.index' , 'admin.wallet.create'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت تراکنشهای کاربران</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.wallet.index' , 'admin.wallet.create'])}}   "  id="wallet">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.wallet.index') }}" class="nav-link   {{ isActive(['admin.wallet.index']) }}  ">مشاهده تراکنش های کاربران</a>
+                </li>
+
+                <li class="nav-item">
+ <a href="{{ route('admin.wallet.create') }}" class="nav-link   {{ isActive(['admin.wallet.create']) }}  ">شارژ حساب کاربران</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item  {{ isActive(['admin.order.index' , 'admin.order.index'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت سفارشهای کاربران</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.order.index' , 'admin.order.index'])}}   "  id="order">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.order.index') }}" class="nav-link   {{ isActive(['admin.order.index']) }}  ">مشاهده سفارشهای های کاربران</a>
+                </li>
               </ul>
             </div>
           </li>

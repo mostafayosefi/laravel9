@@ -12,7 +12,7 @@ class FinicalController extends Controller
 
 
     public function index(){
-        return view('user.finical.index' );
+        return view('custome.finical.index' );
     }
 
 

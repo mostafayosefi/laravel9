@@ -6,6 +6,11 @@
       ])
 
 
+
+@slot('style')
+ <link rel="stylesheet" href="{{ asset('template/assets/vendors/select2/select2.min.css') }}">
+   @endslot
+
       <div class="row">
           <div class="col-12 col-xl-12 stretch-card">
               <div class="row flex-grow">
@@ -136,7 +141,8 @@
 
 
 
-
+ 
+       <script src="{{ asset('template/assets/vendors/select2/select2.min.js') }}"></script>
+       <script src="{{ asset('template/assets/js/select2.js') }}"></script>
       @endslot
-
   @endcomponent
