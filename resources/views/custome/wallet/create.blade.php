@@ -1,7 +1,7 @@
   @component('custome.layouts.content', [
     'title'=>'افزایش شارژ حساب',
       'tabTitle' => ' افزایش شارژ حساب',
-      'breadcrumb' => [['title' => 'مدیریت کیف پول ', 'url' => route('user.wallet.index')], ['title' => 'افزایش شارژ حساب ',
+      'breadcrumb' => [['title' => 'مدیریت کیف پول ', 'url' => route('user.finical.wallet.index')], ['title' => 'افزایش شارژ حساب ',
       'class' => 'active']],
       ])
 
@@ -41,13 +41,13 @@
                                     <div class="form-group">
                                         <label for="price"> هزینه شارژ به ریال</label>
                                         <input type="text" class="form-control" id="price" autocomplete="off"
-                                            placeholder=" سوال  " name="price" value="{{ old('price') }}">
+                                            placeholder="  هزینه شارژ به ریال   " name="price" value="{{ old('price') }}">
                                     </div>
 
 
 
                                     <div class="card-footer">
-                                        <a href="{{ route('user.wallet.index') }}" class="btn btn-danger">بازگشت</a>
+                                        <a href="{{ route('user.finical.wallet.index') }}" class="btn btn-danger">بازگشت</a>
                                         <button type="submit" class="btn btn-primary float-right">ثبت و پرداخت</button>
                                     </div>
 

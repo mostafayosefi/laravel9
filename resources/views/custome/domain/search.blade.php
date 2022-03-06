@@ -5,6 +5,7 @@
       'class' => 'active']],
       ])
 
+@include('index.layouts.elementor.txtdese', [ 'id' => '7' ])
 
 
 <div class="row">

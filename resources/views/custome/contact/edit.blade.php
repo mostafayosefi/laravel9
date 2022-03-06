@@ -8,6 +8,14 @@
 
 
 <div class="row">
+
+
+
+@if($contact == Null)
+@include('admin.errors.404')
+@elseif($contact != Null)
+
+
     <div class="col-md-12 grid-margin">
         <div class="card">
             <div class="card-body">
@@ -163,6 +171,10 @@
             </div>
         </div>
     </div>
+
+
+    @endif
+
 </div>
 
 

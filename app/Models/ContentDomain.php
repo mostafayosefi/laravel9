@@ -12,9 +12,10 @@ class ContentDomain extends Model
 
     protected $fillable = [
         'name',
-        'text', 
+        'text',
         'status',
         'image',
         'link',
+        'price',
     ];
 }

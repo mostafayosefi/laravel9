@@ -72,7 +72,7 @@ class ValidateLink implements Rule
         }
 
 
- 
+
 
 
 
@@ -101,7 +101,7 @@ class ValidateLink implements Rule
                 return 'لطفا دامنه را به فرمت انگلیسی و بدون نشانه وارد نمایید';
 
             }else{
-                return 'لطفا دامنه را به فرمت صحیح وارد نمایید';
+                return ' Please enter the :attribute in the correct format ';
 
             }
 

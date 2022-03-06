@@ -70,7 +70,7 @@
 
         <td>
             @php $admin['title'] = $admin->question;  @endphp
-            @include('admin.layouts.table.modal', [$admin ,'route' => route('admin.faq.destroy', $admin) , 'myname' => 'حذف اکانت '.$admin->full_name ])
+            @include('admin.layouts.table.modal', [$admin ,'route' => route('user.contact.destroy', $admin) , 'myname' => 'حذف اکانت '.$admin->full_name ])
             </td>
 
 

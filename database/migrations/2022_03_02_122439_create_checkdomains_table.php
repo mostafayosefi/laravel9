@@ -18,8 +18,8 @@ class CreateCheckdomainsTable extends Migration
             $table->string('domain');
             $table->string('price');
             $table->string('riyal')->nullable();
-            $table->string('type'); 
-            $table->foreignId('webservice_id')->constrained('webservices');
+            $table->string('type');
+            $table->foreignId('webservice_id')->constrained('webservices')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

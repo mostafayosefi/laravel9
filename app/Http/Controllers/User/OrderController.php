@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Order;
 use App\Models\Domain;
+use App\Models\Contact;
+use App\Models\Countrie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,7 +18,22 @@ class OrderController extends Controller
 
     public function index(){
         $user_id = Auth::guard('user')->user()->id;
-        $orders= Domain::where([ ['user_id' , $user_id ] , ])->orderby('id','desc')->get();
+
+
+        $orders= Domain::where([
+            ['user_id' , $user_id ] ,
+            ['status' , '=' ,'active' ] ,
+        ])->orderby('id','desc')->get();
+
+
+
+
+        // foreach($orders as $admin){
+
+        //     $admin = $admin->domain;
+        //     dd($admin->domain);
+        // }
+
         return view('custome.order.index' , compact(['orders'  ]));
     }
 
@@ -22,8 +41,15 @@ class OrderController extends Controller
 
     public function show($id)
     {
-         $order=Domain::find($id);
-        return view('custome.order.show' , compact(['order'    ]));    }
+        $user_id = Auth::guard('user')->user()->id;
+        $order= Domain::where([
+            ['user_id' , $user_id ] ,
+            ['id' , $id ] ,
+            ['status' , '=' ,'active' ] ,
+        ])->orderby('id','desc')->first();
+         $countries= Countrie::all();
+         $contacts= Contact::where('user_id' , $user_id)->orderby('id' , 'desc')->get()->all();
+        return view('custome.order.show' , compact(['order' , 'countries' , 'contacts'   ]));    }
 
 
 
@@ -32,6 +58,25 @@ class OrderController extends Controller
         $data = $request->all();
         $data['user_id']  = Auth::guard('user')->user()->id;
         dd($data);
+
+
+        $order = Order::updateOrCreate([
+            'title' => 'Post 3'
+        ], [
+            'description' => 'Description for post 3.',
+            'body' => 'body for post 3 - updated.'
+        ]);
+
+        $payment = Payment::updateOrCreate([
+            'title' => 'Post 3'
+        ], [
+            'description' => 'Description for post 3.',
+            'body' => 'body for post 3 - updated.'
+        ]);
+
+
+
+        $payment = Payment::create($data);
 
     }
 

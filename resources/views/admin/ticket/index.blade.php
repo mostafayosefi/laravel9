@@ -1,15 +1,17 @@
 @component('admin.layouts.content',[
-    'title'=>'مشاهده سوالات متداول',
-    'tabTitle'=>'مشاهده سوالات متداول ',
+    'title'=>'مشاهده تیکت های کاربران ',
+    'tabTitle'=>'مشاهده تیکت های کاربران',
     'breadcrumb'=>[
-            ['title'=>'مشاهده سوالات متداول','class' => 'active']
+            ['title'=>'مشاهده تیکت های کاربران','class' => 'active']
     ]])
 
 
 
 @slot('style')
 <link rel="stylesheet" href="{{ asset('template/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
-@endslot
+<link rel="stylesheet" href="{{ asset('template/assets/fonts/feather-font/css/iconfont.css') }}">
+
+ @endslot
 
 
 
@@ -21,48 +23,44 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">لیست پرسش پاسخ</h6>
+          <h6 class="card-title">مشاهده تیکت های کاربران</h6>
           <div class="table-responsive">
 
-@if($faqs)
+@if($tickets)
             <table id="dataTableExample" class="table">
               <thead>
                 <tr>
-                  <th>ردیف</th>
-                  <th>متن سوال</th>
-                  <th>تاریخ ایجاد</th>
-                  <th>ویرایش</th>
-                  <th>حذف</th>
+
+                    <th>  ردیف </th>
+                    <th>  کاربر</th>
+                    <th>  موضوع تیکت</th>
+                    <th> تاریخ ثبت </th>
+                    <th> وضعیت</th>
+                    <th> حذف</th>
+
                 </tr>
               </thead>
               <tbody>
 
 
-@foreach($faqs as $key => $admin)
+@foreach($tickets as $key => $admin)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{$admin->question}}</td>
-                    {{-- <td>{{ getStatusEmployerPackage($admin->id) }}</td> --}}
+                    <td>{{$admin->user->name}}
+                        @include('admin.layouts.table.avatar', [ 'avatarimage' => $admin->user->image , 'class'=>'img-xs rounded-circle' , 'style' => ''  ])
+
+                    </td>
+
+                    <td>{{$admin->title}} 	 @include('index.layouts.table.getstatus', [$admin ,'route' => ''  ,'type_name' => 'read_ticket_admin'   ,'number' => '1'   ]) 	 </td>
                     <td>{{ date_frmat($admin->created_at) }}</td>
-{{-- <td> {{Verta($admin->created_at)->format('Y/m/d ساعت H:i a')}}</td> --}}
-                  <td>
-
-
-<a href="{{ route('admin.faq.edit', $admin) }}">
-<span class="btn btn-primary" >  <i data-feather="edit"></i></span>
-</a>
-
-
-</td>
-<td>
-
-@php $admin['title'] = $admin->question;  @endphp
-@include('admin.layouts.table.modal', [$admin ,'route' => route('admin.faq.destroy', $admin) , 'myname' => $admin->title ])
+                    <td> <a href="{{ route('admin.ticket.show', $admin) }}"> @include('index.layouts.table.getstatus', [$admin ,'route' => ''  ,'type_name' => 'status_ticket'   ]) </a> </td>
 
 
 
 
-</td>
+        <td>   @include('admin.layouts.table.modal', [$admin ,'route' => route('admin.ticket.destroy', $admin) , 'myname' => 'حذف تیکت '.$admin->title ]) </td>
+
+
 
                 </tr>
 @endforeach
@@ -87,6 +85,8 @@
 
 
     @slot('script')
+
+    <script src="{{ asset('template/assets/vendors/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('template/assets/vendors/datatables.net/jquery.dataTables-ltr.js') }}"></script>
     <script src="{{ asset('template/assets/vendors/datatables.net-bs4/dataTables.bootstrap4-ltr.js') }}"></script>
     <script src="{{ asset('template/assets/js/data-table-ltr.js') }}"></script>

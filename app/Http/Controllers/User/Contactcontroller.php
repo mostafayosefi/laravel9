@@ -35,7 +35,7 @@ class ContactController extends Controller
 // return $flattened;
 
         $user_id=Auth::guard('user')->user()->id;
-        $contacts= Contact::where('user_id' , $user_id)->get()->all();
+        $contacts= Contact::where('user_id' , $user_id)->orderby('id' , 'desc')->get()->all();
         $contact = Contact::where('user_id' , $user_id)->first();
         return view('custome.contact.index' , compact(['contacts' , 'contact'   ]));
     }
@@ -68,7 +68,7 @@ class ContactController extends Controller
        return  $tasks_controller->ContactAdd(  $data );
        Contact::create($data);
        Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-        return redirect()->route('user.contact.index');
+       return back();
     }
 
     public function show($id)
@@ -109,7 +109,7 @@ class ContactController extends Controller
         $data['contact_id']=$contact->contact_id;
         $data['operator']= 'contactDelete';
 
-      /*   if($contact->contact_id!= Null){
+         if($contact->contact_id!= Null){
             $tasks_controller = new MyContactController('web');
             return  $tasks_controller->ContactDelete(  $data );
         }else{
@@ -117,14 +117,14 @@ class ContactController extends Controller
             $user_id=Auth::guard('user')->user()->id;
             $status=SelectDefault($user_id,'0');
             Alert::info('با موفقیت حذف شد', 'اطلاعات با موفقیت حذف شد');
-            return redirect()->route('user.contact.index');
-        } */
+            return back();
+        }
 
 
 
         Contact::destroy($request->id);
         Alert::info('با موفقیت حذف شد', 'اطلاعات با موفقیت حذف شد');
-        return redirect()->route('user.contact.index');
+        return back();
 
 
   }

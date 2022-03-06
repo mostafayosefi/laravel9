@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDomainsFeildTable extends Migration
+class AddFeildTableDomains extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddDomainsFeildTable extends Migration
     public function up()
     {
         Schema::table('domains', function (Blueprint $table) {
-            $table->softDeletesTz($column = 'deleted_at', $precision = 0);        });
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+        });
     }
 
     /**
@@ -25,7 +26,7 @@ class AddDomainsFeildTable extends Migration
     public function down()
     {
         Schema::table('domains', function (Blueprint $table) {
-            //
+            $table->dropColumn('deleted_at');
         });
     }
 }

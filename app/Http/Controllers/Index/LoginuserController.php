@@ -16,7 +16,7 @@ class LoginuserController extends Controller
 
     public function register(){
         if (Auth::guard('user')->user()) {
-      return redirect()->route('user.panel.index');  }
+      return redirect()->route('user.dashboard.index');  }
         return view('index.home.register'  );
     }
 
@@ -45,7 +45,7 @@ class LoginuserController extends Controller
         {
 
         Alert::success('با موفقیت انجام شد', 'ثبت نام شما باموفقیت انجام شد');
-        return redirect()->route('user.panel.index');
+        return redirect()->route('user.dashboard.index');
 
         }
 
@@ -54,7 +54,7 @@ class LoginuserController extends Controller
 
     public function login(){
         if (Auth::guard('user')->user()) {
-      return redirect()->route('user.panel.index');  }
+      return redirect()->route('user.dashboard.index');  }
         return view('index.home.login'  );
     }
 
@@ -72,7 +72,7 @@ class LoginuserController extends Controller
         {
             Alert::success('با موفقیت انجام شد', 'ورود شما باموفقیت انجام شد');
 
-            return redirect()->route('user.panel.index');
+            return redirect()->route('user.dashboard.index');
 
 
 

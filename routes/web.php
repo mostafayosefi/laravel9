@@ -7,7 +7,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\User\SslController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\Admin\FetchController;
 use App\Http\Controllers\Index\IndexController;
+use App\Http\Controllers\User\BasketController;
 use App\Http\Controllers\User\TicketController;
 use App\Http\Controllers\User\WalletController;
 use App\Http\Controllers\User\ContactController;
@@ -89,6 +91,7 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
                 Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
                 Route::put('/update', [ProfileController::class, 'update'])->name('update');
                 Route::get('/secret', [ProfileController::class, 'secret'])->name('secret');
+                Route::put('/secret', [ProfileController::class, 'secret_update'])->name('secret.update');
             });
 
 
@@ -109,9 +112,27 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
             Route::prefix('order')->name('order.')->group(function () {
                 Route::get('/indexorder', [OrderController::class, 'index'])->name('index');
-                Route::get('/{id}', [OrderController::class, 'show'])->name('show');
+                Route::get('/{id}/order', [OrderController::class, 'show'])->name('show');
                 Route::put('/{id}', [OrderController::class, 'payment'])->name('payment');
                 Route::delete('/{id}', [OrderController::class, 'destroy'])->name('destroy');
+
+                // https://www.namesilo.com/api/registerDomain?version=1&type=xml&key=a7a96a32f40c7044242796&domain=vahid7890.xyz&years=1&private=0&auto_renew=0&contact_id=13469763&ns1=ns1.namesilo.com&ns2=ns2.namesilo.com
+
+                // https://www.namesilo.com/api/dnsListRecords?version=1&type=xml&key=a7a96a32f40c7044242796&domain=mahmooud9890.xyz
+
+                // https://www.namesilo.com/api/listRegisteredNameServers?version=1&type=xml&key=a7a96a32f40c7044242796&domain=mahmooud9890.xyz
+
+                // https://www.namesilo.com/api/addRegisteredNameServer?version=1&type=xml&key=a7a96a32f40c7044242796&domain=mahmooud9890.xyz&new_host=ns5&ip1=123.45.67.8&ip2=11.22.33.44
+            });
+
+
+            Route::prefix('basket')->name('basket.')->group(function () {
+
+            Route::get('/indexbasket', [BasketController::class, 'index'])->name('index');
+            Route::get('/{id}/basket', [BasketController::class, 'show'])->name('show');
+            Route::put('/{id}/basket', [BasketController::class, 'store'])->name('store');
+            Route::delete('/{id}', [BasketController::class, 'destroy'])->name('destroy');
+
 
 
             });
@@ -127,7 +148,6 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
                 Route::get('/{id}/default', [ContactController::class, 'default'])->name('default');
 
             });
-
 
 
 
@@ -157,12 +177,15 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
 
             Route::prefix('ticket')->name('ticket.')->group(function () {
-                Route::get('/', [TicketController::class, 'index'])->name('index');
-                Route::get('/create', [TicketController::class, 'create'])->name('create');
+                Route::get('/indexticket', [TicketController::class, 'index'])->name('index');
+                Route::get('/createticket', [TicketController::class, 'create'])->name('create');
                 Route::post('/', [TicketController::class, 'store'])->name('store');
                 Route::get('/{id}', [TicketController::class, 'show'])->name('show');
                 Route::put('/{id}', [TicketController::class, 'update'])->name('update');
                 Route::delete('/{id}', [TicketController::class, 'destroy'])->name('destroy');
+
+
+
 
             });
 
@@ -177,6 +200,14 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
 
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
+
+
+Route::prefix('fetch')
+->name('fetch.')->group(function () {
+    Route::get('/font/{value}', [FetchController::class, 'font'])->name('font');
+    Route::get('/timeexpire/{order}/{value}', [FetchController::class, 'timeexpire'])->name('timeexpire');
+    Route::get('/payment/{order}/{value}', [FetchController::class, 'payment'])->name('payment');
+});
 
 
  //Clear route cache

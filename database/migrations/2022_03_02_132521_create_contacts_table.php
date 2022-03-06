@@ -29,7 +29,7 @@ class CreateContactsTable extends Migration
             $table->string('adres2')->nullable();
             $table->string('nexus')->nullable();
             $table->string('purpose')->nullable();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('contact_id')->nullable()->comment('contact_id webservice');
             $table->string('default')->default('inactive');
             $table->timestamps();

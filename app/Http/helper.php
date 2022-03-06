@@ -18,6 +18,7 @@ use App\Models\ContentDomain;
 use App\Models\Loginhistorie;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -102,7 +103,7 @@ if(! function_exists('getstatusdefault') ) {
         if($status == 'active')
         {
             echo '<div class="form-check form-check-inline">
-            <label class="form-check-label"><input type="radio"   disabled checked class="form-check-input"> Default </label>
+            <label class="form-check-label"><input type="radio"   disabled checked class="form-check-input"> پیش فرض </label>
              </div>  ';
 
         }
@@ -150,11 +151,20 @@ if(! function_exists('uploadFile') ) {
 if(! function_exists('date_frmat') ) {
     function date_frmat($date)
     {
-
-
         $date = Jalalian::forge($date)->format('Y/m/d ساعت H:i a');
         return $date;
         // return Verta($date)->format('Y/m/d ساعت H:i a');
+
+    }
+
+}
+
+
+ if(! function_exists('date_frmat_ymd') ) {
+    function date_frmat_ymd($date)
+    {
+        $date = Jalalian::forge($date)->format('Y/m/d');
+        return $date;
 
     }
 
@@ -456,6 +466,90 @@ if(! function_exists('Change_status') ) {
 
 
 
+
+
+    if(! function_exists('secret_user') ) {
+        function secret_user(Request $request , $user , $oper)
+        {
+
+
+            if($oper=='secret'){
+
+                session(['err' => '1']);
+                $request->validate([
+                    'password' => 'required| min:4 |confirmed',
+                    'password_confirmation' => 'required| min:4'
+                ]);
+        $user->update([ 'password' => Hash::make($request->password) ]);
+        Alert::success('با موفقیت ویرایش شد', 'رمزعبور با موفقیت تغییر پیدا کرد ');
+            }
+
+
+            if($oper=='update'){
+                $request->session()->forget('err');
+
+                $request->validate([
+                    'name' => 'required',
+                    'username' => ['required',new Uniqemail('users','username',$user->id)] ,
+                    'email' => ['required' , 'email',new Uniqemail('users','email',$user->id)] ,
+                    'tell' => ['required', 'regex:/^09[0-9]{9}$/' ,new Uniqemail('users','tell',$user->id)] ,
+                ]);
+
+
+                 $data = $request->all();
+                $data['image']= $user->image;
+                $data['image']  =  uploadFile($request->file('image'),'images/users',$user->image);
+
+
+       $m =  $user->update($data);
+         Alert::success('با موفقیت ویرایش شد', 'اطلاعات با موفقیت ویرایش شد');
+
+
+            }
+
+
+     return back();
+
+
+
+        }
+    }
+
+
+
+
+
+
+
+    if(! function_exists('ruledns') ) {
+        function ruledns(Request $request)
+        {
+
+            $request->validate([
+                'domain' => ['required',new ValidateLink('UrlNamesilo','www')] ,
+            ]);
+            $request->validate([
+                'domain' => [new ValidateLink('UrlNamesilo','http')] ,
+            ]);
+            $request->validate([
+                'domain' => [new ValidateLink('UrlNamesilo','https')] ,
+            ]);
+
+            $request->validate([
+                'domain' => [new ValidateLink('UrlNamesilo','regec_pers')] ,
+            ]);
+
+            $request->validate([
+                'domain' => [new ValidateLink('UrlNamesilo','regec_eng')] ,
+            ]);
+        }
+
+    }
+
+
+
+
+
     if(! function_exists('ruledomain') ) {
         function ruledomain(Request $request)
         {
@@ -492,6 +586,11 @@ if(! function_exists('Change_status') ) {
                 if($error=='unavailable'){
 return $personJSON = response()->json([
     'result' => 'unavailable' ,
+]);
+                }
+                if($error=='unavailable_foreign'){
+return $personJSON = response()->json([
+    'result' => 'This account has already created an order and it is not possible to delete it' ,
 ]);
                 }
             }
@@ -592,6 +691,27 @@ return $personJSON = response()->json([
         }
     }
 
+
+
+
+
+
+    if(! function_exists('rule_buy_domain') ) {
+        function rule_buy_domain(Request $request)
+        {
+
+            $request->validate([
+                'dns1' => ['required',new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'dns2' => ['required',new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'dns3' => [new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'dns4' => [new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+            ]);
+
+
+
+
+        }
+    }
 
 
 

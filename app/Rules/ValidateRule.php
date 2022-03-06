@@ -32,15 +32,21 @@ class ValidateRule implements Rule
             return $patt === 0;
         }
 
+
         if($this->valid=='ip'){
-
-
             $pattern = "/^(((?=(?>.*?(::))(?!.+3)))3?|([dA-F]{1,4}(3|:(?!$)|$)|2))(?4){5}((?4){2}|((2[0-4]|1d|[1-9])?d|25[0-5])(.(?7)){3})z/i";
                 $patt=preg_match($pattern, $value);
                  return $patt === false;
-
-
         }
+
+
+        if($this->valid=='validate_dns'){
+            $pattern = "/^[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?$/";
+           $patt=preg_match($pattern, $value);
+            return $patt === 0;
+        }
+
+
     }
 
     /**
@@ -52,6 +58,11 @@ class ValidateRule implements Rule
     {
         if($this->valid=='regec_eng'){
             return 'لطفا :attribute را به فرمت انگلیسی و بدون نشانه وارد نمایید';
+
+        }
+
+        if($this->valid=='validate_dns'){
+            return 'لطفا :attribute را به فرمت صحیح وارد نمایید';
 
         }
     }

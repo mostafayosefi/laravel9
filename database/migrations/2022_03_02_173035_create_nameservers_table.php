@@ -20,7 +20,7 @@ class CreateNameserversTable extends Migration
             $table->string('ip1');
             $table->string('ip2');
             $table->string('ip3')->nullable();
-            $table->foreignId('domain_id')->constrained('domains');
+            $table->foreignId('domain_id')->constrained('domains')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

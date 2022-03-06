@@ -49,6 +49,12 @@
                                                 placeholder=" برای مثال com  " name="link" value="{{$contentdomain->link}}">
                                         </div>
 
+                                          <div class="form-group">
+                                            <label for="price">قیمت دامنه به دلار</label>
+                                            <input type="text" class="form-control" id="price" autocomplete="off"
+                                                placeholder=" برای مثال 0.99  " name="price" value="{{$contentdomain->price}}">
+                                        </div>
+
 
                                           <div class="form-group">
                                               <label for="text"> توضیحات</label>

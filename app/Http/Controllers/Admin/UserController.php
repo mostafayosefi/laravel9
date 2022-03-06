@@ -93,12 +93,12 @@ return view('admin.user.index' , compact(['users'  ]));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $admin = User::find($id);
-        $subreferal = User::where('referal' , $id )->get();
+        $admin = $user;
+        $subreferal = User::where('referal' , $user->id )->get();
         $inviteds = User::find($admin->referal);
-        $loginhistories=Loginhistorie::where('user_id',$id)->get();
+        $loginhistories=Loginhistorie::where('user_id',$user->id)->get();
 
         return view('admin.user.edit' , compact([ 'admin' , 'subreferal', 'inviteds' , 'loginhistories' ]) );
     }
@@ -110,7 +110,7 @@ return view('admin.user.index' , compact(['users'  ]));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
 
 /*
@@ -127,22 +127,7 @@ return view('admin.user.index' , compact(['users'  ]));
             }),
         ]); */
 
-
-        $request->validate([
-            'name' => 'required',
-            'username' => ['required',new Uniqemail('users','username',$id)] ,
-            'email' => ['required' , 'email',new Uniqemail('users','email',$id)] ,
-            'tell' => ['required', 'regex:/^09[0-9]{9}$/' ,new Uniqemail('users','tell',$id)] ,
-        ]);
-
-
-        $user=User::find($id);
-        $data = $request->all();
-        $data['image']= $user->image;
-        $data['image']  =  uploadFile($request->file('image'),'images/users',$user->image);
- $user->update($data);
- Alert::success('با موفقیت ویرایش شد', 'اطلاعات با موفقیت ویرایش شد');
- return back();
+        return secret_user($request , $user , 'update' );
 
 
     }
@@ -150,21 +135,10 @@ return view('admin.user.index' , compact(['users'  ]));
 
 
 
-    public function secret(Request $request, $id)
+    public function secret(Request $request, User $user)
     {
+        return secret_user($request , $user , 'secret' );
 
-        session(['err' => '1']);
-        $request->validate([
-            'password' => 'required| min:4 |confirmed',
-            'password_confirmation' => 'required| min:4'
-        ]);
-$user= User::find($id);
-$user->update([ 'password' => Hash::make($request->password) ]);
-
-$request->session()->forget('err');
-
- Alert::success('با موفقیت ویرایش شد', 'اطلاعات با موفقیت ویرایش شد');
- return back();
 
     }
 
@@ -199,7 +173,7 @@ return back();
 
         Alert::success('با موفقیت انجام شد', 'ورود شما باموفقیت انجام شد');
 
-        return redirect()->route('user.panel.index');
+        return redirect()->route('user.dashboard.index');
 
 
     }

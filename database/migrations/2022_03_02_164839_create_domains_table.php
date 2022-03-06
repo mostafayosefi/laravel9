@@ -17,9 +17,12 @@ class CreateDomainsTable extends Migration
             $table->id();
             $table->string('domain');
             $table->string('price');
+            $table->string('dns1')->nullable();
+            $table->string('dns2')->nullable();
+            $table->string('dns3')->nullable();
+            $table->string('dns4')->nullable();
             $table->string('status')->comment('active , inactive , rezerv')->default('inactive');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('contact_id')->constrained('contacts')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -37,7 +37,7 @@
 					<ul id="mobile-navigation" class="menu">
 
 
-<li id="mobile-menu-item-801" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn"><a href="{{route('user.panel.index')}}"><span> پنل کاربری</span></a>
+<li id="mobile-menu-item-801" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn"><a href="{{route('user.dashboard.index')}}"><span> پنل کاربری</span></a>
 <ul class="sub-menu">
 
 
@@ -52,17 +52,17 @@
     <li id="mobile-menu-item-8" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.order.index')}}">مدیریت سفارش ها </a> </li>
     <li id="mobile-menu-item-9" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a  href="{{ route('index.user.logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">خروج </a> </li>
- 
+
    <form id="logout-form" action="{{ route('index.user.logout') }}" method="POST"
    class="d-none">
    @csrf
-</form> 
+</form>
 </ul>
 </li>
 
- 
 
-{{-- 
+
+{{--
 <li id="mobile-menu-item-801" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn"><a href="#"><span>پشتیبانی </span></a>
 <ul class="sub-menu">
 <li id="mobile-menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="user/addticket">ثبت تیکت</a> </li>
@@ -80,8 +80,8 @@
 
     @foreach($listpages as $key => $listpage)
     <li id="mobile-menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('index.page', $listpage->title) }}">{{$listpage->title}}</a> </li>
-    @endforeach     
- 
+    @endforeach
+
 
 
 </ul>
@@ -90,7 +90,7 @@
 <li id="mobile-menu-item-289" data-depth="0" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('index.document.index')}}"><span>راهنمای وب سرویس  </span></a> </li>
 <li id="mobile-menu-item-287" data-depth="0" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="#"><span>ارتباط با ما</span></a>
 <ul class="sub-menu">
-<li id="mobile-menu-item-1040" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('index.support')}}">تماس با ما</a> </li> 
+<li id="mobile-menu-item-1040" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('index.support')}}">تماس با ما</a> </li>
 </ul>
 </li>
 </ul>

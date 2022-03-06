@@ -22,8 +22,7 @@ use App\Http\Controllers\Admin\SpotliteController;
 use App\Http\Controllers\Admin\CategoryapiController;
 use App\Http\Controllers\Admin\ContentDomainController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
-
-
+use App\Http\Controllers\Admin\TicketController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -38,9 +37,9 @@ Route::prefix('user')
     Route::get('/createuser', [UserController::class, 'create'])->name('create');
     Route::put('/create', [UserController::class, 'store'])->name('store');
     Route::get('/', [UserController::class, 'index'])->name('index');
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [UserController::class, 'update'])->name('update');
-    Route::put('/{id}/secret', [UserController::class, 'secret'])->name('secret');
+    Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/{user}', [UserController::class, 'update'])->name('update');
+    Route::put('/{user}/secret', [UserController::class, 'secret'])->name('secret');
     Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
     Route::put('/{id}/status', [UserController::class, 'status'])->name('status');
     Route::get('/{id}/login', [UserController::class, 'login'])->name('login');
@@ -182,6 +181,7 @@ Route::prefix('content')
     Route::prefix('domain')
     ->name('domain.')->group(function () {
         Route::get('/', [ContentDomainController::class, 'index'])->name('index');
+        Route::get('/create-contentdomain', [ContentDomainController::class, 'create'])->name('create');
         Route::post('/', [ContentDomainController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [ContentDomainController::class, 'edit'])->name('edit');
         Route::put('/{id}', [ContentDomainController::class, 'update'])->name('update');
@@ -227,6 +227,18 @@ Route::prefix('order')
     Route::get('/{order}/show_order', [OrderController::class, 'show'])->name('show');
 
 });
+
+
+
+Route::prefix('ticket')
+->name('ticket.')->group(function () {
+    Route::get('/indexticket', [TicketController::class, 'index'])->name('index');
+    Route::get('/{ticket}/chating', [TicketController::class, 'show'])->name('show');
+    Route::put('/{ticket}', [TicketController::class, 'update'])->name('update');
+    Route::delete('/{ticket}', [TicketController::class, 'destroy'])->name('destroy');
+    Route::get('/close/{ticket}', [TicketController::class, 'status'])->name('close');
+});
+
 
 
 

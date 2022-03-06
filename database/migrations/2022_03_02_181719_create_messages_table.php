@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalletsTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallets', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('price');
-            $table->string('flag')->comment('inc is Increase ,  dec is Decrease');
-            $table->string('status')->comment('active , inactive')->default('inactive');
-            $table->foreignId('user_id')->constrained('users');
+            $table->longText('text');
+            $table->string('arou');
+            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('messages');
     }
 }

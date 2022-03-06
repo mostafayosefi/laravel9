@@ -1,8 +1,8 @@
 @component('custome.layouts.content',[
-    'title'=>'سفارش های من ',
-    'tabTitle'=>'سفارش های من',
+    'title'=>'تیکت های من ',
+    'tabTitle'=>'تیکت های من',
     'breadcrumb'=>[
-            ['title'=>'سفارش های من','class' => 'active']
+            ['title'=>'تیکت های من','class' => 'active']
     ]])
 
 
@@ -23,20 +23,18 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">سفارش های من</h6>
+          <h6 class="card-title">تیکت های من</h6>
           <div class="table-responsive">
 
-@if($orders)
+@if($tickets)
             <table id="dataTableExample" class="table">
               <thead>
                 <tr>
 
                     <th>  ردیف </th>
-                    <th>  نام دامنه </th>
-                    <th>  هزینه </th>
+                    <th>  موضوع تیکت</th>
                     <th> تاریخ ثبت </th>
                     <th> وضعیت</th>
-                    <th> مشاهده</th>
                     <th> حذف</th>
 
                 </tr>
@@ -44,33 +42,19 @@
               <tbody>
 
 
-@foreach($orders as $key => $admin)
+@foreach($tickets as $key => $admin)
                 <tr>
                     <td>{{ $key + 1 }}</td>
 
 
-                    <td>{{$admin->domain}}</td>
-                    <td>{{number_format($admin->price)}} ريال</td>
+                    <td>{{$admin->title}} 	 @include('index.layouts.table.getstatus', [$admin ,'route' => ''  ,'type_name' => 'read_ticket_user'   ,'number' => '1'   ]) 	 </td>
                     <td>{{ date_frmat($admin->created_at) }}</td>
-                    <td>{{$admin->status}}</td>
-
- <td>
-    <a href="{{ route('user.order.show', $admin) }}">
-        <span class="btn btn-primary" >  <i data-feather="eye"></i></span>
-        </a>
-
-</td>
+                    <td> <a href="{{route('user.ticket.show', $admin) }}"> @include('index.layouts.table.getstatus', [$admin ,'route' => ''  ,'type_name' => 'status_ticket'   ]) </a> </td>
 
 
-        <td>
-                    @if($admin->status=='rezerve')
 
-             @include('admin.layouts.table.modal', [$admin ,'route' => route('user.order.destroy', $admin) , 'myname' => 'حذف سفارش '.$admin->domain ])
 
-        @else
-        -
-        @endif
-        </td>
+         <td>   @include('admin.layouts.table.modal', [$admin ,'route' => route('admin.ticket.destroy', $admin) , 'myname' => 'حذف تیکت '.$admin->title ]) </td>
 
 
 

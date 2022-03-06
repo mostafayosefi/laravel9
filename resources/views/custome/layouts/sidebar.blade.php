@@ -74,14 +74,17 @@
               </div>
             </li>
 
-            <li class="nav-item  {{ isActive(['user.order.show' , 'user.order.index'])}}   ">
+            <li class="nav-item  {{ isActive(['user.order.show' , 'user.order.index' , 'user.basket.show' , 'user.basket.index'])}}   ">
                 <a class="nav-link" data-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
                   <i class="link-icon" data-feather="list"></i>
                   <span class="link-title">مدیریت سفارش های من</span>
                   <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse  {{ isShow(['user.order.show' , 'user.order.index'])}}     "  id="order">
+                <div class="collapse  {{ isShow(['user.order.show' , 'user.order.index' , 'user.basket.show' , 'user.basket.index'])}}     "  id="order">
                   <ul class="nav sub-menu">
+                    <li class="nav-item">
+     <a href="{{ route('user.basket.index') }}" class="nav-link   {{ isActive(['user.basket.index']) }}  ">مشاهده سبدخرید من</a>
+                    </li>
                     <li class="nav-item">
      <a href="{{ route('user.order.index') }}" class="nav-link   {{ isActive(['user.order.index']) }}  ">مشاهده سفارش های من</a>
                     </li>
@@ -107,7 +110,7 @@
           </li>
 
 
-        <li class="nav-item  {{ isActive(['user.finical.wallet.create' , 'user.finical.wallet.index'])}}   ">
+          <li class="nav-item  {{ isActive(['user.finical.wallet.create' , 'user.finical.wallet.index'])}}   ">
             <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
               <i class="link-icon" data-feather="list"></i>
               <span class="link-title">مدیریت کیف پول من   </span>
@@ -120,6 +123,31 @@
                 </li>
                 <li class="nav-item">
  <a href="{{ route('user.finical.wallet.index') }}" class="nav-link   {{ isActive(['user.finical.wallet.index']) }}  ">      مشاهده تراکنش ها</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+
+
+          <li class="nav-item  {{ isActive(['user.ticket.create' , 'user.ticket.index'])}}   ">
+            <a class="nav-link" data-toggle="collapse" href="#ticket" role="button" aria-expanded="false" aria-controls="ticket">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت تیکت ها  </span>
+              @include('index.layouts.table.getstatus', [ 'route' => ''  ,'type_name' => 'count_read_ticket'   ,'number' => $count_ticket_unread_user   ])
+
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['user.ticket.create' , 'user.ticket.index'])}}     "  id="ticket">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('user.ticket.create') }}" class="nav-link   {{ isActive(['user.ticket.create']) }}  ">ایجاد تیکت جدید     </a>
+                </li>
+                <li class="nav-item">
+ <a href="{{ route('user.ticket.index') }}" class="nav-link   {{ isActive(['user.ticket.index']) }}  "> مشاهده تیکت های من
+     @include('index.layouts.table.getstatus', [ 'route' => ''  ,'type_name' => 'count_read_ticket'   ,'number' => $count_ticket_unread_user   ])
+    </a>
                 </li>
               </ul>
             </div>

@@ -11,6 +11,10 @@ class ContentDomainController extends Controller
 {
 
 
+    public function create(){ 
+        return view('admin.contentdomain.create' );
+    }
+
     public function index(){
         $contentdomains= ContentDomain::all();
         return view('admin.contentdomain.index' , compact(['contentdomains'  ]));
@@ -38,7 +42,7 @@ class ContentDomainController extends Controller
 
         ContentDomain::create($data);
        Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-        return redirect()->route('admin.content.domain.index');
+       return back();
     }
 
 

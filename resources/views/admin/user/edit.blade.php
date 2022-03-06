@@ -238,7 +238,7 @@
                                         @endif
 
                                           <form class="forms-sample" method="POST"
-                                              action="{{ route('admin.user.update', $admin->id) }}"
+                                              action="{{ route('admin.user.update', $admin) }}"
                                               enctype="multipart/form-data" onsubmit="return Validate(this);">
                                               @csrf
                                               <div class="row">
@@ -332,7 +332,7 @@
                               <div class="tab-pane pt-3 fade  @if (Session::get('err') == '1') show active @endif" id="icon-secret" role="tabpanel"
                                   aria-labelledby="icon-secret-tab">
 
-                                  <form method="post" action="{{ route('admin.user.secret', $admin->id) }}">
+                                  <form method="post" action="{{ route('admin.user.secret',  $admin) }}">
                                       @csrf
                                       <div class="row">
 

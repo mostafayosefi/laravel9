@@ -22,7 +22,7 @@ class CreateTicketsTable extends Migration
             $table->string('fromshow')->comment('read , unread ')->default('read');
             $table->string('toshow')->comment('read , unread ')->default('unread');
             $table->string('status')->comment('response , waiting , close')->default('waiting');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });

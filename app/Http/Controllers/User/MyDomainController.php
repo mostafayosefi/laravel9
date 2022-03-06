@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use GuzzleHttp\Exception\RequestException;
 use App\Http\Controllers\Service\DomainController;
+use App\Models\Order;
+use App\Models\Payment;
 
 class MyDomainController extends Controller
 {
@@ -93,19 +95,22 @@ class MyDomainController extends Controller
         $data['status']  =  'rezerve';
         $data['user_id']  = Auth::guard('user')->user()->id;
    $defaultcontact=ValidateContact($data['user_id']);
-  if($defaultcontact=='0'){
-Alert::success('لطفا اکانت خود را ثبت نمایید       ', '     لطفا نسبت به ثبت اکانت جدید لطفا اقدام نمایید');
-return redirect()->route('user.contact.index');  }
+//   if($defaultcontact=='0'){
+// Alert::success('لطفا اکانت خود را ثبت نمایید       ', '     لطفا نسبت به ثبت اکانت جدید لطفا اقدام نمایید');
+// return redirect()->route('user.contact.index');  }
 
-$data['contact_id']  =  $defaultcontact;
-    Domain::create($data);
+// $data['contact_id']  =  0;
+   $domain = Domain::create($data);
+//    $payment = Payment::create([ 'type' => 'offline' , 'status' => 'waiting' ]);
+//    $order = Order::create([ 'type' => 'offline' , 'status' => 'waiting' ]);
+
 
     // $domain=Domain::find(1);
     // dd($domain->contact);
 
 
 Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-return redirect()->route('user.order.index');
+return redirect()->route('user.basket.show',$domain->id);
 
     }
 

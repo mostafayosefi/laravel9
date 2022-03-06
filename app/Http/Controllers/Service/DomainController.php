@@ -85,7 +85,7 @@ if (empty($var)) {
     if($this->external=='web'){
         $result=Checkdomain::where('webservice_id' , '=' ,$data['webservice_id'])->first();
 
-Alert::success('با موفقیت پیدا شد', 'اطلاعات با موفقیت پیدا شد');
+// Alert::success('با موفقیت پیدا شد', 'اطلاعات با موفقیت پیدا شد');
  return back()->with([  'webservice_id' => $data['webservice_id'] ,  'domain' => $data['origindomain']]);
     }
     }elseif($invalid){
@@ -98,7 +98,7 @@ Alert::success('با موفقیت پیدا شد', 'اطلاعات با موفق�
             return $men=Error_Namesilo($data['operator'] , $error  );
         }
         if($this->external=='web'){
-        Alert::error('متاسفانه دامنه شما پیدا نشد  ', ' دامنه وجود ندارد');
+        // Alert::error('متاسفانه دامنه شما پیدا نشد  ', ' دامنه وجود ندارد');
         return back()->with([  'webservice_id' => $data['webservice_id'] , 'error' => '1'  , 'domain' => $data['origindomain'] ]);
              }
 

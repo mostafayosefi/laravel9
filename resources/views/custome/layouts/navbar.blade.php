@@ -211,19 +211,20 @@
             <li class="nav-item dropdown nav-profile">
               <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img   src="{{ asset('template/assets/images/face1.jpg') }}"  alt="userr">
-              </a>
+                @include('admin.layouts.table.avatar', [ 'avatarimage' => auth()->guard('user')->user()->image , 'class'=>'' , 'style' => ''  ])
+            </a>
               <div class="dropdown-menu" aria-labelledby="profileDropdown">
                 <div class="dropdown-header d-flex flex-column align-items-center">
                   <div class="figure mb-3">
-                    <img  src="{{ asset('template/assets/images/face1.jpg') }}" alt="">
+  
+                    @include('admin.layouts.table.avatar', [ 'avatarimage' => auth()->guard('user')->user()->image , 'class'=>'profile-pic' , 'style' => 'height: 100px;width: 100px;'  ])
+
                   </div>
 
-
-                  @if (auth()->guard('admin'))
+                   @if (auth()->guard('user')->user())
                   <div class="info text-center">
-                    <p class="name font-weight-bold mb-0"> {{auth()->guard('admin')->user()->name}} </p>
-                    <p class="email text-muted mb-3">{{auth()->guard('admin')->user()->email}} </p>
+                    <p class="name font-weight-bold mb-0"> {{auth()->guard('user')->user()->name}} </p>
+                    <p class="email text-muted mb-3">{{auth()->guard('user')->user()->email}} </p>
                   </div>
                   @endif
 
@@ -233,29 +234,28 @@
                 <div class="dropdown-body">
                   <ul class="profile-nav p-0 pt-3">
                     <li class="nav-item">
-                      <a href="pages/general/profile.html" class="nav-link">
+                      <a href="{{ route('user.profile.edit') }}" class="nav-link">
                         <i data-feather="user"></i>
                         <span>پروفایل</span>
                       </a>
                     </li>
+                 
+                     
                     <li class="nav-item">
-                      <a href="javascript:;" class="nav-link">
-                        <i data-feather="edit"></i>
-                        <span>ویرایش پروفایل</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="javascript:;" class="nav-link">
-                        <i data-feather="repeat"></i>
-                        <span>تغییر کاربر</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="javascript:;" class="nav-link">
+                      <a href="{{ route('index.user.logout') }}" onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();" class="nav-link">
                         <i data-feather="log-out"></i>
                         <span>خروج</span>
                       </a>
                     </li>
+
+                    <form id="logout-form" action="{{ route('index.user.logout') }}" method="POST"
+                        class="d-none">
+                        @csrf
+                    </form>
+
+
+
                   </ul>
                 </div>
               </div>

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Response;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Resources\WebserviceCollection;
 use App\Http\Resources\CheckdomainCollection;
+use App\Models\Order;
 
 class MyContactController extends Controller
 {
@@ -113,7 +114,7 @@ if ( $code!='300') {
     if($this->external=='web'){
         Contact::create($data);
         Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-         return redirect()->route('user.contact.index');
+        return back();
     }
 } }
 
@@ -121,6 +122,16 @@ if ( $code!='300') {
 
 
 public function ContactDelete(  $data ){
+    $order = Order::where([   ['contact_id' , $data['id'] ] ,  ])->first();
+    if($order){
+        if($this->external=='api'){
+            return $men=Error_Namesilo($data['operator'] , 'unavailable_foreign'  );
+          }
+        if($this->external=='web'){
+        Alert::error(  ' این اکانت قبلا یک سفارش ایجاد کرده است و امکان حذف آن وجود ندارد  ',  'متاسفانه اکانت حذف نشد'  );
+        return back();
+        }
+    }
     $array = data_build_query_array('contact' , $data);
     $myurl = data_build_query('api/' , $data).'&'.$array;
 $resource = Psr7\Utils::tryFopen($myurl, 'r');
@@ -153,7 +164,7 @@ if($this->external=='web'){
     Alert::info('با موفقیت حذف شد', 'اطلاعات با موفقیت حذف شد');
     $user_id=Auth::guard('user')->user()->id;
     $status=SelectDefault($user_id,'0');
-    return redirect()->route('user.contact.index');
+    return back();
 }
 } }
 

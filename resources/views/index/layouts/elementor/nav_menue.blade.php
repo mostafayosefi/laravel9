@@ -4,7 +4,7 @@
 @if(auth()->guard('user')->user())
 
 <div class="button_wrapper">
-    <a href="{{route('user.panel.index')}}" class="button_  style-1">
+    <a href="{{route('user.dashboard.index')}}" class="button_  style-1">
     <span style="font-size:18px;padding:8px 15px 8px 15px">  {{auth()->guard('user')->user()->name }}</span>
     <span style="font-size:18px;padding:8px 15px 8px 15px">مدیریت پنل من</span></a></div>
     @else
@@ -34,7 +34,7 @@
    <li>
    <ul class="sub-menu">
 
-    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.panel.index')}}">پنل کاربری  </a> </li>
+    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.dashboard.index')}}">پنل کاربری  </a> </li>
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.profile.index')}}">مشاهده پروفایل  </a> </li>
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"> <a href="{{route('user.profile.secret')}}">تنظیمات امنیتی</a></li>
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.contact.index')}}"> اکانت های من</a> </li>

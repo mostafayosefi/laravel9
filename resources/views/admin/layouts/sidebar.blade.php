@@ -165,15 +165,18 @@
           </li>
 
 
-          <li class="nav-item  {{ isActive([  'admin.content.domain.index' , 'admin.content.domain.edit'])}}  ">
+          <li class="nav-item  {{ isActive([  'admin.content.domain.index' , 'admin.content.domain.edit' , 'admin.content.domain.create'])}}  ">
             <a class="nav-link" data-toggle="collapse" href="#contentdomain" role="button" aria-expanded="false" aria-controls="contentdomain">
               <i class="link-icon" data-feather="list"></i>
               <span class="link-title">مدیریت دامنه</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse  {{ isShow([  'admin.content.domain.index' , 'admin.content.domain.edit'])}}   "  id="contentdomain">
+            <div class="collapse  {{ isShow([  'admin.content.domain.index' , 'admin.content.domain.edit' , 'admin.content.domain.create'])}}   "  id="contentdomain">
               <ul class="nav sub-menu">
 
+                <li class="nav-item">
+ <a href="{{ route('admin.content.domain.create') }}" class="nav-link   {{ isActive(['admin.content.domain.create' ]) }}  ">ثبت پسوند دامنه</a>
+                </li>
                 <li class="nav-item">
  <a href="{{ route('admin.content.domain.index') }}" class="nav-link   {{ isActive(['admin.content.domain.index' , 'admin.content.domain.edit']) }}  ">پسوند دامنه</a>
                 </li>
@@ -235,6 +238,24 @@
  <a href="{{ route('admin.content.webservice.create') }}" class="nav-link   {{ isActive(['admin.content.webservice.create'  ]) }}  ">ثبت محتوا وب سرویس   </a>
                 </li>
 
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item  {{ isActive(['user.ticket.create' , 'user.ticket.index'])}}   ">
+            <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت تیکتها   </span>
+              @include('index.layouts.table.getstatus', [ 'route' => ''  ,'type_name' => 'count_read_ticket'   ,'number' => $count_ticket_unread_admin   ]) 
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['user.ticket.create' , 'user.ticket.index'])}}     "  id="wallet">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.ticket.index') }}" class="nav-link   {{ isActive(['user.ticket.index']) }}  "> مشاهده تیکت ها
+    @include('index.layouts.table.getstatus', [ 'route' => ''  ,'type_name' => 'count_read_ticket'   ,'number' => $count_ticket_unread_admin   ])  </a>
+</li>
               </ul>
             </div>
           </li>

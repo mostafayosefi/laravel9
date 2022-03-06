@@ -24,8 +24,8 @@ class Contact extends Model
 
 
 
-    public function domains(){
-        return $this->hasMany(Domain::class , 'id');
+    public function orders(){
+        return $this->hasMany(Order::class , 'id');
     }
 
 
