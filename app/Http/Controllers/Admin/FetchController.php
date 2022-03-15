@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Domain;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Domain;
+use App\Models\Renew;
 
 class FetchController extends Controller
 {
@@ -13,13 +15,38 @@ class FetchController extends Controller
         return view('admin.fetch.font' , compact(['value'  ]));
     }
 
-    public function timeexpire($id , $value){
-        $order=Domain::find($id);
-        return view('custome.fetch.expire_time' , compact(['value' , 'order'  ]));
+    public function timeexpire($id , $oper , $value){
+        if($id=='renew'){ $order=''; }else{ $order=Domain::find($id); }
+        return view('custome.fetch.expire_time' , compact(['value' , 'order' , 'oper'  ]));
     }
-    
-    public function payment( $id , $value ){
-        $order=Domain::find($id);
-        return view('custome.fetch.payment' , compact(['value' , 'order'  ]));
+
+    public function payment($oper , $id , $value ){
+        if($oper=='order'){
+            $order=Domain::find($id);
+        }
+        if($oper=='renew'){
+            // $order=Renew::where([ ['domain_id' , $id], ])->first();
+            // $order=Domain::find($id);
+
+            $order=Renew::find($id);
+
+
+        }
+        return view('custome.fetch.payment' , compact(['value' , 'order'  , 'oper'  ]));
     }
+
+    public function contact( $id , $value ){
+        $order=Domain::find($id);
+        $contact=Contact::where([ ['id' , $value] ])->first();
+        return view('custome.fetch.contact' , compact(['value' , 'order' , 'contact' ]));
+    }
+
+
+    public function renew($id , $oper , $value){
+        $renew=Renew::find($id);
+        return view('custome.fetch.renew' , compact(['value' , 'renew' , 'oper'  ]));
+    }
+
+
+
 }

@@ -81,7 +81,7 @@
 
                                                         <div
                                                         class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">
-                                                                <input type="text" class="form-control px-4" name="domain" placeholder="example.com" dir="ltr" required>
+                                                                <input type="text" class="form-control px-4" name="searchdomain" placeholder="example.com" dir="ltr" required>
 
 
                                                             </div>
@@ -185,7 +185,7 @@
 
 
 
-@foreach ($contentdomains->chunk(5) as $chunk)
+@foreach ($contentdomains->chunk(12) as $chunk)
 <br>
 <div
 class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">

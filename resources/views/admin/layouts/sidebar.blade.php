@@ -247,7 +247,7 @@
             <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
               <i class="link-icon" data-feather="list"></i>
               <span class="link-title">مدیریت تیکتها   </span>
-              @include('index.layouts.table.getstatus', [ 'route' => ''  ,'type_name' => 'count_read_ticket'   ,'number' => $count_ticket_unread_admin   ]) 
+              @include('index.layouts.table.getstatus', [ 'route' => ''  ,'type_name' => 'count_read_ticket'   ,'number' => $count_ticket_unread_admin   ])
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse  {{ isShow(['user.ticket.create' , 'user.ticket.index'])}}     "  id="wallet">
@@ -294,6 +294,50 @@
           </li>
 
 
+          <li class="nav-item  {{ isActive(['admin.order.index' , 'admin.order.show' , 'admin.domain.renew.index' , 'admin.domain.renew.show' ])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت دامنه های کاربران</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.order.index' , 'admin.order.show' , 'admin.domain.renew.index' , 'admin.domain.renew.show'])}}   "  id="order">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.order.index') }}" class="nav-link   {{ isActive(['admin.order.index' , 'admin.order.show']) }}  ">خدمات دامنه های های کاربران</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.domain.renew.index') }}" class="nav-link   {{ isActive(['admin.domain.renew.index' , 'admin.domain.renew.show']) }}  ">خدمات تمدید دامنه  </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.domain.transfer.index') }}" class="nav-link   {{ isActive(['admin.domain.transfer.index' , 'admin.domain.renew.show']) }}  ">خدمات انتقال دامنه  </a>
+                </li>
+
+
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item  {{ isActive(['admin.order.index' , 'admin.order.show' , 'admin.domain.renew.index' , 'admin.domain.renew.show' , 'admin.nameserver.index' , 'admin.nameserver.show'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">مدیریت نیم سرورهای کاربران</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.order.index' , 'admin.order.show' , 'admin.domain.renew.index' , 'admin.domain.renew.show' , 'admin.nameserver.index' , 'admin.nameserver.show'])}}   "  id="order">
+              <ul class="nav sub-menu">
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.nameserver.index') }}" class="nav-link   {{ isActive(['admin.nameserver.index' , 'admin.nameserver.show']) }}  ">خدمات تغییر نیم سرور  </a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+
           <li class="nav-item  {{ isActive(['admin.wallet.index' , 'admin.wallet.create'])}}  ">
             <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
               <i class="link-icon" data-feather="list"></i>
@@ -312,23 +356,6 @@
               </ul>
             </div>
           </li>
-
-          <li class="nav-item  {{ isActive(['admin.order.index' , 'admin.order.index'])}}  ">
-            <a class="nav-link" data-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">مدیریت سفارشهای کاربران</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse  {{ isShow(['admin.order.index' , 'admin.order.index'])}}   "  id="order">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
- <a href="{{ route('admin.order.index') }}" class="nav-link   {{ isActive(['admin.order.index']) }}  ">مشاهده سفارشهای های کاربران</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-
 
 
 

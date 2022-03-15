@@ -18,20 +18,11 @@
 
 
 @foreach($orders as $key => $admin)
-@if($tablee=='order')
-@php
-$admin=$admin->domain;
-@endphp
-@endif
-
-
-@if($tablee=='order')
-@php $route_show=route('user.order.show', $admin->order->id);
-$route_destroy=route('user.order.destroy', $admin->order->id);  @endphp
-@elseif($tablee=='basket')
-@php $route_show=route('user.basket.show', $admin->id);
- $route_destroy=route('user.basket.destroy', $admin->id);  @endphp
-@endif
+ 
+ 
+@php $route_show=route('user.domain.basket.show', $admin->id);
+ $route_destroy=route('user.domain.basket.destroy', $admin->id);  @endphp
+ 
 
     <tr>
         <td>{{ $key + 1 }}</td>
@@ -41,7 +32,8 @@ $route_destroy=route('user.order.destroy', $admin->order->id);  @endphp
 <td> <a href="{{$route_show}}"> @include('index.layouts.table.getstatus', [$admin ,'route' => ''  ,'type_name' => 'status_domain'   ]) </a> </td>
 
 <td>
-@if($admin->status=='rezerve')
+    @if($admin->status!='active')
+
 @include('admin.layouts.table.modal', [$admin ,'route' => $route_destroy , 'myname' => 'حذف سفارش '.$admin->domain ])
 @else
 -

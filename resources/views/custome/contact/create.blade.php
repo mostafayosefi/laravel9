@@ -7,7 +7,7 @@
 
 @include('index.layouts.elementor.txtdese', [ 'id' => '8' ])
 
-@include('custome.contact.form_store', [ 'route' => route('user.contact.store') , 'countries' => $countries  ])
+@include('custome.contact.form_store', [ 'routecreate' => route('user.contact.store') , 'countries' => $countries  , 'user_id' => $user_id  ])
 
 
 

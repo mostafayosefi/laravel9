@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ComidController;
 use App\Http\Controllers\Admin\FetchController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\RenewController;
 use App\Http\Controllers\Admin\SearchController;
+use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\WalletController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContentController;
@@ -19,10 +21,11 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TextdesController;
 use App\Http\Controllers\Admin\DocumentController;
 use App\Http\Controllers\Admin\SpotliteController;
+use App\Http\Controllers\Admin\TransferController;
+use App\Http\Controllers\Admin\NameserverController;
 use App\Http\Controllers\Admin\CategoryapiController;
 use App\Http\Controllers\Admin\ContentDomainController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
-use App\Http\Controllers\Admin\TicketController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -187,6 +190,20 @@ Route::prefix('content')
         Route::put('/{id}', [ContentDomainController::class, 'update'])->name('update');
         Route::put('/{id}/status', [ContentDomainController::class, 'status'])->name('status');
         Route::delete('/{id}', [ContentDomainController::class, 'destroy'])->name('destroy');
+
+
+
+        Route::prefix('renew')->name('renew.')->group(function () {
+            Route::post('/', [RenewController::class, 'store'])->name('store');
+            Route::get('/index-renew', [RenewController::class, 'index'])->name('index');
+            Route::get('/{id}/show-renew', [RenewController::class, 'show'])->name('show');
+            Route::put('/{id}', [RenewController::class, 'update'])->name('update');
+            Route::put('/{id}/status', [RenewController::class, 'status'])->name('status');
+            Route::delete('/{id}', [RenewController::class, 'destroy'])->name('destroy');
+
+        });
+
+
     });
 
 
@@ -194,6 +211,46 @@ Route::prefix('content')
 });
 
 
+Route::prefix('domain')
+->name('domain.')->group(function () {
+
+
+
+    Route::prefix('renew')->name('renew.')->group(function () {
+        Route::post('/', [RenewController::class, 'store'])->name('store');
+        Route::get('/index-renew', [RenewController::class, 'index'])->name('index');
+        Route::get('/{id}/show-renew', [RenewController::class, 'show'])->name('show');
+        Route::put('/{id}', [RenewController::class, 'update'])->name('update');
+        Route::put('/{renew}/{status}/change_status', [RenewController::class, 'status'])->name('status');
+        Route::delete('/{id}', [RenewController::class, 'destroy'])->name('destroy');
+
+    });
+
+
+
+Route::prefix('transfer')->name('transfer.')->group(function () {
+    Route::get('/index-transfer', [TransferController::class, 'index'])->name('index');
+    Route::get('/{id}/show-transfer', [TransferController::class, 'show'])->name('show');
+    Route::put('/{id}', [TransferController::class, 'update'])->name('update');
+    Route::put('/{id}/status', [TransferController::class, 'status'])->name('status');
+    Route::delete('/{id}', [TransferController::class, 'destroy'])->name('destroy');
+
+
+});
+
+
+});
+
+
+
+Route::prefix('nameserver')->name('nameserver.')->group(function () {
+
+    Route::get('/index-nameserver', [NameserverController::class, 'index'])->name('index');
+    Route::get('/{id}/show-nameserver', [NameserverController::class, 'show'])->name('show');
+    Route::put('/{id}', [NameserverController::class, 'update'])->name('update');
+    Route::delete('/{id}', [NameserverController::class, 'destroy'])->name('destroy');
+
+});
 
 
 Route::prefix('search')
@@ -217,6 +274,7 @@ Route::prefix('wallet')
 Route::prefix('contact')
 ->name('contact.')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('index');
+    Route::post('/contact', [ContactController::class, 'store'])->name('store');
     Route::get('/{contact}/show_contact', [ContactController::class, 'show'])->name('show');
 
 });
@@ -224,7 +282,10 @@ Route::prefix('contact')
 Route::prefix('order')
 ->name('order.')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('index');
-    Route::get('/{order}/show_order', [OrderController::class, 'show'])->name('show');
+    Route::get('/{id}/show_order', [OrderController::class, 'show'])->name('show');
+    Route::put('/{id}/{status}/change_status', [OrderController::class, 'status'])->name('status');
+    Route::delete('/{ticket}', [OrderController::class, 'destroy'])->name('destroy');
+
 
 });
 

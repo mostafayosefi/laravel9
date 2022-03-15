@@ -21,7 +21,7 @@
 @foreach($orders as $key => $admin)
     <tr>
         <td>{{ $key + 1 }}</td>
-        <td>{{$admin->contact->user->name}}</td>
+        <td>{{$admin->user->name}}</td>
         <td>{{$admin->contact->full_name}}</td>
         <td>{{$admin->domain}}</td>
         <td>{{number_format($admin->price)}} ريال</td>

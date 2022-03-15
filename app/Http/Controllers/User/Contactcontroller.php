@@ -42,9 +42,11 @@ class ContactController extends Controller
 
 
     public function create(){
+
+        $user_id=Auth::guard('user')->user()->id;
         $contacts= Contact::where('user_id' , auth()->guard('user')->user()->id)->get()->all();
         $countries= Countrie::all();
-        return view('custome.contact.create' , compact(['contacts' , 'countries'   ]));
+        return view('custome.contact.create' , compact(['contacts' , 'countries'  , 'user_id'   ]));
     }
 
     public function edit($id)
@@ -59,7 +61,6 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $user = Auth::guard('user')->user();
         $rulle=rulecontact($request);
         $data = $request->all();
         $data['user_id']  = Auth::guard('user')->user()->id;

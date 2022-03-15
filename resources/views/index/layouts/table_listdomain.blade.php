@@ -28,7 +28,7 @@
     <span class="elementor-icon-list-item" >
         <span class="elementor-icon-list-icon"  >
 <i aria-hidden="true" class="fa fa-credit-card"></i>						</span>
-    <span class="elementor-icon-list-text"> {{$admin->riyal}} ریال</span>
+    <span class="elementor-icon-list-text"> {{number_format($admin->riyal)}} ریال</span>
 
 </span>
 
@@ -42,20 +42,22 @@
 
     <div class="elementor-widget-container">
         <div class="elementor-button-wrapper">
-            <a href="{{route('user.domain.buy.post')}}" onclick="event.preventDefault();
-            document.getElementById('buy-form').submit();"
-                class="elementor-button-link elementor-button elementor-size-sm"
-                role="button" style="background-color: #1be42f">
-                <span class="elementor-button-content-wrapper">
+            <a href="{{route('user.domain.buy.post' , $admin->id)}}" onclick="event.preventDefault();
+                document.getElementById('buy-form{{$admin->id}}').submit();"  class="spanstatus spanstatus_warning">
+                <span
+                {{-- class="elementor-button-content-wrapper" --}}
+                class="search-domain btn btn-primary px-5"
+                {{-- role="button" style="background-color: #dd0824" --}}
+                class="spanstatus spanstatus_success">
                     <span class="elementor-button-text" >خرید</span>
                 </span>
 
             </a>
         </div>
 
-        
-        <form id="buy-form" action="{{ route('user.domain.buy.post') }}" method="POST"
-        class="d-none">
+
+        <form id="buy-form{{$admin->id}}" action="{{ route('user.domain.buy.post'  , $admin->id) }}" method="POST"
+            class="d-none">
         @csrf
         <input type="hidden" name="domain" value="{{$admin->domain}}" />
         <input type="hidden" name="price" value="{{$admin->riyal}}" />

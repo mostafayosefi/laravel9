@@ -34,4 +34,20 @@ class Order extends Model
     {
         return $this->hasOne(Payment::class);
     }
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
+
+
+
+    public function discriptionorders()
+    {
+        return $this->hasMany(Discriptionorder::class , 'order_id' );
+    }
+
+
+
+
 }

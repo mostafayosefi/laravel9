@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-8">
                             <label  class="{{ $errors->has('domain') ? 'red' : '' }}"  >   نام دامنه </label>
-                            <input id="domain" class="form-control" name="domain" type="text"  value="{{old('domain')}}"   required="required"  style="height: 50px;">
+                            <input id="domain" class="form-control" name="searchdomain" type="text"  value="{{old('domain')}}"   required="required"  style="height: 50px;">
 
                             <div class="card-footer">
                                 <button type="submit"  class="btn btn-primary btn-lg">جستجوی دامنه</button>

@@ -21,7 +21,7 @@ class CreateDomainsTable extends Migration
             $table->string('dns2')->nullable();
             $table->string('dns3')->nullable();
             $table->string('dns4')->nullable();
-            $table->string('status')->comment('active , inactive , rezerv')->default('inactive');
+            $table->string('status')->comment('active , inactive , rezerve , waiting')->default('inactive');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

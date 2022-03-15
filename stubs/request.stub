@@ -6,25 +6,65 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class {{ class }} extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
+
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+
     public function rules()
+    {
+     return ['years' => 'required']
+     +
+     ($this->isMethod('POST') ? $this->store() : $this->update());
+    }
+
+
+
+    public function store()
+    {
+
+        return [
+            'name' => 'required|unique:users|min:8',
+            //… more validation
+        ];
+
+    }
+
+
+    public function update()
     {
         return [
             //
         ];
     }
+
+
+
+    public function destroy()
+    {
+        return [
+            //
+        ];
+    }
+
+
+
+
+    public function view()
+    {
+        return [
+            //
+        ];
+    }
+
+
+
+
+
+
+
+
 }

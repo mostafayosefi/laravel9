@@ -17,5 +17,6 @@ class ContentDomain extends Model
         'image',
         'link',
         'price',
+        'extension',
     ];
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\User\SslController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\RenewController;
 use App\Http\Controllers\Admin\FetchController;
 use App\Http\Controllers\Index\IndexController;
 use App\Http\Controllers\User\BasketController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\User\FinicalController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\MyDomainController;
+use App\Http\Controllers\User\TransferController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\Index\DocumentController;
@@ -36,7 +38,6 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
     Route::prefix('user')->name('user.')->middleware([ 'userauth'])->group(function () {
 
-        Route::resource('nameserver', NameserverController::class);
 
     });
 
@@ -103,18 +104,41 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
                 Route::get('/', [MyDomainController::class, 'index'])->name('index');
                 Route::get('/check_domain/{name?}', [MyDomainController::class, 'CheckDomain'])->name('check');
                 Route::post('/check_domain', [MyDomainController::class, 'CheckDomainPost'])->name('check.post');
-
                 Route::get('/custome/check_domain/{name?}', [MyDomainController::class, 'CheckDomain'])->name('check.custome');
-
-                Route::post('/buy', [MyDomainController::class, 'BuyPost'])->name('buy.post');
-            });
+                Route::post('/buy/{id}', [MyDomainController::class, 'BuyPost'])->name('buy.post');
 
 
-            Route::prefix('order')->name('order.')->group(function () {
-                Route::get('/indexorder', [OrderController::class, 'index'])->name('index');
-                Route::get('/{id}/order', [OrderController::class, 'show'])->name('show');
-                Route::put('/{id}', [OrderController::class, 'payment'])->name('payment');
-                Route::delete('/{id}', [OrderController::class, 'destroy'])->name('destroy');
+                Route::prefix('basket')->name('basket.')->group(function () {
+
+                    Route::get('/index-domain', [BasketController::class, 'index'])->name('index');
+                    Route::get('/{id}/show-domain', [BasketController::class, 'show'])->name('show');
+                    Route::put('/{id}/basket', [BasketController::class, 'store'])->name('store');
+                    Route::delete('/{id}', [BasketController::class, 'destroy'])->name('destroy');
+
+
+
+                    });
+
+                Route::prefix('renew')->name('renew.')->group(function () {
+                    Route::get('/create-renew', [RenewController::class, 'create'])->name('create');
+                    Route::post('/', [RenewController::class, 'store'])->name('store');
+                    Route::get('/index-renew', [RenewController::class, 'index'])->name('index');
+                    Route::get('/{id}/show-renew', [RenewController::class, 'show'])->name('show');
+                    Route::put('/{id}', [RenewController::class, 'update'])->name('update');
+                    Route::put('/{id}/status', [RenewController::class, 'status'])->name('status');
+                    Route::delete('/{id}', [RenewController::class, 'destroy'])->name('destroy');
+
+                });
+
+                Route::prefix('transfer')->name('transfer.')->group(function () {
+                    Route::get('/create-transfer', [TransferController::class, 'create'])->name('create');
+                    Route::post('/', [TransferController::class, 'store'])->name('store');
+                    Route::get('/index-transfer', [TransferController::class, 'index'])->name('index');
+                    Route::get('/{id}/show-transfer', [TransferController::class, 'show'])->name('show');
+                    Route::put('/{id}', [TransferController::class, 'update'])->name('update');
+                    Route::put('/{id}/status', [TransferController::class, 'status'])->name('status');
+                    Route::delete('/{id}', [TransferController::class, 'destroy'])->name('destroy');
+
 
                 // https://www.namesilo.com/api/registerDomain?version=1&type=xml&key=a7a96a32f40c7044242796&domain=vahid7890.xyz&years=1&private=0&auto_renew=0&contact_id=13469763&ns1=ns1.namesilo.com&ns2=ns2.namesilo.com
 
@@ -123,19 +147,28 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
                 // https://www.namesilo.com/api/listRegisteredNameServers?version=1&type=xml&key=a7a96a32f40c7044242796&domain=mahmooud9890.xyz
 
                 // https://www.namesilo.com/api/addRegisteredNameServer?version=1&type=xml&key=a7a96a32f40c7044242796&domain=mahmooud9890.xyz&new_host=ns5&ip1=123.45.67.8&ip2=11.22.33.44
-            });
 
 
-            Route::prefix('basket')->name('basket.')->group(function () {
 
-            Route::get('/indexbasket', [BasketController::class, 'index'])->name('index');
-            Route::get('/{id}/basket', [BasketController::class, 'show'])->name('show');
-            Route::put('/{id}/basket', [BasketController::class, 'store'])->name('store');
-            Route::delete('/{id}', [BasketController::class, 'destroy'])->name('destroy');
-
+                });
 
 
             });
+
+
+
+            Route::prefix('nameserver')->name('nameserver.')->group(function () {
+
+                Route::get('/create-nameserver', [NameserverController::class, 'create'])->name('create');
+                Route::post('/', [NameserverController::class, 'store'])->name('store');
+                Route::get('/index-nameserver', [NameserverController::class, 'index'])->name('index');
+                Route::get('/{id}/show-nameserver', [NameserverController::class, 'show'])->name('show');
+                Route::put('/{id}', [NameserverController::class, 'update'])->name('update');
+                Route::put('/{id}/status', [NameserverController::class, 'status'])->name('status');
+                Route::delete('/{id}', [NameserverController::class, 'destroy'])->name('destroy');
+
+            });
+
 
             Route::prefix('contact')->name('contact.')->group(function () {
                 Route::get('/indexcontact', [ContactController::class, 'index'])->name('index');
@@ -205,8 +238,15 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 Route::prefix('fetch')
 ->name('fetch.')->group(function () {
     Route::get('/font/{value}', [FetchController::class, 'font'])->name('font');
-    Route::get('/timeexpire/{order}/{value}', [FetchController::class, 'timeexpire'])->name('timeexpire');
-    Route::get('/payment/{order}/{value}', [FetchController::class, 'payment'])->name('payment');
+    Route::get('/timeexpire/{order}/{oper}/{value}', [FetchController::class, 'timeexpire'])->name('timeexpire');
+
+    Route::get('/payment/{oper}/{order}/{value}', [FetchController::class, 'payment'])->name('payment');
+    Route::get('/contact/{order}/{value}', [FetchController::class, 'contact'])->name('contact');
+
+    Route::get('/renew/{order}/{oper}/{value}', [FetchController::class, 'renew'])->name('renew');
+
+
+
 });
 
 

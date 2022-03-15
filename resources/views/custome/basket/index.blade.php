@@ -1,8 +1,8 @@
 @component('custome.layouts.content',[
-    'title'=>'سبدخرید من ',
-    'tabTitle'=>'سبدخرید من',
+    'title'=>'مشاهده سفارش خرید دامنه',
+    'tabTitle'=>'مشاهده سفارش خرید دامنه',
     'breadcrumb'=>[
-            ['title'=>'سبدخرید من','class' => 'active']
+            ['title'=>'مشاهده سفارش خرید دامنه','class' => 'active']
     ]])
 
 
@@ -18,7 +18,7 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">سبدخرید من</h6>
+          <h6 class="card-title">مشاهده سفارش خرید دامنه</h6>
           <div class="table-responsive">
 @include('custome.order.table_index', [   'orders' => $orders  , $contacts , 'tablee' => 'basket'])
           </div>

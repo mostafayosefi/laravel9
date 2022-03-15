@@ -1,5 +1,19 @@
-@if($order->starttime==Null) @php $starttime=now()->format('Y-m-d'); @endphp @else @php $starttime=$order->starttime; @endphp   @endif
-@if($order->endtime==Null) @php $endtime=now()->addYears($value)->format('Y-m-d'); @endphp @else @php $endtime=$order->endtime; @endphp   @endif
+@if($order->status == 'active')
+
+@php $starttime=$order->starttime;
+$endtime=$order->endtime;@endphp
+
+@else
+
+@php $x=0; $starttime=now_time($x);
+$endtime=now_time($value); @endphp
+
+@endif
+
+
+
+
+@if ($oper=='time')
 
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card"  >
@@ -32,3 +46,24 @@
 
         </div>
         </div>
+        <input type="hidden" name="starttime" value="{{$starttime}}"  />
+        <input type="hidden" name="endtime" value="{{$endtime}}"  />
+
+
+@endif
+
+@php
+
+$extension=find_extension($order->domain);
+$price=riyal_extension($extension);
+$price=$price * $value;
+ @endphp
+
+
+@if ($oper=='price')
+{{number_format($price)}}  ريال
+
+<input type="hidden" name="price" value="{{$price}}"  />
+@endif
+
+

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFeildTableDomains extends Migration
+class AddExtensionTableCheckdomains extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddFeildTableDomains extends Migration
      */
     public function up()
     {
-        Schema::table('domains', function (Blueprint $table) {
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+        Schema::table('checkdomains', function (Blueprint $table) {
+            $table->string('extension')->nullable()->after('domain');
         });
     }
 
@@ -25,8 +25,8 @@ class AddFeildTableDomains extends Migration
      */
     public function down()
     {
-        Schema::table('domains', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
+        Schema::table('checkdomains', function (Blueprint $table) {
+            $table->dropColumn('extension');
         });
     }
 }

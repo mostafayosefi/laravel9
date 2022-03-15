@@ -40,7 +40,7 @@
               </ul>
             </div>
           </li>
-
+{{-- 
         <li class="nav-item  {{ isActive(['user.ssl.create' , 'user.ssl.index'])}}   ">
             <a class="nav-link" data-toggle="collapse" href="#ssl" role="button" aria-expanded="false" aria-controls="ssl">
               <i class="link-icon" data-feather="list"></i>
@@ -57,40 +57,88 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> --}}
 
-          <li class="nav-item  {{ isActive(['user.domain.check.custome' , 'user.domain.check.custome'])}}   ">
+          <li class="nav-item  {{ isActive([ 'user.domain.check.custome', 'user.domain.basket.index', 'user.domain.basket.show'])}}   ">
               <a class="nav-link" data-toggle="collapse" href="#domain" role="button" aria-expanded="false" aria-controls="domain">
                 <i class="link-icon" data-feather="list"></i>
-                <span class="link-title">مدیریت دامنه های من</span>
+                <span class="link-title">خدمات خرید دامنه  </span>
                 <i class="link-arrow" data-feather="chevron-down"></i>
               </a>
-              <div class="collapse  {{ isShow(['user.domain.check.custome' , 'user.domain.check.custome'])}}     "  id="domain">
+              <div class="collapse  {{ isShow([ 'user.domain.check.custome', 'user.domain.basket.index', 'user.domain.basket.show'])}}     "  id="domain">
                 <ul class="nav sub-menu">
+
                   <li class="nav-item">
    <a href="{{ route('user.domain.check.custome') }}" class="nav-link   {{ isActive(['user.domain.check.custome']) }}  ">ثبت دامنه جدید </a>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <a href="{{ route('user.domain.basket.index') }}" class="nav-link   {{ isActive(['user.domain.basket.index']) }}  ">مشاهده سفارش دامنه    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </li>
+
+          <li class="nav-item  {{ isActive([ 'user.domain.renew.create', 'user.domain.renew.index', 'user.domain.renew.show'])}}   ">
+              <a class="nav-link" data-toggle="collapse" href="#renew" role="button" aria-expanded="false" aria-controls="renew">
+                <i class="link-icon" data-feather="list"></i>
+                <span class="link-title">خدمات تمدید دامنه    </span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+              </a>
+              <div class="collapse  {{ isShow([ 'user.domain.renew.create', 'user.domain.renew.index', 'user.domain.renew.show'])}}     "  id="renew">
+                <ul class="nav sub-menu">
+                  <li class="nav-item">
+   <a href="{{ route('user.domain.renew.create') }}" class="nav-link   {{ isActive(['user.domain.renew.create']) }}  "> تمدید دامنه </a>
+                  </li>
+                  <li class="nav-item">
+   <a href="{{ route('user.domain.renew.index') }}" class="nav-link   {{ isActive(['user.domain.renew.index' , 'user.domain.renew.show']) }}  "> مدیریت تمدید دامنه </a>
                   </li>
                 </ul>
               </div>
             </li>
 
-            <li class="nav-item  {{ isActive(['user.order.show' , 'user.order.index' , 'user.basket.show' , 'user.basket.index'])}}   ">
-                <a class="nav-link" data-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
-                  <i class="link-icon" data-feather="list"></i>
-                  <span class="link-title">مدیریت سفارش های من</span>
-                  <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse  {{ isShow(['user.order.show' , 'user.order.index' , 'user.basket.show' , 'user.basket.index'])}}     "  id="order">
-                  <ul class="nav sub-menu">
-                    <li class="nav-item">
-     <a href="{{ route('user.basket.index') }}" class="nav-link   {{ isActive(['user.basket.index']) }}  ">مشاهده سبدخرید من</a>
-                    </li>
-                    <li class="nav-item">
-     <a href="{{ route('user.order.index') }}" class="nav-link   {{ isActive(['user.order.index']) }}  ">مشاهده سفارش های من</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+
+
+          <li class="nav-item  {{ isActive([ 'user.domain.transfer.create', 'user.domain.transfer.index', 'user.domain.transfer.show'])}}   ">
+              <a class="nav-link" data-toggle="collapse" href="#transfer" role="button" aria-expanded="false" aria-controls="transfer">
+                <i class="link-icon" data-feather="list"></i>
+                <span class="link-title">خدمات انتقال دامنه    </span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+              </a>
+              <div class="collapse  {{ isShow([ 'user.domain.transfer.create', 'user.domain.transfer.index', 'user.domain.transfer.show'])}}     "  id="transfer">
+                <ul class="nav sub-menu">
+                  <li class="nav-item">
+   <a href="{{ route('user.domain.transfer.create') }}" class="nav-link   {{ isActive(['user.domain.transfer.create']) }}  "> انتقال دامنه </a>
+                  </li>
+                  <li class="nav-item">
+   <a href="{{ route('user.domain.transfer.index') }}" class="nav-link   {{ isActive(['user.domain.transfer.index' , 'user.domain.transfer.show']) }}  "> مدیریت انتقال دامنه </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+
+
+          <li class="nav-item  {{ isActive([ 'user.nameserver.create', 'user.nameserver.index', 'user.nameserver.show'])}}   ">
+              <a class="nav-link" data-toggle="collapse" href="#nameserver" role="button" aria-expanded="false" aria-controls="nameserver">
+                <i class="link-icon" data-feather="list"></i>
+                <span class="link-title">خدمات تغییر نیم سرور    </span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+              </a>
+              <div class="collapse  {{ isShow([ 'user.nameserver.create', 'user.nameserver.index', 'user.nameserver.show'])}}     "  id="nameserver">
+                <ul class="nav sub-menu">
+                  <li class="nav-item">
+   <a href="{{ route('user.nameserver.create') }}" class="nav-link   {{ isActive(['user.nameserver.create']) }}  "> تغییر نیم سرور   </a>
+                  </li>
+                  <li class="nav-item">
+   <a href="{{ route('user.nameserver.index') }}" class="nav-link   {{ isActive(['user.nameserver.index' , 'user.nameserver.show']) }}  "> مدیریت تغییر نیم سرور </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
 
 
 

@@ -1,12 +1,15 @@
 <?php
 
 use App\Models\User;
+use App\Models\Domain;
 use App\Models\Wallet;
 use App\Models\Contact;
+
 use App\Models\Setting;
 
+use App\Models\Transfer;
 use App\Rules\Uniqemail;
-
+use App\Models\Nameserver;
 use App\Models\Webservice;
 use App\Models\Checkdomain;
 use App\Rules\ValidateLink;
@@ -17,6 +20,9 @@ use Morilog\Jalali\Jalalian;
 use App\Models\ContentDomain;
 use App\Models\Loginhistorie;
 use Hekmatinasser\Verta\Verta;
+use App\Models\Discriptionorder;
+use App\Models\Renew;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -189,8 +195,6 @@ return  $mystring;
 if(! function_exists('Mywallet') ) {
     function Mywallet($user_id,$operator)
     {
-
-
         $query=Wallet::query()->where([
             ['user_id' , '=' ,$user_id],
             ['status' , '=' ,'active'],
@@ -199,19 +203,16 @@ if(! function_exists('Mywallet') ) {
             ['flag' , '=' ,'inc'],
             ])->sum('price');
 
-            $my_dec=$query->where([
+            $my_dec=Wallet::where([
+                ['user_id' , '=' ,$user_id],
+                ['status' , '=' ,'active'],
                 ['flag' , '=' ,'dec'],
-                ])->sum('price');
-
+            ])->sum('price');
 
                 $mycharge= $my_inc - $my_dec;
-
                 if($operator=='inc'){  return $my_inc;}
                 if($operator=='dec'){  return $my_dec;}
                 if($operator=='mycharge'){  return $mycharge;}
-
-
-
 
     }
 }
@@ -555,21 +556,21 @@ if(! function_exists('Change_status') ) {
         {
 
             $request->validate([
-                'domain' => ['required',new ValidateLink('UrlNamesilo','www')] ,
+                'searchdomain' => ['required',new ValidateLink('UrlNamesilo','www')] ,
             ]);
             $request->validate([
-                'domain' => [new ValidateLink('UrlNamesilo','http')] ,
+                'searchdomain' => [new ValidateLink('UrlNamesilo','http')] ,
             ]);
             $request->validate([
-                'domain' => [new ValidateLink('UrlNamesilo','https')] ,
-            ]);
-
-            $request->validate([
-                'domain' => [new ValidateLink('UrlNamesilo','regec_pers')] ,
+                'searchdomain' => [new ValidateLink('UrlNamesilo','https')] ,
             ]);
 
             $request->validate([
-                'domain' => [new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'searchdomain' => [new ValidateLink('UrlNamesilo','regec_pers')] ,
+            ]);
+
+            $request->validate([
+                'searchdomain' => [new ValidateLink('UrlNamesilo','regec_eng')] ,
             ]);
         }
 
@@ -682,6 +683,66 @@ return $personJSON = response()->json([
             }
 
 
+
+
+            if($oper=='domain'){
+                if($data['operator']=='registerDomain'){
+                    $base = array(
+                        'domain' => $data['domain'] ,
+                        'years' => $data['years'] ,
+                        'private' => $data['private'] ,
+                        'auto_renew' => $data['renew'] ,
+                        'contact_id' => $data['contact_id_namesilo'] ,
+                        'ns1' => $data['dns1'] ,
+                        'ns2' => $data['dns2'] ,
+                        'ns3' => $data['dns3'] ,
+                        'ns4' => $data['dns4'] ,
+                    );
+            }
+
+
+                if($data['operator']=='checkTransferStatus'){
+                    $base = array(
+                        'domain' => $data['searchdomain'] ,
+                    );
+                           }
+
+
+                if($data['operator']=='transferDomain'){
+                    $base = array(
+                        'domain' => $data['domain'] ,
+                        'auth' => $data['auth'] ,
+                        'renew' => $data['renew'] ,
+                        'private' => $data['private'] ,
+                    );
+                           }
+
+
+
+
+            }
+
+
+
+
+            if($oper=='nameserver'){
+                if($data['operator']=='changeNameServers'){
+
+                    $base = array(
+                        'domain' => $data['domain'] ,
+                        'ns1' => $data['ns1'] ,
+                        'ns2' => $data['ns2'] ,
+                        'ns3' => $data['ns3'] ,
+                        'ns4' => $data['ns4'] ,
+                    );
+
+                }
+            }
+
+
+
+
+
  $myurl = http_build_query($base);
  return $myurl;
 
@@ -696,11 +757,41 @@ return $personJSON = response()->json([
 
 
 
+    if(! function_exists('query_table_transfer') ) {
+        function query_table_transfer( $data)
+        {
+            $transfer=Transfer::where([ ['domain' ,$data['domain']],  ])->first();
+            if($transfer){
+            }else{
+            $transfer = Transfer::create([ 'user_id'=>$data['user_id'] ,'status'=> 'inactive'  ,'domain'=>$data['domain']     ]);
+            }
+            return $transfer;
+        }
+    }
+
+
+
+
+    if(! function_exists('query_table_nameserver') ) {
+        function query_table_nameserver( $data)
+        {
+            $nameserver=Nameserver::where([ ['domain' ,$data['domain']],  ])->first();
+            if($nameserver){
+            }else{
+            $nameserver = Nameserver::create([ 'user_id'=>$data['user_id'] ,'status'=> 'inactive'  ,'domain'=>$data['domain']     ]);
+            }
+            return $nameserver;
+        }
+    }
+
+
     if(! function_exists('rule_buy_domain') ) {
         function rule_buy_domain(Request $request)
         {
 
+
             $request->validate([
+                'contact_id' => ['required'] ,
                 'dns1' => ['required',new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
                 'dns2' => ['required',new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
                 'dns3' => [new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
@@ -714,6 +805,45 @@ return $personJSON = response()->json([
     }
 
 
+    if(! function_exists('rule_change_nameserver') ) {
+        function rule_change_nameserver(Request $request)
+        {
+
+
+            $request->validate([
+                'ns1' => ['required',new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'ns2' => ['required',new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'ns3' => [new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+                'ns4' => [new ValidateRule('validate_dns') ,new ValidateLink('UrlNamesilo','www'  ),new ValidateLink('UrlNamesilo','http'  ),new ValidateLink('UrlNamesilo','regec_pers'),new ValidateLink('UrlNamesilo','regec_eng')] ,
+            ]);
+
+
+
+
+        }
+    }
+
+
+
+    if(! function_exists('store_timeline') ) {
+        function store_timeline( $by , $operator , $text , $status , $user_id , $arrtimeline , $active)
+        {
+
+
+            $data['by']=$by;
+            $data['operator']=$operator;
+            $data['order_id']=$arrtimeline['order_id'];
+            $data['renew_id']=$arrtimeline['renew_id'];
+            $data['user_id']=$user_id;
+            $data['flag']=$status;
+            $data['text']=$text;
+            $data['active']=$active;
+
+            Discriptionorder::create($data);
+
+
+        }
+    }
 
 
 
@@ -740,16 +870,211 @@ return $personJSON = response()->json([
     }
 
 
+    if(! function_exists('find_extension') ) {
+        function find_extension($domain)
+        {
+
+            $headers = explode('.', $domain);
+            return $headers['1'];
+        }
+    }
+
+
+
+    if(! function_exists('price_extension') ) {
+        function price_extension($extension)
+        {
+            $ContentDomain= ContentDomain::where([ ['name' , $extension ] ])->first();
+            if($ContentDomain){return $ContentDomain->price;}else{ return 0;}
+         }
+    }
+
+
+    if(! function_exists('riyal_extension') ) {
+        function riyal_extension($extension)
+        {
+            $setting=Setting::find(1);
+            $ContentDomain= ContentDomain::where([ ['name' , $extension ] ])->first();
+            if($ContentDomain){return $ContentDomain->price*$setting->mngfinical->rateusd;}else{ return 0;}
+         }
+    }
+
+
+    if(! function_exists('method_payment') ) {
+        function method_payment($data)
+        {
+            $exito=[];
+
+            if($data['oper']=='buy_domain'){
+
+            if($data['type']=='offline'){
+                Alert::success('درخواست ثبت دامنه با موفقیت ثبت شد ', 'درخواست جهت تایید سفارش ثبت دامنه ارسال شد      ');
+                $exito['status']='waiting';
+                $exito['active']='1';
+                return $exito;
+            }
+
+            if($data['type']=='online'){
+                Alert::error('درگاه پرداخت فعالی وجود ندارد ', '  متاسفانه درگاه پرداخت جهت پرداخت آنلاین فعلا غیرفعال می باشد');
+                $exito['status']='waiting';
+                $exito['active']='0';
+                return $exito;            }
+
+            if($data['type']=='depo'){
+               $mycharge = Mywallet($data['user_id'],'mycharge');
+               if($mycharge<$data['price']){
+                Alert::error('پرداخت هزینه سفارش انجام نشد   ', '      متاسفانه هزینه سفارش بیشتر از هزینه سفارش شما می باشد لطفا جهت پرداخت نسبت به شارژ مابه تفاوت هزینه اقدام نمایید          ');
+                $exito['status']='rezerve';
+                $exito['active']='0';
+                return $exito;             }else{
+        $data['flag']  =  'dec';
+        $data['status']  =  'active';
+        Wallet::create($data);
+        Alert::success('با موفقیت پرداخت شد', '     هزینه سفارش با موفقیت از شارژ حساب کاربری پرداخت شد      ');
+
+        $exito['status']='active';
+        $exito['active']='1';
+        return $exito;    }
+            }
+
+
+            }
+
+
+
+            if($data['oper']=='renew'){
+
+            if($data['type']=='offline'){
+                Alert::success('درخواست تمدید دامنه با موفقیت ثبت شد ', 'درخواست جهت تایید سفارش تمدید دامنه ارسال شد      ');
+                $exito['status']='waiting';
+                $exito['active']='1';
+                return $exito;
+            }
+
+            if($data['type']=='online'){
+                Alert::error('درگاه پرداخت فعالی وجود ندارد ', '  متاسفانه درگاه پرداخت جهت پرداخت آنلاین فعلا غیرفعال می باشد');
+                $exito['status']='waiting';
+                $exito['active']='0';
+                return $exito;            }
+
+            if($data['type']=='depo'){
+               $mycharge = Mywallet($data['user_id'],'mycharge');
+               if($mycharge<$data['price']){
+                Alert::error('پرداخت هزینه سفارش انجام نشد   ', '      متاسفانه هزینه سفارش بیشتر از هزینه سفارش شما می باشد لطفا جهت پرداخت نسبت به شارژ مابه تفاوت هزینه اقدام نمایید          ');
+                $exito['status']='rezerve';
+                $exito['active']='0';
+                return $exito;             }else{
+        $data['flag']  =  'dec';
+        $data['status']  =  'active';
+        Wallet::create($data);
+        Alert::success('با موفقیت پرداخت شد', '     هزینه سفارش با موفقیت از شارژ حساب کاربری پرداخت شد      ');
+
+        $exito['status']='active';
+        $exito['active']='1';
+        return $exito;    }
+            }
+
+
+            }
+
+
+
+
+
+
+
+
+
+         }
+    }
+
+
+
+
+    if(! function_exists('count_dashboard') ) {
+        function count_dashboard($dash_id,$mytable)
+        {
+
+
+
+ 
+
+
+if($mytable=='contact'){ $query=Contact::query()->where([ ['id' , '<>' ,'1'], ]);}
+if($mytable=='domain'){ $query=Domain::query()->where([ ['id' , '<>' ,'1'], ]);}
+if($mytable=='renew'){ $query=Renew::query()->where([ ['id' , '<>' ,'1'], ]);}
+if($mytable=='transfer'){ $query=Transfer::query()->where([ ['id' , '<>' ,'1'], ]);}
+if($mytable=='nameserver'){ $query=Nameserver::query()->where([ ['id' , '<>' ,'1'], ]);}
+if($mytable=='ticket'){ $query=Ticket::query()->where([ ['id' , '<>' ,'1'], ]);}
+if($mytable=='new_ticket'){ $query=Ticket::query()->where([ ['id' , '<>' ,'1'], ['fromshow' , '=' ,'unread'], ]);}
+
+$count=$query->count();
+
+if($dash_id!='all'){$count=$query->where([  ['user_id' , '=' ,$dash_id],  ])->count();}
+
+return $count;
+
+        }
+    }
+
+
+
+
+
+
+
+    if(! function_exists('notfound_domain') ) {
+        function notfound_domain($external , $error, $data)
+        {
+
+        if($external=='api'){
+            return $men=Error_Namesilo($data['operator'] , $error  );
+        }
+        if($external=='web'){
+        Alert::error('متاسفانه دامنه شما پیدا نشد  ', ' دامنه وجود ندارد');
+        return back()->with([  'webservice_id' => $data['webservice_id'] , 'error' => '1'  , 'domain' => $data['origindomain'] ]);
+             }
+
+
+         }
+    }
+
+
+
+
+
+    if(! function_exists('now_time') ) {
+        function now_time( $value)
+        {
+            return now()->addYears($value)->format('Y-m-d');
+        }
+    }
+
+
+
+    if(! function_exists('renew_time') ) {
+        function renew_time( $endtime ,$value)
+        {
+
+
+        $modifier=$value.' years';
+        $date = strtotime($endtime);
+        $newdate = date('Y-m-d',strtotime($modifier,$date));
+        return $newdate;
+
+        }
+    }
 
 
 
     if(! function_exists('all_request_domain') ) {
-        function all_request_domain(Request $request)
+        function all_request_domain( $request)
         {
 
+
             $rulle=ruledomain($request);
-            $orginaldomain=linkdomain($request->domain , $request->suffix  );
-            $domain=linkdomainOrigin($request->domain , $request->suffix  );
+            $orginaldomain=linkdomain($request->searchdomain , $request->suffix  );
+            $domain=linkdomainOrigin($request->searchdomain , $request->suffix  );
             $multidomain=multidomain($domain , $orginaldomain  );
 
             $data = $request->all();
@@ -763,6 +1088,8 @@ return $personJSON = response()->json([
             $data['name']= $orginaldomain;
             $data['link']= $orginaldomain;
             $data['status']= 'checkRegisterAvailability';
+
+
         Webservice::create($data);
 
 

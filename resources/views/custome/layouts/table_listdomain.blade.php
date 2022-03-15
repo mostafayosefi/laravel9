@@ -24,8 +24,8 @@
                         <td> {{$admin->domain}} </td>
 
 <td>
- {{$admin->riyal}} ریال
- <i data-feather="credit-card"></i>  
+    {{number_format($admin->riyal)}}  ریال
+ <i data-feather="credit-card"></i>
 </span>
 
 
@@ -38,14 +38,14 @@
 
     <div class="elementor-widget-container">
         <div class="elementor-button-wrapper">
-            <a href="{{route('user.domain.buy.post')}}" onclick="event.preventDefault();
-            document.getElementById('buy-form').submit();"  class="btn btn-success">
+            <a href="{{route('user.domain.buy.post' , $admin->id)}}" onclick="event.preventDefault();
+            document.getElementById('buy-form{{$admin->id}}').submit();"  class="btn btn-success">
                 خرید <i data-feather="shopping-cart"></i>
             </a>
         </div>
 
 
-        <form id="buy-form" action="{{ route('user.domain.buy.post') }}" method="POST"
+        <form id="buy-form{{$admin->id}}" action="{{ route('user.domain.buy.post'  , $admin->id) }}" method="POST"
         class="d-none">
         @csrf
         <input type="hidden" name="domain" value="{{$admin->domain}}" />

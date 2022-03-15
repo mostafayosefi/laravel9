@@ -84,6 +84,8 @@
 <span   class="spanstatus spanstatus_warning"> غیرفعال </span>
 @elseif ($admin->status=='rezerve')
 <span class="spanstatus spanstatus_primary">رزرو شده</span>
+@elseif ($admin->status=='waiting')
+<span class="spanstatus spanstatus_warning">منتظر تایید</span>
 @endif
 
 

@@ -8,19 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Nameserver extends Model
 {
 
-
     protected $fillable = [
-        'newhost',
-        'currenthost',
-        'ip1',
-        'ip2',
-        'ip3',
-        'domain_id',
+        'ns1',   'ns2',  'ns3',  'ns4', 'status', 'domain',   'user_id' ,  'code' ,  'detail' ,
     ];
 
 
-    public function domain(){
-        return $this->belongsTo(Domain::class  , 'domain_id' , 'id');
+
+    public function user()
+    {
+        return $this->belongsTo(User::class );
     }
+
+
 
 }

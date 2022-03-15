@@ -10,60 +10,50 @@ use App\Rules\ValidateRule;
 use Illuminate\Http\Request;
 use App\Rules\NameserverRule;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Service\MyNameserverController;
+use App\Http\Controllers\Service\MyNameserviceController;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class NameserverController extends Controller
 {
 
-
     public function index(){
-        $namesevers= Nameserver::all();
-        return view('user.nameserver.index' , compact(['namesevers'  ]));
+
+        $user_id=Auth::guard('user')->user()->id;
+        $nameservers= Nameserver::where([ ['user_id' , '=' ,$user_id ] , ]   )->get();
+        return view('custome.nameserver.index' , compact(['nameservers'  ]));
     }
 
 
     public function create(){
-        $user_id = Auth::guard('user')->user()->id;
-        $domains=Domain::where([ ['user_id' , $user_id ], ])->get();
-        return view('user.nameserver.create'  , compact(['domains'  ]));
+        return view('custome.nameserver.create' );
     }
 
     public function edit($id){
-        $user_id = Auth::guard('user')->user()->id;
-        $domains=Domain::where([ ['user_id' , $user_id ], ])->get();
-        $nameserver=Nameserver::find($id);
-        return view('user.nameserver.edit' , compact(['nameserver' , 'domains'  ]));
     }
 
 
     public function store(Request $request)
     {
-
-
-        $request->validate([
-            'newhost' => ['required',new ValidateRule('regec_eng'),new NameserverRule('check_newhost')] ,
-            'ip1' => 'required|ipv4' ,
-            'ip2' => 'required|ipv4' ,
-            'domain_id' => 'required|unique:nameservers,domain_id' ,
-        ],[
-            'domain_id.unique' => 'Nameserver این دامنه قبلا ثبت شده است لطفا از ویرایش جهت ثبت Nameserver جدید اقدام نمایید',
-
-        ]);
-
-
-
+        $rulle=ruledomain($request);
         $data = $request->all();
+        $data['user_id']=Auth::guard('user')->user()->id;
+        $data['domain']=$data['searchdomain'];
 
-       Nameserver::create($data);
+
+        $nameserver=query_table_nameserver($data);
+
        Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-        return redirect()->route('user.nameserver.index');
+        return redirect()->route('user.nameserver.show', $nameserver);
     }
 
     public function show($id)
     {
-        $nameserver=Nameserver::find($id);
-        return view('user.nameserver.show' , compact(['nameserver'  ]));
+
+        $user_id=Auth::guard('user')->user()->id;
+        $nameserver= Nameserver::where([ ['user_id' , '=' ,$user_id ] , ['id' , '=' ,$id ] , ]   )->first();
+        return view('custome.nameserver.show' , compact(['nameserver'  ]));
 
     }
 
@@ -71,27 +61,33 @@ class NameserverController extends Controller
 
     public function update(Request $request, $id  ){
 
-
-        $request->validate([
-            'newhost' => ['required',new ValidateRule('regec_eng') ,new NameserverRule('check_newhost')] ,
-            'ip1' => 'required|ipv4' ,
-            'ip2' => 'required|ipv4' ,
-            'domain_id' => ['required',new Uniqemail('nameservers','domain_id' ,$id)] ,
-
-        ]);
-
-        $nameserver=Nameserver::find($id);
+        $data=rule_change_nameserver($request);
         $data = $request->all();
+
+        $nameserver=query_table_nameserver($data);
+
+
         $nameserver->update($data);
-        Alert::success('با موفقیت ویرایش شد', 'اطلاعات با موفقیت ویرایش شد');
-        return back();
+
+        $data['operator']= 'changeNameServers';
+        $tasks_controller = new MyNameserverController('web');
+        return  $tasks_controller->changeNameServers(  $data );
     }
 
 
     public function destroy($id , Request $request){
-        Nameserver::destroy($id);
-        Alert::info('با موفقیت حذف شد', 'اطلاعات با موفقیت حذف شد');
-        return redirect()->route('user.nameserver.index');
+
+
+        $nameserver=Nameserver::where([ ['id' , $id ]   ,  ['status' , '<>' ,'active' ] ,  ])->first();
+        if($nameserver){
+            $delete_domain=Nameserver::where([ ['id' , $id ]  ,  ['status' , '<>' ,'active' ] ,  ])->delete();
+            Alert::info('با موفقیت حذف شد', 'اطلاعات با موفقیت حذف شد');
+        }else{
+            Alert::error('عملیات حذف متاسفانه بامشکل مواجه شد!', 'توجه نمایید فقط سفارشات تایید نشده قابل حذف می باشند');
+        }
+        return back();
+
+
     }
 
     public function status(Request $request , $id){

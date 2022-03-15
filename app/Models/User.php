@@ -65,7 +65,7 @@ class User extends Authenticatable
     }
     public function contacts()
     {
-        return $this->hasMany(Wallet::class);
+        return $this->hasMany(Contact::class);
     }
     public function wallet()
     {
@@ -80,6 +80,28 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany(Ticket::class , 'user_id' );
+    }
+
+
+    public function discriptionorders()
+    {
+        return $this->hasMany(Discriptionorder::class , 'user_id' );
+    }
+
+
+    public function renews()
+    {
+        return $this->hasMany(Renew::class);
+    }
+
+    public function transfers()
+    {
+        return $this->hasMany(Transfer::class);
+    }
+
+    public function changenameserves()
+    {
+        return $this->hasMany(ChangeNameServer::class);
     }
 
 

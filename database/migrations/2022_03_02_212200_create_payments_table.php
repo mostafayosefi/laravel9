@@ -15,11 +15,15 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('type')->comment('online , offline  , depo ')->default('offline');
+
+             $table->string('type')->comment('online , offline  , depo ')->default('offline');
             $table->string('status')->comment('active , deactive  , waiting ')->default('waiting');
             $table->string('textUser')->nullable();
             $table->string('textAdmin')->nullable();
+            $table->integer('order_id')->nullable();
+            $table->integer('renew_id')->nullable();
+            $table->integer('transfer_id')->nullable();
+
             $table->timestamps();
         });
     }

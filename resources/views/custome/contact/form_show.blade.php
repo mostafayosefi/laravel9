@@ -133,9 +133,9 @@
 @endif
 
 
+@if ($oper=='order')
 
 
-@if($oper=='order')
 
 <div class="col-12 col-xl-12 stretch-card">
     <div class="row flex-grow">
@@ -147,7 +147,7 @@
 
 <br>
 <table class="table table-bordered">
- 
+
 
 <tbody>
 <tr>
@@ -227,3 +227,5 @@
 
 
 @endif
+
+

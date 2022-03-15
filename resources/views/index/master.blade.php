@@ -126,6 +126,7 @@
 
 
 
+<link data-minify="1" rel='stylesheet'   href="{{ asset('telnum_files/mystyle.css') }}"  type='text/css' media='all' />
 
 
     @yield('style')

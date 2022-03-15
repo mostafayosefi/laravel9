@@ -54,7 +54,9 @@ class IndexController extends Controller
     }
 
     public function dashboard(){
-        return view('custome.dashboard.index');
+        $dash_id  = Auth::guard('user')->user()->id;
+
+        return view('custome.dashboard.index' , compact(['dash_id']));
     }
 
     public function page($title  ){

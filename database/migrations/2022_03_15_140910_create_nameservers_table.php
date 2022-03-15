@@ -15,12 +15,15 @@ class CreateNameserversTable extends Migration
     {
         Schema::create('nameservers', function (Blueprint $table) {
             $table->id();
-            $table->string('newhost');
-            $table->string('currenthost')->nullable();
-            $table->string('ip1');
-            $table->string('ip2');
-            $table->string('ip3')->nullable();
-            $table->foreignId('domain_id')->constrained('domains')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('domain');
+            $table->string('ns1')->nullable();
+            $table->string('ns2')->nullable();
+            $table->string('ns3')->nullable();
+            $table->string('ns4')->nullable();
+            $table->string('status')->comment('active , inactive , rezerve , waiting')->default('inactive');
+            $table->foreignId('user_id')->nullable()->unsigned()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('code')->nullable();
+            $table->string('detail')->nullable();
             $table->timestamps();
         });
     }

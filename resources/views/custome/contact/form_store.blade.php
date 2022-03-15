@@ -5,11 +5,11 @@
             <div class="card-body">
                 <h6 class="card-title">ثبت اکانت جدید</h6>
 
-                <form class="forms-sample" method="POST" action="{{$route}}" style="direction: ltr;"
+                <form class="forms-sample" method="POST" action="{{$routecreate}}" style="direction: ltr;"
                 enctype="multipart/form-data" onsubmit="return Validate(this);">
                 @csrf
 
-
+<input type="hidden" name="user_id" value="{{$user_id}}" />
                 @include('admin.layouts.errors')
 
                     <div class="form-group row">

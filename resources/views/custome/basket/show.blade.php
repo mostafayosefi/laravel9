@@ -1,7 +1,7 @@
   @component('custome.layouts.content', [
-    'title'=>'سبدخرید من ',
-    'tabTitle'=>'سبدخرید من',
-      'breadcrumb' => [['title' => 'لیست سبدخرید من ', 'url' => route('user.basket.index')], ['title' => 'مشاهده سبدخریدمن  ',
+    'title'=>'مشاهده سفارش خرید دامنه',
+    'tabTitle'=>'مشاهده سفارش خرید دامنه',
+      'breadcrumb' => [['title' => 'لیست سفارش خرید دامنه   ', 'url' => route('user.domain.basket.index')], ['title' => 'مشاهده سفارش خرید دامنه  ',
       'class' => 'active']],
       ])
 
@@ -24,8 +24,9 @@
                               </div>
 <br>
 
-@include('custome.order.table_show', [ 'route' => route('user.basket.store', $order) ,   $order  , $contacts , 'tablee' => 'basket'])
 
+@include('custome.order.table_show', [ 'route' => route('user.domain.basket.store', $order) ,   $order  , $contacts
+, 'tablee' => 'basket', 'aroue' => 'user'])
                           </div>
                       </div>
                   </div>

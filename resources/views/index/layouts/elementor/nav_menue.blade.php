@@ -47,7 +47,7 @@
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.nameserver.index')}}"> خدمات nameserver </a> </li>
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#">خدمات dns</a> </li>
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.finical.index')}}">مدیریت مالی </a> </li>
-   <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.order.index')}}">مدیریت سفارش ها </a> </li>
+   <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('user.domain.basket.index')}}">مدیریت سفارش ها </a> </li>
    <li id="menu-item-2648" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page"><a  href="{{ route('index.user.logout') }}" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">خروج </a> </li>
    <form id="logout-form" action="{{ route('index.user.logout') }}" method="POST"

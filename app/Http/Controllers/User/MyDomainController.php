@@ -85,7 +85,7 @@ class MyDomainController extends Controller
 
 
 
-    public function BuyPost(Request $request){
+    public function BuyPost(Request $request , $id){
 
         $request->validate([
             'domain' => 'required',
@@ -110,7 +110,7 @@ class MyDomainController extends Controller
 
 
 Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-return redirect()->route('user.basket.show',$domain->id);
+return redirect()->route('user.domain.basket.show',$domain->id);
 
     }
 
