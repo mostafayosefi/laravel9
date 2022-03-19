@@ -50,6 +50,10 @@ class BasketController extends Controller
         $data=rule_buy_domain($request);
             $domain=Domain::find($id);
             $data = $request->all();
+            // dd($request->all());
+        $data['order_id']=Null;
+        $data['renew_id']=Null;
+
             $data['user_id']  = Auth::guard('user')->user()->id;
             $data['domain_id']  = $id;
             $data['contact_id_namesilo']=Contact::find($data['contact_id'])->contact_id;
@@ -72,7 +76,7 @@ class BasketController extends Controller
         $data['status']='waiting';
 $extension=find_extension($domain->domain);
 $price=riyal_extension($extension);
-$data['price']=$price * $data['years'];
+$data['price']=  finaly_price($data['private']  ,$data['years'] , $price);
 $x=0; $data['starttime']=now_time($x);
       $data['endtime']=now_time($data['years']);
       $data['oper']='buy_domain';
@@ -80,7 +84,7 @@ $x=0; $data['starttime']=now_time($x);
       $data['status']=$exito['status'];
       $activedes=$exito['active'];
 
-      store_timeline('user' , 'order' , $data['textUser'] , $data['type'] , $order->user_id , $order->id ,  $activedes);
+      store_timeline('user' , 'order' , $data['textUser'] , $data['type'] , $order->user_id , $data ,  $activedes);
 
       if($exito['status']=='active'){
 

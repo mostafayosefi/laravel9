@@ -6,7 +6,7 @@
 @elseif ($admin->status=='inactive')
 <span   class="spanstatus spanstatus_warning"> منتظر پرداخت </span>
 @else
-<span class="badge badge-primary"> در دست بررسی</span>
+<span class="spanstatus spanstatus_primary"> در دست بررسی</span>
 @endif
 
 

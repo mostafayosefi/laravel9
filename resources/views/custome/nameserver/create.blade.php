@@ -26,8 +26,7 @@
 
                         </div>
                         <div class="col-md-8">
-                            <label  class="{{ $errors->has('domain') ? 'red' : '' }}"  >    دامنه </label>
-                            <input id="domain" class="form-control" name="searchdomain" type="text"  value="{{old('domain')}}"   required="required"  style="height: 50px;">
+                            @include('admin.layouts.table.selectbox', [ 'allforeachs' => $domains ,  'input_name' => 'domain'  ,  'name_select' => 'دامنه' ,  'value' => '' , 'required'=>'required'  , 'index_id'=>'domain_id' ])
 
                             <div class="card-footer">
                                 <button type="submit"  class="btn btn-primary btn-lg">بررسی تغییر نیم سرور    </button>

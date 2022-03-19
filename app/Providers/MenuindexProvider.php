@@ -26,7 +26,7 @@ class MenuindexProvider extends ServiceProvider
     {
 
        view()->composer(['index.master', 'index.layouts.elementor.warp' , 'index.layouts.elementor.widget'
-       , 'index.support.index' , 'index.layouts.elementor.txtdese'
+       , 'index.support.index' , 'index.layouts.elementor.txtdese' , 'index.layouts.elementor.txtalert'
         , 'custome.layouts.sidebar'  , 'admin.layouts.sidebar' ], Menuindex::class);
     }
 }

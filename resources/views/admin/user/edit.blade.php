@@ -171,13 +171,23 @@
 
 
                           <div class="mt-3">
-                              <label class="tx-11 font-weight-bold mb-0 text-uppercase">وضعیت اکانت : </label>
-                              <p class="text-muted">
-                                  @include('admin.layouts.table.statusacount', [$admin ,'route' =>
-                                  route('admin.user.status', $admin->id ) , 'myname' => ' اکانت کاربری '.$admin->name.' ' ])
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">وضعیت وب سرویس : </label>
+                            <p class="text-muted">
+                                @include('admin.layouts.table.statuswebservice', [$admin ,'route' =>
+                                route('admin.user.status.api', $admin->apiwebservice->id ) , 'myname' => ' وب سرویس کاربر '.$admin->name.' ' ])
 
-                              </p>
-                          </div>
+                            </p>
+                        </div>
+
+
+                        <div class="mt-3">
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">وضعیت اکانت : </label>
+                            <p class="text-muted">
+                                @include('admin.layouts.table.statusacount', [$admin ,'route' =>
+                                route('admin.user.status', $admin->id ) , 'myname' => ' اکانت کاربری '.$admin->name.' ' ])
+
+                            </p>
+                        </div>
 
 
 
@@ -501,7 +511,7 @@
                                           </div>
                                       </div>
                                     </div>
-                              </div> 
+                              </div>
 
                           </div>
 
@@ -550,7 +560,7 @@
                                       </div>
                                   </div>
                                 </div>
-                          </div> 
+                          </div>
 
                       </div>
 

@@ -183,19 +183,10 @@
 
 
 
+ @include('user.domain.seemore', [ $contentdomains , 'name_nav' => 'domain'   ])
 
 
-@foreach ($contentdomains->chunk(12) as $chunk)
-<br>
-<div
-class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">
 
-    @foreach ($chunk as  $key => $contentdomain)
-<p class="domain-price text-center"  ><span dir="ltr"><small style="color: red; font_size: 16px; ">.</small><small title="{{$contentdomain->text}}" >{{$contentdomain->name}}</small>${{$contentdomain->price}}</span></p>
-
-@endforeach
-</div>
-@endforeach
 
 
 
@@ -388,7 +379,7 @@ class="elementor-field-type-email elementor-field-group elementor-column element
 
 
 
-
+{{--
 
 
 <div data-elementor-type="wp-page" data-elementor-id="2" class="elementor elementor-2" data-elementor-settings="[]">
@@ -400,7 +391,6 @@ class="elementor-field-type-email elementor-field-group elementor-column element
                 class="elementor-section elementor-inner-section elementor-element elementor-element-b01aaa0 elementor-section-boxed elementor-section-height-default elementor-section-height-default default-style"
                 data-id="b01aaa0" data-element_type="section"
                 data-settings="{&quot;rt_color_sets&quot;:&quot;default-style&quot;}">
-
 
 
 
@@ -450,19 +440,7 @@ class="elementor-field-type-email elementor-field-group elementor-column element
                                             </div>
                                         </div>
                                     </div>
-{{--
 
-                                    <div class="elementor-element elementor-element-a4e999a elementor-widget elementor-widget-text-editor"
-                                        data-id="a4e999a" data-element_type="widget"
-                                        data-widget_type="text-editor.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="elementor-text-editor elementor-clearfix">
-                                                <p>{{$contentdomain->text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
---}}
 
                                     <div class="elementor-element elementor-element-eb0c080 elementor-align-center elementor-widget elementor-widget-button"
                                         data-id="eb0c080" data-element_type="widget" data-widget_type="button.default">
@@ -505,7 +483,7 @@ class="elementor-field-type-email elementor-field-group elementor-column element
     </div>
 </div>
 
-
+ --}}
 
 
 

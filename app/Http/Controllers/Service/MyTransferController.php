@@ -110,9 +110,7 @@ if ( $code!='300') {
         return new CheckdomainCollection(Checkdomain::where('webservice_id' , $data['webservice_id'])->orderBy('type' ,'asc')->get());
       }
     if($this->external=='web'){
-
         $transfer=query_table_transfer($data); 
-
         $data['status']='active';
         $transfer->update([  'status' => $data['status']    ]);
         

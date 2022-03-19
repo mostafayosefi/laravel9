@@ -95,21 +95,16 @@ class MyDomainController extends Controller
         $data['status']  =  'rezerve';
         $data['user_id']  = Auth::guard('user')->user()->id;
    $defaultcontact=ValidateContact($data['user_id']);
-//   if($defaultcontact=='0'){
-// Alert::success('لطفا اکانت خود را ثبت نمایید       ', '     لطفا نسبت به ثبت اکانت جدید لطفا اقدام نمایید');
-// return redirect()->route('user.contact.index');  }
+   
+   $domain = Domain::where([  ['domain' ,$data['domain'] ], ])->first(); 
 
-// $data['contact_id']  =  0;
-   $domain = Domain::create($data);
-//    $payment = Payment::create([ 'type' => 'offline' , 'status' => 'waiting' ]);
-//    $order = Order::create([ 'type' => 'offline' , 'status' => 'waiting' ]);
+   if($domain){ 
+    Alert::success('مشاهده اطلاعات دامنه ثبت شده      ', 'اطلاعات دامنه را می توانید مشاهده فرمایید ');
+    }else{ 
+    Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
+    $domain = Domain::create($data);  }
+ 
 
-
-    // $domain=Domain::find(1);
-    // dd($domain->contact);
-
-
-Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
 return redirect()->route('user.domain.basket.show',$domain->id);
 
     }

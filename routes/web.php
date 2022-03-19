@@ -240,6 +240,8 @@ Route::prefix('fetch')
     Route::get('/font/{value}', [FetchController::class, 'font'])->name('font');
     Route::get('/timeexpire/{order}/{oper}/{value}', [FetchController::class, 'timeexpire'])->name('timeexpire');
 
+    Route::get('/private_domain/{order}/{value}', [FetchController::class, 'private_domain'])->name('private_domain');
+
     Route::get('/payment/{oper}/{order}/{value}', [FetchController::class, 'payment'])->name('payment');
     Route::get('/contact/{order}/{value}', [FetchController::class, 'contact'])->name('contact');
 

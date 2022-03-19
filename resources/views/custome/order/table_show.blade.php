@@ -26,6 +26,10 @@
             type: 'get',
             url: '/fetch/timeexpire/{{$order->id}}/time/'+val+'',
         data: {get_option:val},
+      beforeSend: function (){
+        $(".cat") .html("aaaaaaaaaaaaaaaa");
+      },
+
         success: function (response) {
             document.getElementById("catamrc").innerHTML=response;
         }
@@ -42,6 +46,19 @@
             document.getElementById("price_domain").innerHTML=response;
         }
     });
+
+
+
+    var val = document.getElementById("cat").value;$.ajax({
+            type: 'get',
+            url: '/fetch/private_domain/{{$order->id}}/'+val+'',
+        data: {get_option:val},
+        success: function (response) {
+            document.getElementById("private_domain").innerHTML=response;
+        }
+    });
+
+    
 
         }
 </script>
@@ -60,6 +77,20 @@
 
 
 
+
+<script>
+    function fetch_select5(val){
+        var val = document.getElementById("private").value;$.ajax({
+            type: 'get',
+            url: '/fetch/timeexpire/{{$order->id}}/price/'+val+'',
+        data: {get_option:val},
+        success: function (response) {document.getElementById("price_domain").innerHTML=response;}
+    });
+        }
+</script>
+
+
+ 
 
 
 
@@ -123,6 +154,9 @@ $routecreate=route('user.contact.store');
             <td>
 
 
+                @include('index.layouts.elementor.txtalert', [ 'id' => '12' ])
+
+ 
 
 
                 <form method="POST" action="{{$route}}"  enctype="multipart/form-data" onsubmit="return Validate(this);">
@@ -177,7 +211,7 @@ $routecreate=route('user.contact.store');
 
         <input type="hidden" name="starttime" value=""  />
         <input type="hidden" name="endtime" value=""  />
-        <input type="hidden" name="price" value=""  />
+        <input type="hidden" name="price" value=""  /> 
         <input type="hidden" name="domain" value="{{$order->domain}}"  />
 
 
@@ -208,12 +242,35 @@ $routecreate=route('user.contact.store');
 
 
 
+<tr>
+    <td>مشاهده Whois</td>
+    <td>
+        @include('index.layouts.elementor.txtalert', [ 'id' => '13' ])
+
+        <div class="col-md-6">
+        
+       
+            
+<select name="private" id="private"
+placeholder="" value="{{$order->private}}"  onchange="fetch_select5(this.value);"   aria-required="true"  required @if (($order->status == 'active')||($order->status == 'waiting')) disabled @endif >
+
+<div  id="private_domain">
+@include('custome.fetch.private_domain', ['order' => $order ,'value' => $order->years ])
+</div>
+
+ </select>
+       
+       
+        </div>
+
+    </td>
+</tr>
 
         <tr>
             <td>هزینه دامنه</td>
             <td>
                 <div  id="price_domain">
-                    @include('custome.fetch.expire_time', ['order' => $order ,'value' => $order->years ,'oper' => 'price' ])
+                    @include('custome.fetch.expire_time', ['order' => $order ,'value' => old('years', $order->years)  ,'oper' => 'price' ])
                 </div>
             </td>
         </tr>
@@ -258,28 +315,6 @@ $routecreate=route('user.contact.store');
         </tr>
 
 
-
-        <tr>
-            <td>مشاهده Whois</td>
-            <td>
-                <div class="form-group">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="private" id="private" value="0" @if (old('private', $order->private) == '0')  checked @endif
-                            @if (($order->status == 'active')||($order->status == 'waiting')) disabled @endif >
-                              قابل مشاهده
-                        <i class="input-frame"></i></label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="private" id="private" value="1"   @if (old('private', $order->private) == '1')  checked @endif
-                            @if (($order->status == 'active')||($order->status == 'waiting')) disabled @endif >
-                            غیرقابل مشاهده
-                        <i class="input-frame"></i></label>
-                    </div>
-                </div>
-            </td>
-        </tr>
         <tr>
             <td> قابلیت تمدید اتوماتیک </td>
             <td>

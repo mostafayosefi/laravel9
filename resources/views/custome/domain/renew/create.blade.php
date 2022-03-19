@@ -44,11 +44,7 @@
 
                                     @include('admin.layouts.table.selectbox', [ 'allforeachs' => $domains ,  'input_name' => 'domain'  ,  'name_select' => 'دامنه' ,  'value' => '' , 'required'=>'required'  , 'index_id'=>'domain_id' ])
 
-
-
-
-
-
+ 
                                     <div class="card-footer">
                                          <button type="submit" class="btn btn-primary float-right">  انتخاب دامنه و مرحله بعدی  </button>
                                     </div>

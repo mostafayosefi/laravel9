@@ -27,8 +27,10 @@ class NameserverController extends Controller
 
 
     public function create(){
-        return view('custome.nameserver.create' );
-    }
+        $domains= Domain::all();
+        return view('custome.nameserver.create', compact(['domains'  ] ));
+
+     }
 
     public function edit($id){
     }
@@ -36,12 +38,9 @@ class NameserverController extends Controller
 
     public function store(Request $request)
     {
-        $rulle=ruledomain($request);
-        $data = $request->all();
-        $data['user_id']=Auth::guard('user')->user()->id;
-        $data['domain']=$data['searchdomain'];
-
-
+         $data = $request->all();
+         $data['user_id']=Auth::guard('user')->user()->id;
+ 
         $nameserver=query_table_nameserver($data);
 
        Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');

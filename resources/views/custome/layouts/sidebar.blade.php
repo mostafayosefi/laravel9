@@ -40,7 +40,7 @@
               </ul>
             </div>
           </li>
-{{-- 
+{{--
         <li class="nav-item  {{ isActive(['user.ssl.create' , 'user.ssl.index'])}}   ">
             <a class="nav-link" data-toggle="collapse" href="#ssl" role="button" aria-expanded="false" aria-controls="ssl">
               <i class="link-icon" data-feather="list"></i>
@@ -140,7 +140,7 @@
             </li>
 
 
-
+{{--
 
         <li class="nav-item  {{ isActive(['user.finical.index' , 'user.finical.index'])}}   ">
             <a class="nav-link" data-toggle="collapse" href="#finical" role="button" aria-expanded="false" aria-controls="finical">
@@ -156,7 +156,7 @@
               </ul>
             </div>
           </li>
-
+ --}}
 
           <li class="nav-item  {{ isActive(['user.finical.wallet.create' , 'user.finical.wallet.index'])}}   ">
             <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">

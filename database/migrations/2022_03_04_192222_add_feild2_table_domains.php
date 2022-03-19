@@ -16,7 +16,7 @@ class AddFeild2TableDomains extends Migration
         Schema::table('domains', function (Blueprint $table) {
             $table->integer('years')->default('1')->after('user_id');
             $table->integer('renew')->default('0')->comment('0 is dont renew , 1 is renew')->after('user_id');
-            $table->integer('private')->default('0')->comment('0 is noprivate , 1 is private')->after('user_id');
+            $table->string('private')->default('private_off')->comment('private_off is noprivate , private_on is private')->after('user_id');
         });
     }
 

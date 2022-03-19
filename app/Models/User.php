@@ -105,4 +105,11 @@ class User extends Authenticatable
     }
 
 
+
+    public function apiwebservice()
+    {
+        return $this->hasOne(Apiwebservice::class);
+    }
+
+
 }

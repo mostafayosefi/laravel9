@@ -52,18 +52,24 @@ $endtime=now_time($value); @endphp
 
 @endif
 
-@php
 
+@if ($oper=='price')
+
+@php
 $extension=find_extension($order->domain);
 $price=riyal_extension($extension);
-$price=$price * $value;
+ 
+  
+
+// private_price_finaly($order->private);
+private_price_finaly($value);
+$final_price= ($price * session('year')) + session('private_price');   
  @endphp
 
 
-@if ($oper=='price')
-{{number_format($price)}}  ريال
+{{number_format($final_price)}}  ريال    
 
-<input type="hidden" name="price" value="{{$price}}"  />
+<input type="hidden" name="price" value="{{$final_price}}"  />
 @endif
 
 

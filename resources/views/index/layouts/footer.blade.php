@@ -47,9 +47,20 @@
 
 
 
-    <div class="copyright"> {{$setting->fcopy}} </div>
+    <div class="copyright"> {{$setting->fcopy}} 
+    
+        
+        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2" alt="" style="cursor:pointer" id="dZG0BcDPulrlSm6USxI2"></a>
+<br>
+
+<img referrerpolicy='origin' id = 'rgvjesgtjxlzesgtjxlzfukz' style = 'cursor:pointer' onclick = 'window.open("https://logo.samandehi.ir/Verify.aspx?id=301016&p=xlaoobpdrfthobpdrfthgvka", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt = 'logo-samandehi' src = 'https://logo.samandehi.ir/logo.aspx?id=301016&p=qftilymanbpdlymanbpdwlbq' />
+    
+    </div>
     <div class="footer-info-right">
     <ul class="social_media inline-list">
+
+
+
     <li class="instagram"><a class="ui-icon-instagram" target="_blank" href="instagram" title="Instagram" rel="nofollow"><span>اینستاگرام  TiTlE  </span></a></li>
     <li class="linkedin"><a class="ui-icon-linkedin" target="_blank" href="linkedin" title="Linkedin" rel="nofollow"><span>لینکدین  TiTlE  </span></a></li>
 

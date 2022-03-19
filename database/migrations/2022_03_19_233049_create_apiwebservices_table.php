@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransfersTable extends Migration
+class CreateApiwebservicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateTransfersTable extends Migration
      */
     public function up()
     {
-        Schema::create('transfers', function (Blueprint $table) {
+        Schema::create('apiwebservices', function (Blueprint $table) {
             $table->id();
-            $table->string('domain');
-            $table->string('status')->comment('active , inactive , rezerve , waiting')->default('inactive');
-            $table->string('auth')->nullable();
-            $table->string('price')->nullable();
-            $table->integer('renew')->default('0');
-            $table->integer('private')->default('0');
+            $table->string('token')->nullable();
+            $table->string('status')->default('inactive');
             $table->foreignId('user_id')->nullable()->unsigned()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -33,6 +29,6 @@ class CreateTransfersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transfers');
+        Schema::dropIfExists('apiwebservices');
     }
 }

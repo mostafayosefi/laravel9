@@ -1,7 +1,7 @@
 @component('index.layouts.content', [
-    'title' => ' صفحه اصلی',
-    'tabTitle' => ' صفحه اصلی ',
-    'breadcrumb' => [['title' => 'صفحه اصلی', 'class' => 'active']],
+    'title' =>  $mysetting->title ,
+    'tabTitle' => $mysetting->title,
+    'breadcrumb' => [['title' => $mysetting->title , 'class' => 'active']],
     ])
 
 

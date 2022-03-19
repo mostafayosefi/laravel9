@@ -45,6 +45,7 @@ Route::prefix('user')
     Route::put('/{user}/secret', [UserController::class, 'secret'])->name('secret');
     Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
     Route::put('/{id}/status', [UserController::class, 'status'])->name('status');
+    Route::put('/{id}/status/api', [UserController::class, 'status_api'])->name('status.api');
     Route::get('/{id}/login', [UserController::class, 'login'])->name('login');
 });
 

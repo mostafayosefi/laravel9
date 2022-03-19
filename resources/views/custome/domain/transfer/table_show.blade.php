@@ -1,12 +1,21 @@
 
 
-      @slot('style')
-
-
-
-
+      @slot('style') 
 
 <link rel="stylesheet" href="{{ asset('template/assets/vendors/select2/select2.min.css') }}">
+
+
+<script>
+    function fetch_select3(val){
+        var val = document.getElementById("payment").value;$.ajax({
+            type: 'get',
+            url: '/fetch/payment/transfer/{{$transfer->id}}/'+val+'',
+        data: {get_option:val},
+        success: function (response) {document.getElementById("view_payment").innerHTML=response;}
+    });
+        }
+</script>
+
 
 
 
@@ -52,7 +61,7 @@
 
 
 
-
+{{-- 
         <tr>
             <td>مشاهده Whois</td>
             <td>
@@ -95,7 +104,7 @@
                 </div>
             </td>
         </tr>
-
+ --}}
 
 
         <tr>
@@ -109,6 +118,26 @@
             </td>
         </tr>
 
+        
+        @if (($transfer->status != 'active')&&($transfer->status != 'waiting'))
+
+            <tr>
+                <td>موجودی شارژ حساب من</td>
+                <td> <span class="spanstatus spanstatus_primary">
+                        {{ number_format(Mywallet($transfer->user->id,'mycharge')) }} ريال </span>
+                </td>
+            </tr>
+
+        @endif
+
+        <tr>
+            <td>هزینه انتقال دامنه</td>
+            <td>
+                
+{{number_format($transfer->price)}}  ريال     
+
+            </td>
+        </tr>
 
         <input type="hidden" name="domain" value="{{$transfer->domain}}"  />
 
@@ -118,26 +147,63 @@
 
 
 
-
-
-
-
         @if($aroue=='user')
-
         <tr>
+            <td>پرداخت</td> 
 
-            <td>عملیات انتقال دامنه   </td>
+
+            
+        @if($transfer->payment)
+        @php $payment = $transfer->payment;  @endphp
+        @else
+        @php $payment = $transfer;  @endphp
+        @endif
+
+
+ 
             <td>
 
 
-                @if (($transfer->status != 'active'))
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary float-right">انتقال دامنه</button>
-                </div>
-                @endif
+                    <div class="elementor-form-fields-wrapper elementor-labels-above"
+                        style="padding-bottom: 30px;">
+                        <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-40">
+
+                            <select name="type" id="payment" onchange="fetch_select3(this.value);"
+                                class="elementor-field elementor-size-sm  elementor-field-textual"
+                                placeholder=""   aria-required="true" @if (($transfer->status == 'active')||($transfer->status == 'waiting')) disabled @endif >
+                                <option value="online" {{(old('type')  == 'online' ? 'selected' : '')}}   >پرداخت آنلاین   </option>
+                                <option value="offline"  {{(old('type')  == 'offline' ? 'selected' : '')}}  >پرداخت آفلاین</option>
+                                <option value="depo"  {{(old('type')  == 'depo' ? 'selected' : '')}}  >پرداخت از شارژ حساب</option>
+                            </select>
+                            <input type="hidden" name="textUser" value="پرداخت غیرمستقیم" />
+<div  id="view_payment">
+@include('custome.fetch.payment', ['oper' => 'transfer' ,'order' => $transfer ,'value' => old('type' , $payment->type ) ])
+</div>
+</div>
+                        <input type="hidden" name="charge" value="{{Mywallet($transfer->user_id,'mycharge')}}" />
+                        <input type="hidden" name="user_id" value="{{$transfer->user_id}}" />
+
+@method('PUT')
+                        <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-40">
+                            <label> </label>
+
+        @if (($transfer->status != 'active')&&($transfer->status != 'waiting'))
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary float-right">پرداخت و انتقال دامنه</button>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
             </td>
         </tr>
         @endif
+
+
+
+
+
+
+ 
 
 
 
@@ -148,23 +214,13 @@
 
  @include('index.layouts.table.getstatus', ['admin' => $transfer ,'route' => ''
    ,'type_name' => 'status_domain' ])
-
-
-
-
-
+ 
 </td>
-        </tr>
+  </tr>
 
 
 
-    </form>
-
-
-
-
-
-
+    </form> 
 
     </tbody>
 </table>

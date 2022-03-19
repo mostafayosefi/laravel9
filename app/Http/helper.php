@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Apiwebservice;
 use App\Models\User;
 use App\Models\Domain;
 use App\Models\Wallet;
@@ -453,6 +454,11 @@ if(! function_exists('Change_status') ) {
             Alert::success('تغییر وضعیت پسوند دامنه با موفقیت انجام شد', 'تغییرات وضعیت پسوند دامنه با موفقیت انجام شد');
         }
 
+        if($table=='apiwebservice'){
+            $table= Apiwebservice::find($id);
+            Alert::success('تغییر وضعیت وب سرویس کاربر با موفقیت انجام شد', 'تغییرات وضعیت وب سرویس کاربر با موفقیت انجام شد');
+        }
+
 
 
 
@@ -466,6 +472,21 @@ if(! function_exists('Change_status') ) {
 
 
 
+
+    if(! function_exists('has_webservice') ) {
+        function has_webservice($id)
+        {
+
+
+            $apiwebservice = Apiwebservice::where([ ['user_id' , $id], ])->first();
+
+            if($apiwebservice){}else{
+                Apiwebservice::create([ 'status'=> 'inactive' , 'user_id' => $id ]);
+             }
+
+
+        }
+    }
 
 
 
@@ -712,8 +733,8 @@ return $personJSON = response()->json([
                     $base = array(
                         'domain' => $data['domain'] ,
                         'auth' => $data['auth'] ,
-                        'renew' => $data['renew'] ,
-                        'private' => $data['private'] ,
+                        'renew' => 0 ,
+                        'private' => 0 ,
                     );
                            }
 
@@ -760,10 +781,12 @@ return $personJSON = response()->json([
     if(! function_exists('query_table_transfer') ) {
         function query_table_transfer( $data)
         {
+            $extension=find_extension($data['domain']);
+            $price=riyal_extension($extension);
             $transfer=Transfer::where([ ['domain' ,$data['domain']],  ])->first();
             if($transfer){
             }else{
-            $transfer = Transfer::create([ 'user_id'=>$data['user_id'] ,'status'=> 'inactive'  ,'domain'=>$data['domain']     ]);
+            $transfer = Transfer::create([ 'user_id'=>$data['user_id'] ,'status'=> 'inactive'  ,'domain'=>$data['domain']    ,'price'=>$price     ]);
             }
             return $transfer;
         }
@@ -775,10 +798,12 @@ return $personJSON = response()->json([
     if(! function_exists('query_table_nameserver') ) {
         function query_table_nameserver( $data)
         {
-            $nameserver=Nameserver::where([ ['domain' ,$data['domain']],  ])->first();
+            $domain=Domain::find($data['domain_id']);
+
+            $nameserver=Nameserver::where([ ['domain' ,$domain->domain ],  ])->first();
             if($nameserver){
             }else{
-            $nameserver = Nameserver::create([ 'user_id'=>$data['user_id'] ,'status'=> 'inactive'  ,'domain'=>$data['domain']     ]);
+            $nameserver = Nameserver::create([ 'user_id'=>$data['user_id'] ,'status'=> 'inactive'  ,'domain'=>$domain->domain     ]);
             }
             return $nameserver;
         }
@@ -900,6 +925,52 @@ return $personJSON = response()->json([
     }
 
 
+
+    if(! function_exists('finaly_price') ) {
+        function finaly_price($private ,$year , $price  )
+        {
+
+
+            if($private=='private_on'){   $private_price = 1200;  }
+            elseif($private=='private_off'){  $private_price = 0;     }
+
+            $final_price= ($price * $year) + $private_price;
+            return   $final_price;
+
+
+        }
+    }
+
+
+    if(! function_exists('private_price_finaly') ) {
+        function private_price_finaly($value)
+        {
+
+            if (is_numeric($value)) {
+                if (session()->has('year')) {}else{ session(['year' => 1]); }
+                if (session()->has('private_price')) { }else{ session(['private_price' => 0]); }
+                session(['year' => $value]);
+            }else{
+
+
+                if (session()->has('year')) { }else{ session(['year' => 1]); }
+                if (session()->has('private_price')) { }else{ session(['private_price' => 0]); }
+
+                if($value=='private_on'){   session(['private_price' => 1200]);  }
+                elseif($value=='private_off'){  session(['private_price' => 0]);   }else{
+                    session(['private_price' => 0]);
+                }
+
+            }
+
+
+
+
+
+         }
+    }
+
+
     if(! function_exists('method_payment') ) {
         function method_payment($data)
         {
@@ -997,7 +1068,7 @@ return $personJSON = response()->json([
 
 
 
- 
+
 
 
 if($mytable=='contact'){ $query=Contact::query()->where([ ['id' , '<>' ,'1'], ]);}

@@ -14,7 +14,7 @@ class WalletController extends Controller
 
     public function index(){
         $user_id  = Auth::guard('user')->user()->id;
-        $wallets= Wallet::where([ ['user_id',$user_id], ])->get();
+        $wallets= Wallet::where([ ['user_id',$user_id], ])->orderBy('id','desc')->get();
         return view('custome.wallet.index' , compact(['wallets' , 'user_id'  ]));
     }
 
@@ -36,11 +36,11 @@ class WalletController extends Controller
         ]);
         $data = $request->all();
         $data['flag']  =  'inc';
-        $data['status']  =  'active';
+        $data['status']  =  'waiting';
         $data['user_id']  = Auth::guard('user')->user()->id;
 
        Wallet::create($data);
-       Alert::success('افزایش اعتبار حساب شما با موفقیت انجام شد ', 'افزایش اعتبار حساب شما با موفقیت انجام شد');
+       Alert::error('              متاسفانه درگاه پرداخت فعالی وجود ندارد ', '        پرداخت شارژ حساب انجام نگرفت      ');
         return redirect()->route('user.finical.wallet.index');
     }
 
