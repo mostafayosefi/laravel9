@@ -850,6 +850,25 @@ return $personJSON = response()->json([
 
 
 
+
+    if(! function_exists('persian_number') ) {
+        function persian_number( $number )
+        {
+
+ $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+ $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+ $numberpersian= str_replace( $english,$persian , $number);
+
+ return $numberpersian;
+
+
+
+        }
+    }
+
+
+
+
     if(! function_exists('store_timeline') ) {
         function store_timeline( $by , $operator , $text , $status , $user_id , $arrtimeline , $active)
         {

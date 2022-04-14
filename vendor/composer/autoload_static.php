@@ -786,6 +786,7 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Apiwebservice' => __DIR__ . '/../..' . '/app/Models/Apiwebservice.php',
         'App\\Models\\Categoryapi' => __DIR__ . '/../..' . '/app/Models/Categoryapi.php',
+        'App\\Models\\Categorycontentdomain' => __DIR__ . '/../..' . '/app/Models/Categorycontentdomain.php',
         'App\\Models\\ChangeNameServer' => __DIR__ . '/../..' . '/app/Models/ChangeNameServer.php',
         'App\\Models\\Checkdomain' => __DIR__ . '/../..' . '/app/Models/Checkdomain.php',
         'App\\Models\\Comid' => __DIR__ . '/../..' . '/app/Models/Comid.php',

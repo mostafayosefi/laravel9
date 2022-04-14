@@ -36,6 +36,8 @@
 
                                       <div class="col-sm-12">
 
+                                        @include('admin.layouts.table.selectbox', [ 'allforeachs' => $categorycontentdomains ,  'input_name' => 'name'  ,  'name_select' => 'نام گروه پسوند دامنه' ,  'value' => $contentdomain->categorycontentdomain_id , 'required'=>'required'  , 'index_id'=>'categorycontentdomain_id' ])
+
 
                                           <div class="form-group">
                                               <label for="name">نام پسوند</label>

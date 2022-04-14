@@ -18,5 +18,14 @@ class ContentDomain extends Model
         'link',
         'price',
         'extension',
+        'categorycontentdomain_id',
     ];
+
+
+
+    public function categorycontentdomain(){
+        return $this->belongsTo(Categorycontentdomain::class);
+    }
+
+
 }

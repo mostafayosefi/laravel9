@@ -17,7 +17,8 @@ class LoginuserController extends Controller
     public function register(){
         if (Auth::guard('user')->user()) {
       return redirect()->route('user.dashboard.index');  }
-        return view('index.home.register'  );
+        // return view('index.home.register'  );
+        return view('indexhost.home.register'  );
     }
 
 
@@ -53,9 +54,12 @@ class LoginuserController extends Controller
 
 
     public function login(){
+
+
         if (Auth::guard('user')->user()) {
       return redirect()->route('user.dashboard.index');  }
-        return view('index.home.login'  );
+        // return view('index.home.login'  );
+        return view('indexhost.home.login'  );
     }
 
 

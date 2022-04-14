@@ -175,6 +175,9 @@
               <ul class="nav sub-menu">
 
                 <li class="nav-item">
+ <a href="{{ route('admin.content.categorycontentdomain.create') }}" class="nav-link   {{ isActive(['admin.content.categorycontentdomain.create' ]) }}  ">دسته پسوند دامنه</a>
+                </li>
+                <li class="nav-item">
  <a href="{{ route('admin.content.domain.create') }}" class="nav-link   {{ isActive(['admin.content.domain.create' ]) }}  ">ثبت پسوند دامنه</a>
                 </li>
                 <li class="nav-item">

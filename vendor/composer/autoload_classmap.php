@@ -101,6 +101,7 @@ return array(
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Apiwebservice' => $baseDir . '/app/Models/Apiwebservice.php',
     'App\\Models\\Categoryapi' => $baseDir . '/app/Models/Categoryapi.php',
+    'App\\Models\\Categorycontentdomain' => $baseDir . '/app/Models/Categorycontentdomain.php',
     'App\\Models\\ChangeNameServer' => $baseDir . '/app/Models/ChangeNameServer.php',
     'App\\Models\\Checkdomain' => $baseDir . '/app/Models/Checkdomain.php',
     'App\\Models\\Comid' => $baseDir . '/app/Models/Comid.php',

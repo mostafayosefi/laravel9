@@ -46,7 +46,8 @@ class IndexController extends Controller
         $mysetting=Setting::find(1);
 
 //test
-        return view('index.home.index' , compact([ 'spotlites' , 'comidsfirst' , 'comidssec'  , 'coment'  , 'mysetting' ]));
+        // return view('index.home.index' , compact([ 'spotlites' , 'comidsfirst' , 'comidssec'  , 'coment'  , 'mysetting' ]));
+        return view('indexhost.home.index' , compact([ 'spotlites' , 'comidsfirst' , 'comidssec'  , 'coment'  , 'mysetting' ]));
     }
 
 
@@ -62,12 +63,14 @@ class IndexController extends Controller
 
     public function page($title  ){
         $mypage=Page::where('title' , $title)->first();
-        return view('index.page.mypage' , compact(['mypage']));
+        // return view('index.page.mypage' , compact(['mypage']));
+        return view('indexhost.page.mypage' , compact(['mypage']));
     }
 
     public function support(){
         $txtdese=Txtdese::where('id' , '4')->first();
-        return view('index.support.index' , compact(['txtdese']));
+        // return view('index.support.index' , compact(['txtdese']));
+        return view('indexhost.support.index' , compact(['txtdese']));
     }
 
 
@@ -99,7 +102,8 @@ return back();
         $txtdese=Txtdese::where('id' , '5')->first();
         $setting=Setting::find(1);
 
-        return view('index.faqs.index' , compact(['faqs' , 'txtdese' , 'setting']));
+        // return view('index.faqs.index' , compact(['faqs' , 'txtdese' , 'setting']));
+        return view('indexhost.faqs.index' , compact(['faqs' , 'txtdese' , 'setting']));
     }
 
 

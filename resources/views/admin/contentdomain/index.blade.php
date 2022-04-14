@@ -14,7 +14,7 @@
 
 
 
- 
+
 
 
 
@@ -33,6 +33,7 @@
                   <th>پسوند دامنه</th>
                   <th>  هزینه دامنه</th>
                   <th>آیکن</th>
+                  <th> دسته بندی</th>
                   <th>وضعیت</th>
                   <th>حذف</th>
                 </tr>
@@ -53,6 +54,7 @@
                     <td>   @include('admin.layouts.table.avatarnul', [  'avatarimage' => $admin->image , 'class'=>'profile-pic' , 'style' => 'height: 60px;width: 60px;'  ])
                     </td>
 
+                    <td> @if($admin->categorycontentdomain) {{$admin->categorycontentdomain->name}} @else - @endif </td>
 
 <td>
 

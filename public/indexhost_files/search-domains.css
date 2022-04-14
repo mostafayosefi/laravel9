@@ -1,0 +1,28 @@
+.search-domains header {
+    background: url(purple-bg.svg) no-repeat 50%;
+}
+.search-domains h1{
+	color:#fff;
+}
+
+.search-domains .banner p{
+	color:#fff;
+}
+.search-domains .domain-selector .www{
+	direction: ltr;
+    padding: 5px 0;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-right: .5rem;
+    color: #fff;
+}
+.domain.search-domains .domain-selector .btn.btn-primary.cta{
+	background-color: #fcaf17;
+	border-color: #fcaf17;
+
+}
+.search-domains .domain-selector .btn.btn-primary.cta:hover{
+	background-color: #fff;
+    color: #fcaf17;
+}
+

@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\NameserverController;
 use App\Http\Controllers\Admin\CategoryapiController;
 use App\Http\Controllers\Admin\ContentDomainController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
+use App\Http\Controllers\Admin\CategorycontentdomainController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -181,6 +182,19 @@ Route::prefix('content')
         Route::delete('/{id}', [CategoryapiController::class, 'destroy'])->name('destroy');
 
     });
+
+
+
+Route::prefix('categorycontentdomain')
+->name('categorycontentdomain.')->group(function () {
+    Route::get('/createcategorycontent', [CategorycontentdomainController::class, 'create'])->name('create');
+    Route::post('/', [CategorycontentdomainController::class, 'store'])->name('store');
+    Route::get('/{id}', [CategorycontentdomainController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [CategorycontentdomainController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CategorycontentdomainController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CategorycontentdomainController::class, 'destroy'])->name('destroy');
+});
+
 
     Route::prefix('domain')
     ->name('domain.')->group(function () {

@@ -1,0 +1,21 @@
+@media (min-width: 1400px) {
+  .d-xxl-none {
+    display: none !important;
+  }
+  .d-xxl-block {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1660px) {
+  .d-xxxl-none {
+    display: none !important;
+  }
+  
+  .d-xxxl-block {
+    display: block !important;
+  }
+}
+
+
+

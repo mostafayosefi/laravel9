@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\ContentDomain;
 use App\Http\Controllers\Controller;
+use App\Models\Categorycontentdomain;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ContentDomainController extends Controller
 {
 
 
-    public function create(){ 
-        return view('admin.contentdomain.create' );
+    public function create(){
+        $categorycontentdomains=Categorycontentdomain::all();
+        return view('admin.contentdomain.create' , compact([ 'categorycontentdomains' ]) );
     }
 
     public function index(){
@@ -24,7 +26,8 @@ class ContentDomainController extends Controller
 
     public function edit($id){
         $contentdomain=ContentDomain::find($id);
-        return view('admin.contentdomain.edit' , compact(['contentdomain'  ]));
+        $categorycontentdomains=Categorycontentdomain::all();
+        return view('admin.contentdomain.edit' , compact(['contentdomain' ,  'categorycontentdomains'  ]));
     }
 
 
