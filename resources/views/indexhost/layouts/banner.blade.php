@@ -23,7 +23,7 @@
     </div>
 
     <div class="col-lg-5 text-left">
-        <img class="header-img"   src="{{asset('indexhost_files/index7.png')}}" alt="فروشگاه ساز آنلاین ایران هاست" loading="lazy">
+        <img class="header-img"   src="{{asset('indexhost_files/index7.png')}}" alt="" loading="lazy">
     </div>
     </div>
     @endif
@@ -70,7 +70,7 @@
             @endphp
         </div>
         <div class="col-lg-5 text-left">
-        <img class="header-img"   src="{{asset('indexhost_files/index7.png')}}" alt="فروشگاه ساز آنلاین ایران هاست" loading="lazy">
+        <img class="header-img"   src="{{asset('indexhost_files/index7.png')}}" alt="" loading="lazy">
         </div>
         </div>
 

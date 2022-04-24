@@ -205,7 +205,6 @@ if(! function_exists('Mywallet') ) {
             ])->sum('price');
 
             $my_dec=Wallet::where([
-                ['user_id' , '=' ,$user_id],
                 ['status' , '=' ,'active'],
                 ['flag' , '=' ,'dec'],
             ])->sum('price');
@@ -712,7 +711,7 @@ return $personJSON = response()->json([
                         'domain' => $data['domain'] ,
                         'years' => $data['years'] ,
                         'private' => $data['private'] ,
-                        'auto_renew' => $data['renew'] ,
+                        'auto_renew' => '0' ,
                         'contact_id' => $data['contact_id_namesilo'] ,
                         'ns1' => $data['dns1'] ,
                         'ns2' => $data['dns2'] ,
@@ -869,9 +868,19 @@ return $personJSON = response()->json([
 
 
 
-    if(! function_exists('store_timeline') ) {
-        function store_timeline( $by , $operator , $text , $status , $user_id , $arrtimeline , $active)
+    if(! function_exists('store_wallet') ) {
+        function store_wallet( $data )
         {
+
+
+        }
+    }
+
+
+
+            if(! function_exists('store_timeline') ) {
+                function store_timeline( $by , $operator , $text , $status , $user_id , $arrtimeline , $active)
+                {
 
 
             $data['by']=$by;

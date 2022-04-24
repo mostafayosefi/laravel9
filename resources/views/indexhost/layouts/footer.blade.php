@@ -4,7 +4,15 @@
     <div class="container-fluid">
     <div class="row">
     <div class="col-12 col-sm-6 col-lg-5 enamads">
-        <a href="#"> <img class="img-fluid" src="{{asset('indexhost_files/enemad.png')}}" alt="اینماد ایرانی نیک" width="70" loading="lazy"> </a>
+
+        {{-- <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2">
+    <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2" alt="" style="cursor:pointer" id="dZG0BcDPulrlSm6USxI2"></a> --}}
+
+    <a  target="_blank" href="https://trustseal.enamad.ir/?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2">
+        <img class="img-fluid"  src="{{asset('indexhost_files/enemad.png')}}"  alt="اینماد ایرانی نیک" width="70" loading="lazy"  id="dZG0BcDPulrlSm6USxI2"> </a>
+
+
+        {{-- <a href="#"> <img class="img-fluid" src="{{asset('indexhost_files/enemad.png')}}" alt="اینماد ایرانی نیک" width="70" loading="lazy"> </a> --}}
         <a href="#"> <img class="img-fluid" src="{{asset('indexhost_files/melat.svg')}}" alt="به پرداخت ملت" loading="lazy"> </a></div>
     </div>
     </div>

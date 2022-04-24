@@ -84,6 +84,9 @@ $x=0; $data['starttime']=now_time($x);
       $data['status']=$exito['status'];
       $activedes=$exito['active'];
 
+
+      store_wallet($data);
+
       store_timeline('user' , 'order' , $data['textUser'] , $data['type'] , $order->user_id , $data ,  $activedes);
 
       if($exito['status']=='active'){
