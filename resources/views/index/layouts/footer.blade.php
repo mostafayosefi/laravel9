@@ -49,10 +49,11 @@
 
     <div class="copyright"> {{$setting->fcopy}}
 
-        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=274739&amp;Code=K1FGFjhdUENn7QRttm8w"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=274739&amp;Code=K1FGFjhdUENn7QRttm8w" alt="" style="cursor:pointer" id="K1FGFjhdUENn7QRttm8w"></a>
+        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=274739&amp;Code=K1FGFjhdUENn7QRttm8w">
+
+            <img class="img-fluid"  src="{{asset('indexhost_files/enemad.png')}}"  alt="اینماد ایرانی نیک" width="90" loading="lazy"  id="K1FGFjhdUENn7QRttm8w">        </a>
  <br>
 
-<img referrerpolicy='origin' id = 'rgvjesgtjxlzesgtjxlzfukz' style = 'cursor:pointer' onclick = 'window.open("https://logo.samandehi.ir/Verify.aspx?id=301016&p=xlaoobpdrfthobpdrfthgvka", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt = 'logo-samandehi' src = 'https://logo.samandehi.ir/logo.aspx?id=301016&p=qftilymanbpdlymanbpdwlbq' />
 
     </div>
     <div class="footer-info-right">
