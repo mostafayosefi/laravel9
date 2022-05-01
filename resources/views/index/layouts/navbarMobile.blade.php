@@ -37,7 +37,9 @@
 					<ul id="mobile-navigation" class="menu">
 
 
-<li id="mobile-menu-item-801" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn"><a href="{{route('user.dashboard.index')}}"><span> پنل کاربری</span></a>
+                        <li id="mobile-menu-item-289" data-depth="0" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{route('index.home')}}"><span>صفحه نخست  </span></a> </li>
+@if(auth()->guard('user')->user())
+<li id="mobile-menu-item-801" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn"><a href="#"><span> پنل کاربری</span></a>
 <ul class="sub-menu">
 
 
@@ -59,6 +61,15 @@
 </form>
 </ul>
 </li>
+@endif
+
+
+<li id="mobile-menu-item-302" data-col-size="2" data-depth="0" class="multicolumn-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children multicolumn"><a href="#"><span>  بررسی دامنه  </span></a>
+    <ul class="sub-menu">
+ <li id="mobile-menu-item-2661" data-depth="1" class="menu-item menu-item-type-post_type menu-item-object-page">
+     <a href="{{ route('index.check') }}">جستجوی دامنه</a> </li>
+    </ul>
+    </li>
 
 
 

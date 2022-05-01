@@ -23,11 +23,11 @@
 
 
 
-        
+
 
     <li   class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888"><a href="{{route('index.home')}}">صفحه نخست</a></li>
- 
-    
+
+
     @if(auth()->guard('user')->user())
      <li   class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888"><a href="{{route('user.panel.index')}}">پنل کاربری</a></li>
     @else
@@ -47,14 +47,13 @@
 
 
 
-    <div class="copyright"> {{$setting->fcopy}} 
-    
-        
-        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=269117&amp;Code=dZG0BcDPulrlSm6USxI2" alt="" style="cursor:pointer" id="dZG0BcDPulrlSm6USxI2"></a>
-<br>
+    <div class="copyright"> {{$setting->fcopy}}
+
+        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=274739&amp;Code=K1FGFjhdUENn7QRttm8w"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=274739&amp;Code=K1FGFjhdUENn7QRttm8w" alt="" style="cursor:pointer" id="K1FGFjhdUENn7QRttm8w"></a>
+ <br>
 
 <img referrerpolicy='origin' id = 'rgvjesgtjxlzesgtjxlzfukz' style = 'cursor:pointer' onclick = 'window.open("https://logo.samandehi.ir/Verify.aspx?id=301016&p=xlaoobpdrfthobpdrfthgvka", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt = 'logo-samandehi' src = 'https://logo.samandehi.ir/logo.aspx?id=301016&p=qftilymanbpdlymanbpdwlbq' />
-    
+
     </div>
     <div class="footer-info-right">
     <ul class="social_media inline-list">

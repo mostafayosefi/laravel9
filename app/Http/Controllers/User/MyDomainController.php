@@ -67,8 +67,8 @@ class MyDomainController extends Controller
                 return view('custome.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ]));
 
             }else{
-                // return view('user.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ]));
-                return view('indexhost.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ,  'categorycontentdomains' ]));
+                return view('user.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ]));
+                // return view('indexhost.domain.search', compact(['user' , 'contentdomains' , 'result'  , 'checkdomains' ,'name'  ,'resultdomain' ,  'categorycontentdomains' ]));
 
             }
 
