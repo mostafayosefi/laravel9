@@ -45,6 +45,7 @@
     <div class="mb-3"><strong class="fs-16 fs-lg-20">صفحات داخلی</strong>
     <ul>
     <li><a class="fs-14 fs-xl-16" href="{{route('index.home')}}"> خانه </a></li>
+    <li><a class="fs-14 fs-xl-16" href="{{route('index.document.index')}}"> راهنمای وب سرویس </a></li>
     <li><a class="fs-14 fs-xl-16" href="{{route('index.faqs')}}"> سوالات متداول </a></li>
     <li><a class="fs-14 fs-xl-16" href="{{route('index.support')}}">تماس با ما</a></li>
     </ul>

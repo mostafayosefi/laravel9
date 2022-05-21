@@ -49,8 +49,7 @@
 
 
 
-
-
+ 
 
 
     <section id="domians-info" class="mid-menu">

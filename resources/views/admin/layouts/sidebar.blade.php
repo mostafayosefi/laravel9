@@ -361,6 +361,23 @@
           </li>
 
 
+          <li class="nav-item  {{ isActive(['admin.trace.index' , 'admin.trace.index'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#trace" role="button" aria-expanded="false" aria-controls="trace">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">گزارش api</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.trace.index' , 'admin.trace.index'])}}   "  id="trace">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.trace.index') }}" class="nav-link   {{ isActive(['admin.trace.index']) }}  ">مشاهده گزارش های api</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+
 
 
       </ul>

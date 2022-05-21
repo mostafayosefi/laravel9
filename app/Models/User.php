@@ -112,4 +112,13 @@ class User extends Authenticatable
     }
 
 
+
+
+    public function trace_apis()
+    {
+        return $this->hasMany(TraceApi::class , 'user_id' );
+    }
+
+
+
 }

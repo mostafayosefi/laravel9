@@ -59,7 +59,6 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
             Route::get('/faqs', [IndexController::class, 'faqs'])->name('faqs');
 
 
-
             Route::prefix('webservice')->name('document.')->group(function () {
                 Route::get('/{myurl?}', [DocumentController::class, 'index'])->name('index');
             });

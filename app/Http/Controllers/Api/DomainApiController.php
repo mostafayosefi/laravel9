@@ -13,10 +13,19 @@ class DomainApiController extends Controller
 {
 
     public function checkdomain(Request $request){
+
+        $trace['operator']='checkdomain';
+
         $domain=validate_domain( $request);
         if($domain=='invalid'){
+
+            $trace['status']='inactive';
+            $data=my_trace_api($trace);
             return response()->json(['error' => 'Invalide Format Domain Example yahoo.com'], 400);
         }else{
+
+            $data=my_trace_api($trace);
+$request['searchdomain']=$request->domain;
             $data=all_request_domain($request);
             $data['muldomain']=$request->muldomain;
             $tasks_controller = new DomainController('api');

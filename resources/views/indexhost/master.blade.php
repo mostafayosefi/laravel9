@@ -37,7 +37,8 @@
 </head>
 
 
-<body class="home-page-body home" data-debug="False">
+<body class="{{ $calass_body ?? 'home-page-body home' }}" data-debug="False">
+
 
 
     <div class="go-top">

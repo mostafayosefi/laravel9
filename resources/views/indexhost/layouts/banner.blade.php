@@ -57,7 +57,8 @@
         <div class="domain-selector d-flex justify-content-center">
         <div class="input-group-append"><button class="btn btn-primary cta btn-search-domain " title="نمایش پیام موقت" type="submit"> <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="{{ asset('indexhost_files/bootstrap-icons.svg#search') }}"></use></svg> </button></div>
-        <input class="domain-text form-control form-control-lg text-left" dir="ltr" name="searchdomain" required type="text" placeholder="دامین مورد نظر را وارد کنید"> <span class="www">www.</span></div>
+        <input class="domain-text form-control form-control-lg text-left" dir="ltr" name="searchdomain" required type="text"
+        placeholder="دامین مورد نظر را وارد کنید"    onkeyup="this.value=this.value.toLowerCase()" > <span class="www">www.</span></div>
         </form></div>
         </div>
 

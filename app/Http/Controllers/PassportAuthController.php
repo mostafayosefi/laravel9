@@ -27,7 +27,12 @@ class PassportAuthController extends Controller
             'password' => 'required|min:8',
         ]);
 
+
+        $trace['operator']='register';
+
         if ($validator->fails()) {
+            $trace['status']='inactive';
+            $data=my_trace_api($trace);
             return response()->json(['error' => $validator->messages()], 400);
         }else{
 
@@ -37,6 +42,7 @@ class PassportAuthController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
+            $data=my_trace_api($trace);
             $token = $user->createToken('LaravelAuthApp')->accessToken;
             return response()->json(
                 ['message' => 'success' ,
@@ -56,11 +62,17 @@ class PassportAuthController extends Controller
             'password' => $request->password
         ];
 
+
+        $trace['operator']='login';
+
         if (auth()->attempt($data)) {
+            $data=my_trace_api($trace);
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
             return response()->json(['token' => $token], 200);
         } else {
-            return response()->json(['error' => 'Unauthorisedddddddddddddd'], 401);
+            $trace['status']='inactive';
+            $data=my_trace_api($trace);
+            return response()->json(['error' => 'unknown'], 401);
         }
     }
 }

@@ -24,6 +24,7 @@ use Hekmatinasser\Verta\Verta;
 use App\Models\Discriptionorder;
 use App\Models\Renew;
 use App\Models\Ticket;
+use App\Models\TraceApi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -359,22 +360,26 @@ if(! function_exists('multidomain') ) {
     function multidomain($domain,$orginaldomain)
     {
 $origin=$orginaldomain.',';
-$net=$domain.'.net,';
-$org=$domain.'.org,';
-// $co=$domain.'.co,';
 $com=$domain.'.com,';
-// $biz=$domain.'.biz';
+$org=$domain.'.org,';
+$net=$domain.'.net,';
+$biz=$domain.'.biz,';
+$me=$domain.'.me,';
+$xyz=$domain.'.xyz,';
 
 $multi=$origin;
 
 if($origin==$com){}else{$multi.=$com;}
 if($origin==$org){}else{$multi.=$org;}
 if($origin==$net){}else{$multi.=$net;}
+if($origin==$biz){}else{$multi.=$biz;}
+if($origin==$me){}else{$multi.=$me;}
+if($origin==$xyz){}else{$multi.=$xyz;}
 
 
  $multi .= '';
 
-if($origin==$net||$origin==$org||$origin==$com){$count='3';}else{$count='4';}
+if($origin==$net||$origin==$org||$origin==$com||$origin==$biz||$origin==$me||$origin==$xyz){$count='6';}else{$count='7';}
 
  $mul=array();
  $mul['AllDomain']= $multi;
@@ -1166,14 +1171,24 @@ return $count;
 
 
 
+    if(! function_exists('my_trace_api') ) {
+        function my_trace_api($trace)
+        {
+
+            TraceApi::create($trace);
+
+        }
+    }
+
+
     if(! function_exists('all_request_domain') ) {
         function all_request_domain( $request)
         {
 
-
+            $searchdomain = Str::lower($request->searchdomain);
             $rulle=ruledomain($request);
-            $orginaldomain=linkdomain($request->searchdomain , $request->suffix  );
-            $domain=linkdomainOrigin($request->searchdomain , $request->suffix  );
+            $orginaldomain=linkdomain($searchdomain , $request->suffix  );
+            $domain=linkdomainOrigin($searchdomain , $request->suffix  );
             $multidomain=multidomain($domain , $orginaldomain  );
 
             $data = $request->all();

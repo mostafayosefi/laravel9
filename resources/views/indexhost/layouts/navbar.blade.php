@@ -237,6 +237,11 @@
 
 
                 <li class="nav-item">
+                    <a class="nav-link menu-togglers toggle-submenu" href="{{route('index.document.index')}}">
+                           راهنمای وب سرویس
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-togglers toggle-submenu" href="{{route('index.faqs')}}">
                         سوالات متداول
                     </a>

@@ -44,6 +44,7 @@ if($ContentDomain){ }else{
 
 $setting=Setting::find(1);
  $myurl = data_build_query('api/' , $data).'&domains='.$data['multidomain'];
+//  dd($myurl);
 $resource = Psr7\Utils::tryFopen($myurl, 'r');
 $stream = Psr7\Utils::streamFor($resource);
 $xml = simplexml_load_string($stream);

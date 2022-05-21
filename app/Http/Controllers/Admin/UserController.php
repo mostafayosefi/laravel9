@@ -29,7 +29,7 @@ class UserController extends Controller
             'password' => Hash::make('123456') ,
         ]); */
 
-        $users=User::all();
+        $users=User::orderBy('id', 'DESC')->get();
 
 
 

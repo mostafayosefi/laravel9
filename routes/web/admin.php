@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\CategoryapiController;
 use App\Http\Controllers\Admin\ContentDomainController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
 use App\Http\Controllers\Admin\CategorycontentdomainController;
+use App\Http\Controllers\Admin\TraceApiController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -313,6 +314,16 @@ Route::prefix('ticket')
     Route::put('/{ticket}', [TicketController::class, 'update'])->name('update');
     Route::delete('/{ticket}', [TicketController::class, 'destroy'])->name('destroy');
     Route::get('/close/{ticket}', [TicketController::class, 'status'])->name('close');
+});
+
+
+
+
+Route::prefix('trace')
+->name('trace.')->group(function () {
+
+    Route::get('/', [TraceApiController::class, 'index'])->name('index');
+
 });
 
 
