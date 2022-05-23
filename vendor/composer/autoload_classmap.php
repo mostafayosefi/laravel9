@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\SpotliteController' => $baseDir . '/app/Http/Controllers/Admin/SpotliteController.php',
     'App\\Http\\Controllers\\Admin\\TextdesController' => $baseDir . '/app/Http/Controllers/Admin/TextdesController.php',
     'App\\Http\\Controllers\\Admin\\TicketController' => $baseDir . '/app/Http/Controllers/Admin/TicketController.php',
+    'App\\Http\\Controllers\\Admin\\TraceApiController' => $baseDir . '/app/Http/Controllers/Admin/TraceApiController.php',
     'App\\Http\\Controllers\\Admin\\TransferController' => $baseDir . '/app/Http/Controllers/Admin/TransferController.php',
     'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
     'App\\Http\\Controllers\\Admin\\WalletController' => $baseDir . '/app/Http/Controllers/Admin/WalletController.php',

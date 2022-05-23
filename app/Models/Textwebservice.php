@@ -13,6 +13,7 @@ class Textwebservice extends Model
          'url',
          'link',
          'categoryapi_id',
+         'sample',
      ];
 
      public function categoryapi(){

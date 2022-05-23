@@ -722,6 +722,7 @@ class ComposerStaticInit6d46fb56d0e07884ef7776463e126e1c
         'App\\Http\\Controllers\\Admin\\SpotliteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SpotliteController.php',
         'App\\Http\\Controllers\\Admin\\TextdesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TextdesController.php',
         'App\\Http\\Controllers\\Admin\\TicketController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TicketController.php',
+        'App\\Http\\Controllers\\Admin\\TraceApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TraceApiController.php',
         'App\\Http\\Controllers\\Admin\\TransferController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TransferController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WalletController.php',

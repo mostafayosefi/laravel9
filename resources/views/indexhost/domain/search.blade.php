@@ -49,7 +49,7 @@
 
 
 
- 
+
 
 
     <section id="domians-info" class="mid-menu">
@@ -76,12 +76,15 @@
 
                     @foreach ($categorycontentdomains as $key =>$categorycontentdomain )
                     @if($categorycontentdomain->contentDomains)
-                    @foreach ($categorycontentdomain->contentDomains as  $contentDomain )
+
 
                     <div class="tab-pane @if($key=='0')  active @endif " id="{{$key}}a">
-                    <table     class="top-table table table-hover table-bordered table-responsive-md">
-                        <tbody>
+                        <table     class="top-table table table-hover table-bordered table-responsive-md">
+                            <tbody>
 
+
+
+                    @foreach ($categorycontentdomain->contentDomains as  $contentDomain )
 
 
 
@@ -100,11 +103,14 @@
 
 
 
-                        </tbody>
-                    </table>
-                    </div>
-
                     @endforeach
+
+
+                </tbody>
+            </table>
+            </div>
+
+
                     @endif
                 @endforeach
 

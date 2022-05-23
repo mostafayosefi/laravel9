@@ -68,6 +68,11 @@ public function destroy($id , Request $request){
     ]);
 
 $textwebservice= Textwebservice::find($id);
+
+
+$data['sample']= $textwebservice->sample;
+$data['sample']  =  uploadFile($request->file('sample'),'sample/webservice',$textwebservice->sample);
+
 $textwebservice->update($request->all());
 Alert::info('با موفقیت ویرایش شد', 'اطلاعات با ویرایش  شد');
 return back();

@@ -105,6 +105,18 @@
 
 <br>
 <pre class="pre">{{$textwebservice->link}}</pre>
+<br>
+
+
+
+<div>
+    <a class="btn-cta_outline-sm" title="Iranhost Client Portal"
+    href="{{asset($textwebservice->sample)}}" target="_blank" rel="noopener">دانلود نمونه سورس php </a>
+    </div>
+
+
+</div>
+
         </div>
         </div>
         </div>

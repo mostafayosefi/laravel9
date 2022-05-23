@@ -73,6 +73,11 @@
                                           </div>
 
 
+                                          <hr>
+                                          <div class="form-group" >
+                                          <label for="exampleInputUsername1"> آپلود فایل سمپل </label>
+                                          <input type="file"     id="exampleInputUsername1" autocomplete="off"  name="sample" >
+                                          </div>
 
 
                                           @method('PUT')
