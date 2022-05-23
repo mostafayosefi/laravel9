@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,14 +13,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 class LoginuserController extends Controller
 {
 
-//  test fr
+    public function __construct()
+    {
+
+        $setting=Setting::where('id' , '1')->first();
+        $this->template = $setting->template;
+    }
 
     public function register(){
         if (Auth::guard('user')->user()) {
       return redirect()->route('user.dashboard.index');  }
-        return view('index.home.register'  );
-        // return view('indexhost.home.register'  );
-    }
+        return view($this->template.'.home.register'  );
+     }
 
 
 
@@ -58,9 +63,8 @@ class LoginuserController extends Controller
 
         if (Auth::guard('user')->user()) {
       return redirect()->route('user.dashboard.index');  }
-        return view('index.home.login'  );
-        // return view('indexhost.home.login'  );
-    }
+        return view($this->template.'.home.login'  );
+     }
 
 
     public function authenticate(Request $request)

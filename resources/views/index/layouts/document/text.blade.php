@@ -41,6 +41,13 @@
                                       <br>
   <pre class="pre">{{$textwebservices->link}}</pre>
 
+
+<div>
+    <a class="elementor-button elementor-size-sm"
+    href="{{asset($textwebservices->sample)}}" target="_blank" rel="noopener">دانلود نمونه سورس php </a>
+    </div>
+
+
   <style>
   .pre {
   box-sizing: border-box;
