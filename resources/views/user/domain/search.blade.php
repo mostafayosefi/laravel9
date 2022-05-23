@@ -81,7 +81,7 @@
 
                                                         <div
                                                         class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100">
-                                                                <input type="text" class="form-control px-4" name="searchdomain" placeholder="example.com" dir="ltr" required>
+                                                                <input type="text" class="form-control px-4" name="searchdomain" placeholder="example.com" dir="ltr"   onkeyup="this.value=this.value.toLowerCase()"  required>
 
 
                                                             </div>

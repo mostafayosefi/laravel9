@@ -25,10 +25,10 @@ class DocumentController extends Controller
             $textwebservices= Textwebservice::where('url' , $myurl)->first();
         }
 
- 
 
-        // return view('index.document.index' , compact(['documents' , 'textwebservices' , 'categoryapis' , 'txtdese'  , 'myurl' ]));
-        return view('indexhost.document.index' , compact(['documents' , 'textwebservices' , 'categoryapis' , 'txtdese'  , 'myurl' ]));
+
+        return view('index.document.index' , compact(['documents' , 'textwebservices' , 'categoryapis' , 'txtdese'  , 'myurl' ]));
+        // return view('indexhost.document.index' , compact(['documents' , 'textwebservices' , 'categoryapis' , 'txtdese'  , 'myurl' ]));
 
         }
 
