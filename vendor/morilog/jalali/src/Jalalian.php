@@ -89,8 +89,15 @@ class Jalalian
     {
         $jDate = CalendarUtils::toJalali($carbon->year, $carbon->month, $carbon->day);
 
-        return new static($jDate[0], $jDate[1], $jDate[2], $carbon->hour, $carbon->minute, $carbon->second,
-            $carbon->getTimezone());
+        return new static(
+            $jDate[0],
+            $jDate[1],
+            $jDate[2],
+            $carbon->hour,
+            $carbon->minute,
+            $carbon->second,
+            $carbon->getTimezone()
+        );
     }
 
     public static function fromFormat(string $format, string $timestamp, \DateTimeZone $timeZone = null): Jalalian
@@ -115,6 +122,45 @@ class Jalalian
         }
 
         return static::fromCarbon(new Carbon($dateTime, $timeZone));
+    }
+    
+    public function getFirstDayOfWeek(): Jalalian
+    {
+        return (new static(
+            $this->getYear(),
+            $this->getMonth(),
+            $this->getDay(),
+            $this->getHour(),
+            $this->getMinute(),
+            $this->getSecond(),
+            $this->getTimezone()
+        ))->subDays($this->getDayOfWeek());
+    }
+
+    public function getFirstDayOfMonth(): Jalalian
+    {
+        return new static(
+            $this->getYear(),
+            $this->getMonth(),
+            1,
+            $this->getHour(),
+            $this->getMinute(),
+            $this->getSecond(),
+            $this->getTimezone()
+        );
+    }
+
+    public function getFirstDayOfYear(): Jalalian
+    {
+        return new static(
+            $this->getYear(),
+            1,
+            1,
+            $this->getHour(),
+            $this->getMinute(),
+            $this->getSecond(),
+            $this->getTimezone()
+        );
     }
 
     public function getMonthDays()
@@ -608,5 +654,10 @@ class Jalalian
     public function getNextMonth(): Jalalian
     {
         return $this->addMonths(1);
+    }
+
+    public function getWeekOfMonth(): int
+    {
+        return ceil(($this->getDayOfWeek() + $this->day) / 7);
     }
 }
